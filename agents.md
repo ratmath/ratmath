@@ -61,6 +61,7 @@ These support the **old calc/webcalc system** (VariableManager-based). Do **not*
 | `packages/parser/` | Old expression parser (superseded by `rix/parser/`) |
 | `packages/stdlib/` | Standard library for old calc |
 | `packages/arith-funs/` | Arithmetic/number theory functions |
+| `packages/analytic/` | Taylor models with certified remainders (exp, sin, log, atan, …) on Core; for RatTree/RatCalc |
 | `packages/reals/` | Transcendental/real number oracles |
 | `packages/oracles/` | Oracle-based real number computation |
 | `packages/units/` | Physical units support |

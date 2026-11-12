@@ -1,6 +1,6 @@
 # Analytic functions with certified errors — design
 
-Status: proposal (2026-11-06). Prompted by RatTree's Taylor functions. Goal: a
+Status: phases 1–3 implemented in `packages/analytic` (2026-11-12); proposal written 2026-11-06. Prompted by RatTree's Taylor functions. Goal: a
 small JavaScript library of *exact polynomials plus rigorous remainders* that
 RatCalc, RatTree, webcalc and a future "Analytic Graphics" app import, so that
 composition, differentiation, integration and simple ODEs keep honest error

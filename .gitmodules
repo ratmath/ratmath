@@ -46,3 +46,6 @@
 [submodule "julia-port"]
 	path = julia-port
 	url = git@github.com:jostylr/ratmath-julia.git
+[submodule "packages/analytic"]
+	path = packages/analytic
+	url = git@github.com:jostylr/ratmath-analytic.git
