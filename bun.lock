@@ -7,17 +7,13 @@
     },
     "apps/calc": {
       "name": "ratcalc",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "bin": {
         "ratcalc": "index.js",
       },
       "dependencies": {
-        "@ratmath/algebra": "^0.2.0",
-        "@ratmath/core": "^0.6.0",
-        "@ratmath/oracles": "workspace:*",
-        "@ratmath/parser": "^0.2.0",
-        "@ratmath/reals": "^0.1.0",
-        "@ratmath/stdlib": "workspace:*",
+        "@ratmath/analytic": "workspace:*",
+        "@ratmath/core": "workspace:*",
       },
     },
     "apps/cel": {
@@ -32,7 +28,7 @@
     "apps/forge": {
       "name": "ratforge",
       "dependencies": {
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -45,23 +41,27 @@
       "name": "ratweb",
       "version": "1.0.0",
       "dependencies": {
-        "@ratmath/algebra": "^0.2.0",
-        "@ratmath/core": "^0.6.0",
-        "@ratmath/oracles": "workspace:*",
-        "@ratmath/parser": "^0.2.0",
-        "@ratmath/reals": "^0.1.0",
-        "@ratmath/stdlib": "^0.2.0",
+        "@ratmath/analytic": "workspace:*",
+        "@ratmath/core": "workspace:*",
+        "ratcalc": "workspace:*",
       },
     },
     "packages/algebra": {
       "name": "@ratmath/algebra",
       "version": "0.2.0",
       "dependencies": {
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
         "@ratmath/parser": "^0.2.0",
       },
       "devDependencies": {
         "bun-types": "latest",
+      },
+    },
+    "packages/analytic": {
+      "name": "@ratmath/analytic",
+      "version": "0.1.0",
+      "dependencies": {
+        "@ratmath/core": "^0.7.0",
       },
     },
     "packages/arith-funs": {
@@ -78,7 +78,7 @@
     },
     "packages/core": {
       "name": "@ratmath/core",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "devDependencies": {
         "bun-types": "1.3.14",
       },
@@ -87,7 +87,7 @@
       "name": "@ratmath/oracles",
       "version": "0.1.0",
       "dependencies": {
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
       },
       "devDependencies": {
         "@types/bun": "^1.3.5",
@@ -100,7 +100,7 @@
       "name": "@ratmath/parser",
       "version": "0.2.0",
       "dependencies": {
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
         "@ratmath/reals": "^0.1.0",
       },
     },
@@ -108,7 +108,7 @@
       "name": "@ratmath/reals",
       "version": "0.1.0",
       "dependencies": {
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
       },
       "devDependencies": {
         "bun-types": "latest",
@@ -119,7 +119,7 @@
       "version": "0.2.0",
       "dependencies": {
         "@ratmath/algebra": "^0.2.0",
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
       },
     },
     "rix": {
@@ -136,7 +136,7 @@
         "@lezer/common": "^1.5.2",
         "@lezer/highlight": "^1.2.3",
         "@lezer/lr": "^1.4.10",
-        "@ratmath/core": "^0.6.0",
+        "@ratmath/core": "^0.7.0",
       },
       "devDependencies": {
         "@lezer/generator": "^1.8.0",
@@ -172,6 +172,8 @@
     "@protobi/exceljs": ["@protobi/exceljs@4.4.0-protobi.10", "", { "dependencies": { "archiver": "^7.0.1", "dayjs": "^1.8.34", "fast-csv": "^4.3.1", "jszip": "^3.10.1", "readable-stream": "^3.6.0", "saxes": "^5.0.1", "tmp": "^0.2.0", "unzipper": "^0.10.11", "uuid": "^9.0.1" } }, "sha512-HqDMG0gUmmHqxnGo8djHZSNYg53Y+OR/vrU9sBJQTzop2yN0SZRxxU4eme6j+7kUo5ywMl6Z+oPjTV40G0cOZA=="],
 
     "@ratmath/algebra": ["@ratmath/algebra@workspace:packages/algebra"],
+
+    "@ratmath/analytic": ["@ratmath/analytic@workspace:packages/analytic"],
 
     "@ratmath/arith-funs": ["@ratmath/arith-funs@workspace:packages/arith-funs"],
 
