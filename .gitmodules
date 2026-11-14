@@ -1,9 +1,6 @@
 [submodule "rix-web"]
 	path = rix-web
 	url = git@github.com:jostylr/rix-web.git
-[submodule "packages/parser"]
-	path = packages/parser
-	url = git@github.com:jostylr/ratmath-parser.git
 [submodule "packages/core"]
 	path = packages/core
 	url = git@github.com:jostylr/ratmath-core.git
@@ -16,27 +13,12 @@
 [submodule "apps/calc"]
 	path = apps/calc
 	url = git@github.com:jostylr/ratcalc.git
-[submodule "packages/oracles"]
-	path = packages/oracles
-	url = git@github.com:jostylr/ratmath-oracles.git
 [submodule "apps/webcalc"]
 	path = apps/webcalc
 	url = git@github.com:jostylr/ratmath-web.git
 [submodule "paper"]
 	path = paper
 	url = git@github.com:jostylr/Reals-as-Oracles.git
-[submodule "packages/reals"]
-	path = packages/reals
-	url = git@github.com:jostylr/ratmath-reals.git
-[submodule "packages/algebra"]
-	path = packages/algebra
-	url = git@github.com:jostylr/ratmath-algebra.git
-[submodule "packages/stdlib"]
-	path = packages/stdlib
-	url = git@github.com:jostylr/ratmath-stdlib.git
-[submodule "packages/arith-funs"]
-	path = packages/arith-funs
-	url = git@github.com:jostylr/ratmath-arithmetic-functions.git
 [submodule "rix"]
 	path = rix
 	url = git@github.com:jostylr/rix.git

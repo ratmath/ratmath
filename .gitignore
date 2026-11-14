@@ -6,3 +6,6 @@ dist
 tmp/
 
 .vscode/settings.json
+
+# Archived legacy packages (removed as submodules 2026-11-14)
+archive/

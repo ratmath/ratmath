@@ -50,44 +50,17 @@ Evaluator/runtime work lives mainly in `rix/src/eval/evaluator.js`,
 
 ---
 
-## Legacy / Support Packages (`packages/`)
-
-These support the **old calc/webcalc system** (VariableManager-based). Do **not** make parser or evaluator changes here — use RiX instead.
+## Packages (`packages/`)
 
 | Package | Purpose |
 |---------|---------|
-| `packages/core/` | Core math types: `Integer`, `Rational`, `RationalInterval` |
-| `packages/algebra/` | `VariableManager` — expression parser + evaluator (old system) |
-| `packages/parser/` | Old expression parser (superseded by `rix/parser/`) |
-| `packages/stdlib/` | Standard library for old calc |
-| `packages/arith-funs/` | Arithmetic/number theory functions |
+| `packages/core/` | Core math types: `Integer`, `Rational`, `RationalInterval`, the `R` tag |
 | `packages/analytic/` | Taylor models with certified remainders (exp, sin, log, atan, …) on Core; for RatTree/RatCalc |
-| `packages/reals/` | Transcendental/real number oracles |
-| `packages/oracles/` | Oracle-based real number computation |
-| `packages/units/` | Physical units support |
-| `packages/calculus/`, `packages/stats/`, etc. | Domain math packages |
 
-### Writing Packages for the Old Calc System
-
-The calculators no longer use this system (RatCalc 2 is JavaScript plus Core's
-`R` tag). The `ratmath-module.js` shape below remains for the legacy packages:
-
-```javascript
-// packages/mypkg/src/ratmath-module.js
-export const functions = {
-    "MyFunc": {
-        type: 'js',
-        handler: function (arg) { /* 'this' = VariableManager */ return result; },
-        params: ["arg"],
-        doc: "Description"
-    }
-};
-export const variables = { "MY_CONST": someValue };
-```
-
-Return types: `new Integer(BigInt(n))`, `new Rational(num, denom)`, `new RationalInterval(lo, hi)`, `{ type: 'string', value: str }`, `{ type: 'sequence', values: [...] }`.
-
-Register in `packages/algebra/src/package-registry.js` and help in `packages/algebra/src/help-registry.js`.
+The legacy calculator packages (`parser`, `reals`, `algebra`, `stdlib`,
+`arith-funs`, `oracles`) were removed from the umbrella on 2026-11-14. Nothing
+used them any more: RatCalc 2 is JavaScript plus Core's `R` tag, and RiX has
+its own parser and oracle plugin. Their repositories stay on GitHub, archived.
 
 ---
 
@@ -96,7 +69,7 @@ Register in `packages/algebra/src/package-registry.js` and help in `packages/alg
 | App | Description | Backend |
 |-----|-------------|---------|
 | `apps/calc/` | RatCalc CLI: a JavaScript REPL with Core and the `R` tag in scope (`src/session.js` is shared) | Core |
-| `apps/webcalc/` | RatCalc web page over the same session, plus Stern-Brocot and showcase pages | Core (+ legacy parser for showcase pages) |
+| `apps/webcalc/` | RatCalc web page over the same session, plus Stern-Brocot and showcase pages | Core |
 | `apps/forge/` | Document/worksheet environment | Mixed |
 | `apps/cel/` | Spreadsheet-like env | — |
 
@@ -111,8 +84,6 @@ Register in `packages/algebra/src/package-registry.js` and help in `packages/alg
 | Evaluator / runtime | `rix/src/eval/evaluator.js` or `rix/src/runtime/` |
 | IR format | `rix/src/eval/ir.js` |
 | New math types | `packages/core/` |
-| Old calc built-in function | `packages/stdlib/` or relevant package |
-| Old calc package | `packages/algebra/src/package-registry.js` |
 
 ---
 

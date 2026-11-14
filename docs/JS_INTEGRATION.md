@@ -1,6 +1,11 @@
 
 # Validating JavaScript Integrations for RatMath
 
+> [!NOTE]
+> This describes modules for the legacy `VariableManager` calculator, whose
+> packages were removed from the umbrella and archived on 2026-11-14. RatCalc 2
+> is JavaScript with Core's `R` tag, and RiX loads plugins instead.
+
 This guide explains how to convert JavaScript code into loadable modules for `ratmath` (Calc and WebCalc).
 
 ## 1. Wrapper Structure
@@ -111,5 +116,6 @@ For core packages, we recommend:
 - `packages/your-pkg/src/ratmath-module.js` - The wrapper
 - `apps/webcalc/package.json` - Add `build-your-pkg` script
 
-See `packages/reals` for a reference implementation.
+The legacy reference implementation, `packages/reals`, was archived on
+2026-11-14 (its repository is `jostylr/ratmath-reals`).
 

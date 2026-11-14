@@ -46,17 +46,6 @@
         "ratcalc": "workspace:*",
       },
     },
-    "packages/algebra": {
-      "name": "@ratmath/algebra",
-      "version": "0.2.0",
-      "dependencies": {
-        "@ratmath/core": "^0.7.0",
-        "@ratmath/parser": "^0.2.0",
-      },
-      "devDependencies": {
-        "bun-types": "latest",
-      },
-    },
     "packages/analytic": {
       "name": "@ratmath/analytic",
       "version": "0.1.0",
@@ -64,62 +53,11 @@
         "@ratmath/core": "^0.7.0",
       },
     },
-    "packages/arith-funs": {
-      "name": "@ratmath/arith-funs",
-      "version": "0.1.0",
-      "dependencies": {
-        "@ratmath/algebra": "workspace:*",
-        "@ratmath/core": "workspace:*",
-        "@ratmath/stdlib": "workspace:*",
-      },
-      "devDependencies": {
-        "bun-types": "latest",
-      },
-    },
     "packages/core": {
       "name": "@ratmath/core",
       "version": "0.7.0",
       "devDependencies": {
         "bun-types": "1.3.14",
-      },
-    },
-    "packages/oracles": {
-      "name": "@ratmath/oracles",
-      "version": "0.1.0",
-      "dependencies": {
-        "@ratmath/core": "^0.7.0",
-      },
-      "devDependencies": {
-        "@types/bun": "^1.3.5",
-        "@types/node": "^24.10.4",
-        "prettier": "^3.7.4",
-        "typescript": "^5.9.3",
-      },
-    },
-    "packages/parser": {
-      "name": "@ratmath/parser",
-      "version": "0.2.0",
-      "dependencies": {
-        "@ratmath/core": "^0.7.0",
-        "@ratmath/reals": "^0.1.0",
-      },
-    },
-    "packages/reals": {
-      "name": "@ratmath/reals",
-      "version": "0.1.0",
-      "dependencies": {
-        "@ratmath/core": "^0.7.0",
-      },
-      "devDependencies": {
-        "bun-types": "latest",
-      },
-    },
-    "packages/stdlib": {
-      "name": "@ratmath/stdlib",
-      "version": "0.2.0",
-      "dependencies": {
-        "@ratmath/algebra": "^0.2.0",
-        "@ratmath/core": "^0.7.0",
       },
     },
     "rix": {
@@ -171,23 +109,11 @@
 
     "@protobi/exceljs": ["@protobi/exceljs@4.4.0-protobi.10", "", { "dependencies": { "archiver": "^7.0.1", "dayjs": "^1.8.34", "fast-csv": "^4.3.1", "jszip": "^3.10.1", "readable-stream": "^3.6.0", "saxes": "^5.0.1", "tmp": "^0.2.0", "unzipper": "^0.10.11", "uuid": "^9.0.1" } }, "sha512-HqDMG0gUmmHqxnGo8djHZSNYg53Y+OR/vrU9sBJQTzop2yN0SZRxxU4eme6j+7kUo5ywMl6Z+oPjTV40G0cOZA=="],
 
-    "@ratmath/algebra": ["@ratmath/algebra@workspace:packages/algebra"],
-
     "@ratmath/analytic": ["@ratmath/analytic@workspace:packages/analytic"],
-
-    "@ratmath/arith-funs": ["@ratmath/arith-funs@workspace:packages/arith-funs"],
 
     "@ratmath/core": ["@ratmath/core@workspace:packages/core"],
 
-    "@ratmath/oracles": ["@ratmath/oracles@workspace:packages/oracles"],
-
-    "@ratmath/parser": ["@ratmath/parser@workspace:packages/parser"],
-
-    "@ratmath/reals": ["@ratmath/reals@workspace:packages/reals"],
-
     "@ratmath/rix": ["@ratmath/rix@workspace:rix"],
-
-    "@ratmath/stdlib": ["@ratmath/stdlib@workspace:packages/stdlib"],
 
     "@types/bun": ["@types/bun@1.3.5", "", { "dependencies": { "bun-types": "1.3.5" } }, "sha512-RnygCqNrd3srIPEWBd5LFeUYG7plCoH2Yw9WaZGyNmdTEei+gWaHqydbaIRkIkcbXwhBT94q78QljxN0Sk838w=="],
 
@@ -237,7 +163,7 @@
 
     "buffers": ["buffers@0.1.1", "", {}, "sha512-9q/rDEGSb/Qsvv2qvzIzdluL5k7AaJOTrw23z9reQthrbF7is4CtlT0DXyO1oei2DCp4uojjzQ7igaSHp1kAEQ=="],
 
-    "bun-types": ["bun-types@1.3.6", "", { "dependencies": { "@types/node": "*" } }, "sha512-OlFwHcnNV99r//9v5IIOgQ9Uk37gZqrNMCcqEaExdkVq3Avwqok1bJFmvGMCkCE0FqzdY8VMOZpfpR3lwI+CsQ=="],
+    "bun-types": ["bun-types@1.3.14", "", { "dependencies": { "@types/node": "*" } }, "sha512-4N0ig0fEomHt5R0KCFWjovxow98rIoRwKolrYdCcknNwMekCXRnWEUvgu5soYV8QXtVsrUD8B95MBOZGPvr6KQ=="],
 
     "chainsaw": ["chainsaw@0.1.0", "", { "dependencies": { "traverse": ">=0.3.0 <0.4" } }, "sha512-75kWfWt6MEKNC8xYXIdRpDehRYY/tNSgwKaJq+dbbDcxORuVrrQ+SEHoWsniVn9XPYfP4gmdWIeDk/4YNp1rNQ=="],
 
@@ -357,8 +283,6 @@
 
     "path-scurry": ["path-scurry@1.11.1", "", { "dependencies": { "lru-cache": "^10.2.0", "minipass": "^5.0.0 || ^6.0.2 || ^7.0.0" } }, "sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA=="],
 
-    "prettier": ["prettier@3.7.4", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA=="],
-
     "process": ["process@0.11.10", "", {}, "sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A=="],
 
     "process-nextick-args": ["process-nextick-args@2.0.1", "", {}, "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="],
@@ -442,8 +366,6 @@
     "@fast-csv/parse/@types/node": ["@types/node@14.18.63", "", {}, "sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ=="],
 
     "@protobi/exceljs/saxes": ["saxes@5.0.1", "", { "dependencies": { "xmlchars": "^2.2.0" } }, "sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw=="],
-
-    "@ratmath/core/bun-types": ["bun-types@1.3.14", "", { "dependencies": { "@types/node": "*" } }, "sha512-4N0ig0fEomHt5R0KCFWjovxow98rIoRwKolrYdCcknNwMekCXRnWEUvgu5soYV8QXtVsrUD8B95MBOZGPvr6KQ=="],
 
     "@types/bun/bun-types": ["bun-types@1.3.5", "", { "dependencies": { "@types/node": "*" } }, "sha512-inmAYe2PFLs0SUbFOWSVD24sg1jFlMPxOjOSSCYqUgn4Hsc3rDc7dFvfVYjFPNHtov6kgUeulV4SxbuIV/stPw=="],
 

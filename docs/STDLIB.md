@@ -1,5 +1,10 @@
 # Standard Library
 
+> [!NOTE]
+> `@ratmath/stdlib` belonged to the legacy calculator and was removed from the
+> umbrella on 2026-11-14 (repository `jostylr/ratmath-stdlib`, archived). This
+> page is kept as a record.
+
 The RatMath Standard Library (`@ratmath/stdlib`) provides a collection of essential functions for logic, control flow, list manipulation, and scope management. These functions are available by default in the Calculator and Web Calculator.
 
 ## Core Functions
