@@ -99,7 +99,7 @@ scope. No task requires multivariate elimination or RiX-Ed.
 4. M1–M8: complete the bounded numerical/geometry/ODE pipeline.
 5. T1–T3 and N1–N2: finish independent finite algebra and exact-number tools.
 6. R1–R4: runtime concurrency, worker integration, and diagnostics.
-7. C1–C4: RiXCel editing, modules, and interchange.
+7. C1–C4: RiX Ripple editing, modules, and interchange.
 8. Q1: cross-host/repository release verification and final backlog reconciliation.
 
 Dependencies named in a task take precedence over this display order. For
@@ -208,7 +208,7 @@ executable documentation examples pass. Generated reference refresh remains Q1.
 
 ### O3 — Host asset resolution and portable bundles
 
-**Depends:** O1. **Where:** RiX host adapters, Web, Notebook, RiXCel.
+**Depends:** O1. **Where:** RiX host adapters, Web, Notebook, RiX Ripple.
 
 - [x] Implement a shared manifest resolver for package-relative and local
   content-addressed assets, with MIME/dimension/size checks and deterministic
@@ -410,7 +410,7 @@ Evidence: `tmp/h2-tests.log`, `tmp/h2-browser-check.log`, `tmp/h2-*-build.log`,
   real gaps only. Keep method reference chips/catalogs generated.
 - [x] Add one end-to-end capstone per delivered pipeline: publication,
   certified nonlinear/ODE exploration, exact-number views, tensor coordinates,
-  async cancellation, and RiXCel interchange.
+  async cancellation, and RiX Ripple interchange.
 - [x] Include bounded-failure and unavailable-host examples, prerequisites,
   exact-versus-approximate explanations, and static output alternatives.
 
@@ -420,7 +420,7 @@ cannot misleadingly run. This excludes curriculum production in RiX-Ed.
 **Completed 2026-09-20:** reconciled the actual Web curriculum instead of
 recreating existing lessons. Added a six-workflow capstone guide linking tested
 publication, bounded nonlinear/ODE, exact-number, coordinate tensor, cooperative
-cancellation and RiXCel interchange examples. Two missing integrated sources and
+cancellation and RiX Ripple interchange examples. Two missing integrated sources and
 five end-to-end tests add 19 assertions. Existing and new lessons state host
 requirements, exact/approximate boundaries, bounded failure and static fallbacks.
 Web tutorials now exercise recent Float/sparse/plot APIs through both evaluators.
@@ -967,7 +967,7 @@ The complete sweep was not rerun after those fixture corrections. Browser
 evidence: `tmp/r4-render-browser/` and `tmp/r4-plot-browser/`; numeric/render/plot
 baselines are committed under `rix/benchmarks/`.
 
-## C — RiXCel
+## C — RiX Ripple
 
 ### C1 — Structural editing and reliable history
 
@@ -1038,7 +1038,7 @@ Evidence: `tmp/c2-source-manifest.json`, `tmp/c2-short.log`,
 
 **Depends:** C2, O3, H2.
 
-- [x] Embed a RiXCel document as a notebook widget with explicit named exports,
+- [x] Embed a RiX Ripple document as a notebook widget with explicit named exports,
   isolated execution, lifecycle disposal and script/document import-cycle checks.
 - [x] Add XLSX values and sheet-structure import/export through a host adapter,
   preserving source metadata, dimensions and exact values where the format can.
@@ -1247,7 +1247,7 @@ scope. A Phase 4 label alone is not a reason to forget work.
 | Data/CSV/JSONL | M7, O1/O3 | D8/D10 |
 | Stats/Probability | Existing results consumed in plots | D11 |
 | Async concurrency design | R1–R4, H2 | D8 database/external services; D10 distributed execution |
-| RiXCel checklist | C1–C4 | D6 |
+| RiX Ripple checklist | C1–C4 | D6 |
 | Web TODO/tutorial outline | H1–H3, O4, N1 | D3/D5 only where explicitly needed |
 | Notebook README/architecture | H2, O3–O7, R2, C3 | D7 distribution/signing |
 | Parser-only historical TODO | A2, R4 | D2 |

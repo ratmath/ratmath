@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 // Run RiX notebooks (Markdown notes with ```rix cells) headlessly with the
-// same engine RiX Notebook uses, print each statement's result, and fail on
+// same engine RiX Weave uses, print each statement's result, and fail on
 // any error. Answers are guarded by `##@ == value` assertions in the notes.
 //
 //   bun tools/run.mjs                 # every note listed in Problems/notebook.toml

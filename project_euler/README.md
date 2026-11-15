@@ -4,7 +4,7 @@ Worked solutions to [Project Euler](https://projecteuler.net) problems,
 written as RiX notebooks. Each note states the problem, tries small cases,
 builds a general solution, and asserts the final answer.
 
-This folder is a RiX Notebook project: open it in RiX Notebook (`rix-nb`),
+This folder is a RiX Weave project: open it in RiX Weave (`rix-nb`),
 or open any note under `Problems/` on its own. Notes are Markdown with
 fenced `rix edu` cells (code and results shown) and `@{...}` inline values.
 
@@ -16,7 +16,7 @@ bun tools/run.mjs --quiet              # one PASS/FAIL line per note
 bun tools/run.mjs Problems/003-*.md    # selected notes
 ```
 
-The runner executes notes with the same engine RiX Notebook uses
+The runner executes notes with the same engine RiX Weave uses
 (`rix-nb/webview/source/notebook-web/rix-engine.js`), so it expects this
 folder to sit beside `rix-nb/` in the ratmath repository. It exits nonzero
 if any statement errors. Answers are guarded by `##@ == value` assertion
