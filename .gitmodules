@@ -1,33 +1,33 @@
 [submodule "rix-web"]
 	path = rix-web
-	url = git@github.com:jostylr/rix-web.git
+	url = git@github.com:ratmath/rix-playground.git
 [submodule "packages/core"]
 	path = packages/core
-	url = git@github.com:jostylr/ratmath-core.git
+	url = git@github.com:ratmath/core.git
 [submodule "apps/forge"]
 	path = apps/forge
-	url = git@github.com:jostylr/ratforge.git
+	url = git@github.com:ratmath/ratforge.git
 [submodule "apps/cel"]
 	path = apps/cel
-	url = git@github.com:jostylr/ratcel.git
+	url = git@github.com:ratmath/rix-ripple.git
 [submodule "apps/calc"]
 	path = apps/calc
-	url = git@github.com:jostylr/ratcalc.git
+	url = git@github.com:ratmath/ratcalc.git
 [submodule "apps/webcalc"]
 	path = apps/webcalc
-	url = git@github.com:jostylr/ratmath-web.git
+	url = git@github.com:ratmath/ratcalc-web.git
 [submodule "paper"]
 	path = paper
 	url = git@github.com:jostylr/Reals-as-Oracles.git
 [submodule "rix"]
 	path = rix
-	url = git@github.com:jostylr/rix.git
+	url = git@github.com:ratmath/rix.git
 [submodule "rix-nb"]
 	path = rix-nb
-	url = git@github.com:jostylr/rix-nb.git
+	url = git@github.com:ratmath/rix-weave.git
 [submodule "julia-port"]
 	path = julia-port
-	url = git@github.com:jostylr/ratmath-julia.git
+	url = git@github.com:ratmath/RatMathCore.jl.git
 [submodule "packages/analytic"]
 	path = packages/analytic
-	url = git@github.com:jostylr/ratmath-analytic.git
+	url = git@github.com:ratmath/analytic.git
