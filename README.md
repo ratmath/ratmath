@@ -50,3 +50,4 @@ comprehensive automatic-discovery check; the root `bunfig.toml` only excludes
 the ignored `tmp/` diagnostics directory. The named profiles are preferable in
 scripts because they execute repositories sequentially and identify the one
 that failed.
+# calc-app
