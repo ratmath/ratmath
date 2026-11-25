@@ -420,13 +420,11 @@ Suggested order, with the reason for each step:
 
 Decided: the packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
+The hypercomplex numbers stay in the complex package, as the subpath
+`@ratmath/complex/cayley` (James, 2026-11-25).
 
 Decisions that would change the plan:
 
-- **Hypercomplex numbers inside the complex package or separate.** They share
-  the Cayley–Dickson construction and little else with complex analysis.
-  Recommended: inside, as a subpath (`@ratmath/complex/cayley`), until they
-  grow.
 - **RiX plugins call the libraries (3.2 A) or stay independent (B).**
 - **Where the elementary number theory functions live (4.3)** and **where
   `PermGroup` lives (5.3).**
