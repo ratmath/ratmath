@@ -180,7 +180,7 @@ constants), and optionally on algebraic for conversions.
 
 Phases 1 and 2 are independent and each useful alone. Phase 3 is the hard one.
 
-## 4. A number theory package: `@ratmath/numbertheory`
+## 4. A number theory package: `@ratmath/numtheory`
 
 ### 4.1 What exists already
 
@@ -233,7 +233,7 @@ plane once the complex package has phase 6.
 
 A package cycle (algebraic needs modular arithmetic; class groups need number
 fields) has to be avoided. Recommended: the small kernel stays in algebraic,
-where finite fields use it, and `@ratmath/numbertheory` depends on algebraic
+where finite fields use it, and `@ratmath/numtheory` depends on algebraic
 and re-exports those functions, so users import number theory from one place.
 The alternative, moving the kernel down into the new package and having
 algebraic depend on it, forces the number-field parts back into algebraic and
@@ -252,10 +252,10 @@ only for phase 6.
 | 6 | Class groups and unit groups | 1,500 |
 | 7 | π(x), characters, ζ and L values | 800 |
 
-## 5. An abstract algebra package: `@ratmath/algebra`
+## 5. An abstract algebra package: `@ratmath/structures`
 
-The name is close to `algebraic`. `@ratmath/abstract` or `@ratmath/groups`
-(if rings split off) are alternatives; see section 8.
+Named for the algebraic structures it holds (groups, rings, fields, modules),
+which also keeps it apart from `algebraic`.
 
 ### 5.1 What exists already
 
@@ -379,7 +379,7 @@ In rough order of how well each suits exact and certified computation:
    need. About 3,000 lines.
 2. **Discrete mathematics.** Combinatorics, generating functions, recurrences
    and graph theory. Exact by nature, modest in size (about 2,500 lines), and
-   Burnside and Pólya counting would already be in the algebra package.
+   Burnside and Pólya counting would already be in the structures package.
 3. **Differential equations, second half.** Laplace transforms, linear systems
    with phase portraits (linalg's matrix exponential plus graphics), stability,
    and the three classical partial differential equations by separation of
@@ -417,10 +417,11 @@ Suggested order, with the reason for each step:
 5. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
 6. The remaining phases as interest directs.
 
+Decided: the packages are named `@ratmath/complex`, `@ratmath/numtheory` and
+`@ratmath/structures` (James, 2026-11-25).
+
 Decisions that would change the plan:
 
-- **Names.** `@ratmath/complex`, `@ratmath/numbertheory`, `@ratmath/algebra`.
-  The last is easily confused with `algebraic`.
 - **Hypercomplex numbers inside the complex package or separate.** They share
   the Cayley–Dickson construction and little else with complex analysis.
   Recommended: inside, as a subpath (`@ratmath/complex/cayley`), until they
