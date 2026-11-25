@@ -10,6 +10,7 @@ The various parts are:
 
 - [Language Guide](docs/LANGUAGE_GUIDE.md): Detailed guide on variables, functions, scoping, and strictness rules.
 - [JS Integration](docs/JS_INTEGRATION.md): How to integrate JS modules.
+- [Library roadmap](docs/design/library-roadmap.md): what the JavaScript libraries cover, what is left to build, proposed complex, number theory and abstract algebra packages, and coverage of the undergraduate curriculum.
 
 ## Workspace setup
 
