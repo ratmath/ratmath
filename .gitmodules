@@ -31,3 +31,12 @@
 [submodule "packages/analytic"]
 	path = packages/analytic
 	url = git@github.com:ratmath/analytic.git
+[submodule "packages/linalg"]
+	path = packages/linalg
+	url = git@github.com:ratmath/linalg.git
+[submodule "packages/algebraic"]
+	path = packages/algebraic
+	url = git@github.com:ratmath/algebraic.git
+[submodule "packages/graphics"]
+	path = packages/graphics
+	url = git@github.com:ratmath/graphics.git

@@ -56,6 +56,9 @@ Evaluator/runtime work lives mainly in `rix/src/eval/evaluator.js`,
 |---------|---------|
 | `packages/core/` | Core math types: `Integer`, `Rational`, `RationalInterval`, the `R` tag |
 | `packages/analytic/` | Taylor models with certified remainders (exp, sin, log, atan, …) on Core; for RatTree/RatCalc |
+| `packages/algebraic/` | Exact algebraic numbers, polynomial factoring, Galois groups, number and finite fields |
+| `packages/linalg/` | Exact rational linear algebra with float previews that sharpen to exact (uses algebraic) |
+| `packages/graphics/` | Certified plots, regions and exact geometry; exports SVG, TikZ, PDF, PNG (uses analytic, algebraic) |
 
 The legacy calculator packages (`parser`, `reals`, `algebra`, `stdlib`,
 `arith-funs`, `oracles`) were removed from the umbrella on 2026-11-14. Nothing
