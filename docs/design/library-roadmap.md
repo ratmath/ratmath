@@ -19,7 +19,7 @@ Curriculum percentages in section 6 are a judgement, explained there.
 
 There are two families of code, and this document is mostly about the first.
 
-**JavaScript libraries** (each its own repository, Bun and ES modules, built on
+**The RatMath Shelf: the JavaScript libraries** (each its own repository, Bun and ES modules, built on
 `@ratmath/core`, answers come as a fast preview followed by an exact or
 certified value):
 
@@ -54,10 +54,11 @@ elementary functions of its quaternions are floats, and `WORK_PLAN.md` lists
 "complex special functions/contour integration/root isolation" under later
 item D11 and named branches under D3).
 
-The umbrella repository pins `packages/core` and `packages/analytic` as
-submodules. `algebraic`, `linalg` and `graphics` are not in `.gitmodules` yet.
-If this repository is to oversee the libraries, adding them (and the packages
-below, as they appear) is a small separate change.
+The family of subject libraries is called the **RatMath Shelf** (James,
+2026-11-25). A separate change (ratmath/ratmath#3) pins every Shelf library
+as a submodule of this repository under `shelf/`, so that this repository
+oversees them. The three packages below would join the Shelf there as they
+appear.
 
 ## 2. Left over from the gold-plating document
 
@@ -431,5 +432,3 @@ Decisions that would change the plan:
   `PermGroup` lives (5.3).**
 - **Whether probability and statistics become a JavaScript library** or stay
   RiX-only.
-- **Whether this repository should pin all the libraries as submodules**, so
-  that it really does oversee them.
