@@ -1,22 +1,22 @@
-# Library roadmap: what is left, and nine further packages (design)
+# Library roadmap: what is left, and ten further packages (design)
 
-Status: proposal, written 2026-11-25. Nothing in sections 3 to 12 is built.
+Status: proposal, written 2026-11-25. Nothing in sections 3 to 13 is built.
 It follows the gold-plating pass of 2026-11-25 (linalg#4, analytic#9,
 algebraic#5, graphics#7, all merged) and answers four questions:
 
 1. What from the gold-plating document was not done?
 2. What would a complex package, a number theory package and an abstract
    algebra package contain? (A statistics package and a discrete mathematics
-   package, and packages for logic, symbolic algebra, dynamical systems and
-   geometry, were added to the plan on review (sections 6 to 11), with
-   extensions of the current libraries (section 12).)
+   package, and packages for logic, symbolic algebra, dynamical systems,
+   geometry and finance, were added to the plan on review (sections 6 to 12),
+   with extensions of the current libraries (section 13).)
 3. How much of an undergraduate mathematics curriculum do the libraries cover
    today, and how much would those packages add?
 4. What would still remain?
 
 Line counts for future work are estimates made from the size of comparable
 code already in the libraries. They are for ordering the work, not promises.
-Curriculum percentages in section 13 are a judgement, explained there.
+Curriculum percentages in section 14 are a judgement, explained there.
 
 ## 1. The map today
 
@@ -60,7 +60,7 @@ item D11 and named branches under D3).
 The family of subject libraries is called the **RatMath Shelf** (James,
 2026-11-25). A separate change (ratmath/ratmath#3) pins every Shelf library
 as a submodule of this repository under `shelf/`, so that this repository
-oversees them. The nine packages below would join the Shelf there as they
+oversees them. The ten packages below would join the Shelf there as they
 appear.
 
 ## 2. Left over from the gold-plating document
@@ -91,7 +91,7 @@ Everything in that document that was not built, with where it should go.
 | **Graphics** | | |
 | Geometry editor | 1,800 | An app, not the library (James, 2026-11-25) |
 | Exact arcs for cubic and higher boundaries; `implicit()` exact for conics | 900 | Graphics; the cubic case becomes easier with section 5's elimination |
-| Features of parametric curves (self-intersections, cusps, arc length) | 500 | Graphics, with the differential geometry of section 12.2 |
+| Features of parametric curves (self-intersections, cusps, arc length) | 500 | Graphics, with the differential geometry of section 13.2 |
 | Hidden-line removal for self-intersecting surfaces | 400 | Graphics |
 | **Across packages** | | |
 | npm dependencies in place of git submodules in linalg and graphics | small | Needs algebraic and analytic published to npm first |
@@ -531,7 +531,7 @@ Kuratowski subgraph), in keeping with the libraries' habit of proof.
 **Exact linear programming.** A rational simplex method returning the optimum
 together with the dual solution that proves it, and integer programs by branch
 and bound for small cases. The games need it; it is also most of what the
-optimisation row in section 13 lacked. By the rule of 4.3 it starts here, and
+optimisation row in section 14 lacked. By the rule of 4.3 it starts here, and
 moves down to linalg only if linalg comes to need it.
 
 **Sets and relations.** Relations and their properties, equivalence classes,
@@ -717,7 +717,7 @@ this library is added to `ratmath/rix-bridge`.
 
 Depends on core, analytic (the expression tree, derivatives, enclosures) and
 algebraic (factoring, algebraic numbers); the structures package for several
-variables. Sections 6 (maximum likelihood in closed form) and 12.1 (solution
+variables. Sections 6 (maximum likelihood in closed form) and 13.1 (solution
 formulas for differential equations) use it where it exists and work without
 it otherwise.
 
@@ -765,7 +765,7 @@ stable and unstable directions from linalg.
 validated solver. Poincaré sections; a periodic orbit proven to exist from an
 enclosure of the return map; equilibria and the bifurcations they undergo
 (saddle-node, pitchfork, Hopf) located as a parameter moves. Phase portraits
-are shared with section 12.1.
+are shared with section 13.1.
 
 **Fractals.**
 - Iterated function systems with exact affine maps (Sierpinski, Koch,
@@ -853,7 +853,7 @@ groups; tilings.
   implementations cannot go wrong.
 - Other metrics: taxicab and its circles, conics and bisectors.
 
-**Differential geometry** stays in analytic (12.2) and is re-exported here.
+**Differential geometry** stays in analytic (13.2) and is re-exported here.
 
 **Pictures** in graphics: constructions step by step, the non-Euclidean
 models, tilings, polyhedra. The geometry editor (section 2) is the app that
@@ -875,15 +875,101 @@ the hyperbolic models; analytic for enclosures.
 | 6 | General proofs of theorems by elimination | 800 |
 | 7 | Pictures | 1,000 in graphics |
 
-## 12. Extensions of the current libraries
+## 12. A finance package: `@ratmath/finance`
+
+Added on review (James, 2026-11-25): the mathematics of finance, set up so
+that it is useful for simulating financial situations, with the commonly
+needed pieces only. A full simulation environment would be an app on top.
+
+### 12.1 What exact arithmetic adds
+
+- **Money is exact.** Amounts are rationals; rounding happens only where a
+  stated rule says so (to the cent, half up or half even), so a schedule adds
+  up to the cent and the final payment is adjusted visibly, not silently.
+- **Rates found by solving are certified.** A yield or an internal rate of
+  return is the root of an equation. Analytic finds *all* of them, proves each
+  one, and says so when a cash flow has more than one, which a spreadsheet's
+  single answer hides.
+- **Simulated results are labelled**, as in section 6.1, with their seed and
+  their sampling error.
+
+### 12.2 Scope
+
+**Time value of money.** Simple, compound and continuous interest; nominal,
+effective and annual percentage rates; present and future value; annuities
+(ordinary, due, growing, deferred) and perpetuities; solving for any one of
+the quantities; day-count conventions and dated cash flows.
+
+**Loans.** Amortisation schedules under a stated rounding rule; extra
+payments, balloon and interest-only periods, changes of rate; comparing and
+refinancing loans; revolving credit.
+
+**Cash flows.** Net present value, internal rates of return (all of them),
+the modified rate, payback periods; inflation, real against nominal amounts;
+depreciation methods; taxes as piecewise functions that the caller supplies
+(no jurisdiction's tables are built in).
+
+**Bonds and interest rates.** Price, yield to maturity, accrued interest,
+duration and convexity; spot and forward rates; a yield curve from bond
+prices; immunisation.
+
+**Portfolios.** Returns, risk and covariance from data (statistics package);
+the efficient frontier, exactly for rational data (linalg); the capital asset
+pricing model.
+
+**Options.** Payoffs and put-call parity; pricing on a binomial tree, exact;
+Black–Scholes with certified values and sensitivities.
+
+**Life contingencies.** Life tables, survival probabilities, the present
+values of life annuities and insurances.
+
+**Building blocks for simulation.** This is the part James asked for.
+- A *scenario*: accounts, dated cash flows (income, spending, contributions,
+  payments), and rates that may change over time. Projected step by step,
+  exactly, into a table of balances.
+- What-if comparison of scenarios (pay off the loan or invest; rent or buy;
+  retire at one age or another), and sensitivity: which input moves the
+  outcome most, from certified derivatives.
+- Uncertain inputs: returns, interest and inflation drawn from the statistics
+  package's distributions as independent draws, random walks, geometric
+  Brownian motion or mean-reverting rates, or resampled from data the caller
+  supplies; one-off random events (an expense, a gap in income) with stated
+  probabilities.
+- Many runs of a scenario from the seeded generator: the distribution of the
+  final balance, the probability of running out, percentile bands over time,
+  and the effect of the order in which good and bad years arrive.
+
+No market data, no tax law and no advice are built in; the caller supplies
+the numbers.
+
+**Pictures** in graphics: balance and amortisation charts, bands of
+percentiles over time, yield curves, option payoffs.
+
+### 12.3 Dependencies and phases
+
+Depends on core, analytic (roots, exponentials), the statistics package
+(distributions, the seeded generator) and linalg (portfolios). Phases 1 to 4
+need only core and analytic.
+
+| Phase | Contents | Estimate |
+|---|---|---|
+| 1 | Money and rounding, day counts, time value, annuities | 700 |
+| 2 | Loans and schedules, cash flows, rates of return | 800 |
+| 3 | Bonds, rates and yield curves | 700 |
+| 4 | Scenarios, exact projection, comparison and sensitivity | 700 |
+| 5 | Uncertain inputs and repeated runs | 800 |
+| 6 | Portfolios, options, life contingencies | 1,100 |
+| 7 | Pictures | 500 in graphics |
+
+## 13. Extensions of the current libraries
 
 Added on review (James, 2026-11-25): the rest of differential equations and
 the differential geometry of curves and surfaces are to be built into the
 current libraries, and the methods of numerical analysis exposed for teaching.
 Sequences and series, the theorems of vector calculus and Fourier transforms
-were added the same day (12.4 to 12.6). None of these needs a new package.
+were added the same day (13.4 to 13.6). None of these needs a new package.
 
-### 12.1 Differential equations (analytic, linalg, graphics)
+### 13.1 Differential equations (analytic, linalg, graphics)
 
 Analytic has validated solutions of initial and boundary value problems.
 Missing is most of what a course does around them.
@@ -919,7 +1005,7 @@ Missing is most of what a course does around them.
 | Heat, wave, Laplace by separation of variables | analytic | 900 |
 | Phase portraits, direction of flow, animated solutions | graphics | 800 |
 
-### 12.2 Differential geometry (analytic, graphics)
+### 13.2 Differential geometry (analytic, graphics)
 
 A subpath of analytic (`@ratmath/analytic/geometry`), built on its fields,
 partial derivatives and certified integrals, with the pictures in graphics.
@@ -948,7 +1034,7 @@ partial derivatives and certified integrals, with the pictures in graphics.
 | Geodesics, transport, Gauss–Bonnet | analytic | 500 |
 | Pictures | graphics | 700 |
 
-### 12.3 Numerical analysis for teaching (analytic, linalg, core, graphics)
+### 13.3 Numerical analysis for teaching (analytic, linalg, core, graphics)
 
 The libraries avoid the classical methods on purpose: they return proven
 answers. That is what makes them a good place to study those methods. Each
@@ -988,7 +1074,7 @@ estimate, at every step.
 | Iterative and eigenvalue methods | linalg | 800 |
 | Pictures | graphics | 500 |
 
-### 12.4 Sequences and series (analytic)
+### 13.4 Sequences and series (analytic)
 
 - Sequences with certified limits; monotone and bounded sequences; recursive
   sequences (shared with section 10).
@@ -1004,14 +1090,14 @@ estimate, at every step.
 About 800 lines. Serves calculus II and the computational side of real
 analysis.
 
-### 12.5 The theorems of vector calculus (analytic)
+### 13.5 The theorems of vector calculus (analytic)
 
 Green's, Stokes' and the divergence theorem as checked identities (both sides
 enclosed, and the enclosures must meet); change of variables with the Jacobian
 as a visible step; conservative fields and potentials; Lagrange multipliers,
 with every candidate point certified. About 600 lines.
 
-### 12.6 Fourier transforms (analytic)
+### 13.6 Fourier transforms (analytic)
 
 These belong beside the Fourier series analytic already has (James,
 2026-11-25).
@@ -1022,11 +1108,11 @@ These belong beside the Fourier series analytic already has (James,
 - The discrete Fourier transform, exactly over the roots of unity from
   algebraic and as enclosures; the fast algorithm shown beside the definition;
   sampling and aliasing.
-- Use with section 12.1: the heat and wave equations on the whole line.
+- Use with section 13.1: the heat and wave equations on the whole line.
 
 About 900 lines.
 
-## 13. Coverage of an undergraduate curriculum
+## 14. Coverage of an undergraduate curriculum
 
 "Covered" here means: the calculations a course asks a student to carry out
 can be done in the JavaScript libraries with an exact or certified answer, and
@@ -1047,7 +1133,7 @@ from their READMEs only.
 | Number theory | 40% | little | 90% | Ranks of elliptic curves, the deeper analytic theory |
 | Abstract algebra I (groups) | 30% | none | 85% | Infinite groups beyond presentations, representation theory beyond character tables |
 | Abstract algebra II (rings, fields, Galois) | 60% | part | 90% | Galois groups of high degree, commutative algebra beyond Gröbner bases, modules over general rings |
-| Real analysis | 30% | part | 45% | The proofs, which are the course; see section 14 |
+| Real analysis | 30% | part | 45% | The proofs, which are the course; see section 15 |
 | Numerical analysis | 50% | part | 85% | Numerical methods for partial differential equations, large sparse problems, fast transforms |
 | Probability | 0% | yes | 85% | Measure-theoretic foundations; stochastic processes beyond Markov chains |
 | Statistics | 0% | yes | 80% | Generalised linear models beyond logistic, time series, multivariate methods, experimental design |
@@ -1059,9 +1145,10 @@ from their READMEs only.
 | Fourier analysis | 30% | none | 75% | Distributions, wavelets |
 | Logic and set theory | 0% | part | 80% | Completeness and incompleteness as theorems; axiomatic set theory beyond ordinal and cardinal arithmetic |
 | Theory of computation | 0% | none found | 70% | Complexity theory; undecidability as theorems |
-| Topology | 0% | none | 5% | See section 14 |
+| Topology | 0% | none | 5% | See section 15 |
 | Differential geometry | 10% | none | 80% | Manifolds, tensors and differential forms in general; curvature in higher dimensions |
 | Partial differential equations | 10% | none | 55% | Characteristics, Green's functions, transforms on unbounded domains, nonlinear equations, validated numerical solvers |
+| Financial mathematics | 0% | none found | 85% | Stochastic calculus proper; market conventions of particular countries |
 | Optimisation | 20% | yes | 65% | General nonlinear and convex optimisation |
 
 Read as a whole: the calculus sequence, linear algebra and a good part of
@@ -1078,37 +1165,26 @@ package adds the course that computer science students take in their place.
 The logic package covers the one remaining course in which students compute
 by fixed rules.
 
-## 14. What would remain
+## 15. What would remain
 
-With sections 3 to 12 built, every course in the table of section 13 that has
+With sections 3 to 13 built, every course in the table of section 14 that has
 calculations in it is planned for. What is left:
 
-1. **Financial mathematics.** Not planned; James asked whether it is large
-   enough to be a package. The content: interest and the time value of money,
-   annuities, loans and amortisation schedules, bonds (price, yield, duration,
-   convexity), net present value and internal rate of return, and beyond that
-   life tables and life annuities, and option pricing on a binomial tree and
-   by Black–Scholes. The first group is about 800 lines and could live in an
-   app. With the second it is about 2,000 lines and has the usual reasons to
-   be a package: several apps would share it, and it has real substance for
-   exact arithmetic (schedules exact to the cent under a stated rounding rule;
-   *all* internal rates of return found and certified when a cash flow has
-   more than one). It would depend on analytic, stats and linalg.
-2. **Nonlinear and convex optimisation** beyond Lagrange multipliers. RiX has
+1. **Nonlinear and convex optimisation** beyond Lagrange multipliers. RiX has
    an `optimize` plugin.
-3. **Smaller subjects** with something to compute and no plan: the calculus
+2. **Smaller subjects** with something to compute and no plan: the calculus
    of variations, tensors and multilinear algebra, stochastic processes beyond
    Markov chains, numerical methods for partial differential equations.
-4. **Courses that are about proof, not calculation.** Real analysis, topology,
+3. **Courses that are about proof, not calculation.** Real analysis, topology,
    measure theory and functional analysis. What computing can offer real
    analysis is the project's own subject (reals as families of rational
-   intervals) together with section 12.4. Point-set topology offers little to
+   intervals) together with section 13.4. Point-set topology offers little to
    compute; finite simplicial homology over Z is computable through the Smith
    normal form and would be a small addition (about 600 lines) rather than
    coverage of the course.
-5. **The geometry editor**, which is an app.
+4. **The geometry editor**, which is an app.
 
-## 15. Order, and decisions made
+## 16. Order, and decisions made
 
 Suggested order, with the reason for each step. Several steps name more than
 one package because they do not depend on each other.
@@ -1125,10 +1201,10 @@ one package because they do not depend on each other.
    statistics builds on it; logic phases 1 and 2, which depend on nothing.
 5. Statistics phases 1 to 3. The most widely used subject, and enough for the
    first experiments with generated data.
-6. Symbolic phases 2 and 3 (solving, antiderivatives), with sections 12.4 and
-   12.5. Together these finish the calculus sequence and college algebra.
-7. Chaos phases 1 and 2 and geo phases 1 and 2. Each needs only what exists
-   today, and each shows off exact arithmetic quickly.
+6. Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
+   13.5. Together these finish the calculus sequence and college algebra.
+7. Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
+   needs only what exists today, and each shows off exact arithmetic quickly.
 8. Discrete phase 2 (graphs) and number theory phases 1 to 3.
 9. Abstract algebra phases 1 and 3 (groups and rings).
 10. Statistics phases 4 and 5 (the standard tests and regression) and discrete
@@ -1136,11 +1212,11 @@ one package because they do not depend on each other.
 11. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
 12. The remaining phases as interest directs.
 
-The other extensions of section 12 touch only the current libraries and can be
+The other extensions of section 13 touch only the current libraries and can be
 taken up at any point between these steps. Differential geometry of curves and
 the exact model of floating point are the smallest self-contained starts.
 
-Taken together, sections 3 to 12 come to roughly 80,000 lines by these
+Taken together, sections 3 to 13 come to roughly 85,000 lines by these
 estimates, about three times the size of the Shelf today.
 
 Decisions so far. The packages are named `@ratmath/complex`, `@ratmath/numtheory` and
@@ -1162,7 +1238,7 @@ probability (section 7; James, 2026-11-25).
 
 The rest of differential equations and differential geometry are built into
 the current libraries, and numerical analysis is exposed there for teaching
-(section 12; James, 2026-11-25).
+(section 13; James, 2026-11-25).
 
 Formal logic becomes a library, `@ratmath/logic` (section 8; James,
 2026-11-25).
@@ -1170,4 +1246,39 @@ Formal logic becomes a library, `@ratmath/logic` (section 8; James,
 Symbolic algebra, dynamical systems and geometry become libraries,
 `@ratmath/symbolic`, `@ratmath/chaos` and `@ratmath/geo` (sections 9 to 11),
 and sequences and series, the theorems of vector calculus and Fourier
-transforms go into analytic (12.4 to 12.6; James, 2026-11-25).
+transforms go into analytic (13.4 to 13.6; James, 2026-11-25).
+
+The mathematics of finance becomes a library, `@ratmath/finance`, with the
+commonly needed building blocks for simulating financial situations; a full
+simulation environment would be an app (section 12; James, 2026-11-25).
+
+## 17. How every package is built, and where progress is recorded
+
+Decided by James, 2026-11-25.
+
+**Documentation.** Every new package is built the way the current Shelf
+libraries are, with a `docs/` folder published at `ratmath.com/<package>`
+that contains:
+
+- an **overview** page (`index.html`): what the package is for, with a first
+  example;
+- an **exploration** page (`explore.html`): an interactive page for trying
+  the package without writing code;
+- a **detailed** page (`reference.html`): every function, its arguments and
+  what it returns;
+- a **separate page for each topic**, giving the usage and the mathematics
+  behind it, and ending with a runnable code box seeded with some interesting
+  code on that topic.
+
+The pages use the shared pieces the libraries already have (`runbox.js`,
+`docs-kit.js`, KaTeX from `ratmath.com/assets`), and the docs build runs every
+page's code box and fails on any error. Each package also ships its tests,
+TypeScript declarations, a README and a changelog, as the current ones do.
+
+**Where progress is recorded.** This document is the plan. The public record
+of what exists is the RatMath Shelf page on ratmath.com, which lists every
+Shelf package and what each can do, with links to its documentation. When a
+topic here is implemented, it moves from this document to that page: the
+entry is removed or marked done here and added there with a link to the
+package's documentation page for it. The homepage keeps Core as its
+foundation and links to the Shelf page.
