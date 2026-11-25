@@ -1,20 +1,20 @@
-# Library roadmap: what is left, and four further packages (design)
+# Library roadmap: what is left, and five further packages (design)
 
-Status: proposal, written 2026-11-25. Nothing in sections 3 to 6 is built.
+Status: proposal, written 2026-11-25. Nothing in sections 3 to 7 is built.
 It follows the gold-plating pass of 2026-11-25 (linalg#4, analytic#9,
 algebraic#5, graphics#7, all merged) and answers four questions:
 
 1. What from the gold-plating document was not done?
 2. What would a complex package, a number theory package and an abstract
-   algebra package contain? (A statistics package was added to the plan on
-   review, section 6.)
+   algebra package contain? (A statistics package and a discrete mathematics
+   package were added to the plan on review, sections 6 and 7.)
 3. How much of an undergraduate mathematics curriculum do the libraries cover
    today, and how much would those packages add?
 4. What would still remain?
 
 Line counts for future work are estimates made from the size of comparable
 code already in the libraries. They are for ordering the work, not promises.
-Curriculum percentages in section 7 are a judgement, explained there.
+Curriculum percentages in section 8 are a judgement, explained there.
 
 ## 1. The map today
 
@@ -58,7 +58,7 @@ item D11 and named branches under D3).
 The family of subject libraries is called the **RatMath Shelf** (James,
 2026-11-25). A separate change (ratmath/ratmath#3) pins every Shelf library
 as a submodule of this repository under `shelf/`, so that this repository
-oversees them. The four packages below would join the Shelf there as they
+oversees them. The five packages below would join the Shelf there as they
 appear.
 
 ## 2. Left over from the gold-plating document
@@ -298,7 +298,8 @@ and the rational canonical and Jordan forms.
 - Subgroup lattice with pictures (graphics); quotients; Sylow subgroups.
 - Homomorphisms, kernels, images, the isomorphism theorems on examples,
   isomorphism testing for small groups, automorphism groups.
-- Actions: orbits, stabilisers, Burnside and Pólya counting.
+- Actions: orbits, stabilisers, and the orbit-counting lemma. Pólya counting
+  itself is in the discrete package (section 7), built on this.
 - Finitely presented groups by coset enumeration (Todd–Coxeter).
 - Finitely generated abelian groups through the Smith normal form in linalg.
 - Schreier–Sims so that permutation groups of large degree work; this also
@@ -409,6 +410,8 @@ by name.
 
 - A seeded generator that gives the same stream everywhere (JavaScript and the
   Rust kernels), so every simulated result can be reproduced from its seed.
+  The discrete package needs it too (random permutations and graphs), so by
+  the rule of 4.3 it lives there and is re-exported here.
 - Samples from any distribution above. Two speeds, in the house manner: floats
   for exploring, and exact rational samples obtained by pushing an exact
   uniform draw through a certified quantile.
@@ -441,8 +444,11 @@ power curves, and the animated build-up of a sampling distribution.
 RiX has `probability` and `stats` plugins. As decided for the other packages
 (3.2), they stay independent and this library is added to `ratmath/rix-bridge`.
 
-Depends on core, analytic (special functions, integrals) and linalg
-(regression, Markov chains). Nothing here depends on the other three packages.
+Depends on core, analytic (special functions, integrals), linalg (regression,
+Markov chains) and the discrete package of section 7 (counting and the
+enumeration of finite sample spaces, so that discrete probability is not
+written twice). Nothing here depends on the complex, number theory or
+structures packages.
 
 | Phase | Contents | Estimate |
 |---|---|---|
@@ -459,7 +465,108 @@ Phases 1 to 3 already make the exploration James describes possible for the
 exact tests; phases 4 and 5 bring in the tests and regressions most courses
 use.
 
-## 7. Coverage of an undergraduate curriculum
+## 7. A discrete mathematics package: `@ratmath/discrete`
+
+Added on review (James, 2026-11-25): combinatorics, graph theory, game theory
+and related topics in one library, which the statistics package pulls in for
+discrete probability.
+
+### 7.1 Scope
+
+**Counting and enumeration.**
+- Permutations, combinations, multisets, compositions, partitions of integers
+  and of sets; binomial and multinomial coefficients; Stirling, Bell, Catalan
+  and Fibonacci numbers, derangements. All exact integers of any size.
+- Lazy enumeration of each family with ranking and unranking, so the millionth
+  permutation is found without listing the others, and a uniformly random one
+  can be drawn.
+- Inclusion and exclusion; the pigeonhole principle on examples.
+- Pólya counting of colourings up to symmetry, with groups from algebraic's
+  `PermGroup`.
+
+**Generating functions and recurrences.**
+- Ordinary and exponential generating functions as exact power series, with
+  rational ones kept in closed form (one-variable rational functions from
+  algebraic).
+- Linear recurrences with constant coefficients solved in closed form, the
+  characteristic roots being exact algebraic numbers (so Fibonacci comes out
+  with its √5), and evaluated at huge indices by matrix powers.
+- Sums in closed form for the standard cases; divide-and-conquer recurrences.
+
+**Graphs.**
+- Graphs, directed graphs, multigraphs, weights as exact rationals; the
+  standard families; subgraphs, complements, products, line graphs.
+- Traversal, connectivity, components, bridges and cut vertices, strongly
+  connected components, topological order.
+- Shortest paths, minimum spanning trees, Euler tours, Hamilton cycles (by
+  search, for small graphs), trees and Prüfer codes.
+- Matchings (bipartite with Hall's condition as the certificate of failure,
+  then general), flows with the minimum cut as certificate, stable matching.
+- Colouring, the chromatic polynomial, planarity with a Kuratowski subgraph
+  when it fails, independent sets and cliques for small graphs.
+- Isomorphism and automorphism groups of small graphs (returned as a
+  `PermGroup`).
+- Algebraic graph theory through linalg: adjacency and Laplacian spectra with
+  exact eigenvalues, the number of spanning trees from the matrix-tree
+  theorem, counts of walks.
+- Random graphs and random permutations from the seeded generator.
+
+Every "no" comes with its reason where one exists (a cut, a Hall violator, a
+Kuratowski subgraph), in keeping with the libraries' habit of proof.
+
+**Games.**
+- Two-player zero-sum matrix games solved exactly: optimal mixed strategies
+  and the value as rationals, by exact linear programming.
+- Bimatrix games: dominance, pure and mixed Nash equilibria (support
+  enumeration, then Lemke–Howson), all exact.
+- Games in extensive form and backward induction.
+- Combinatorial games: Nim, Sprague–Grundy values, sums of games, and the
+  values of small partizan games.
+- Cooperative games: the Shapley value and the core.
+- Voting and apportionment methods, fair division, where exact fractions
+  matter to the outcome.
+
+**Exact linear programming.** A rational simplex method returning the optimum
+together with the dual solution that proves it, and integer programs by branch
+and bound for small cases. The games need it; it is also most of what the
+optimisation row in section 8 lacked. By the rule of 4.3 it starts here, and
+moves down to linalg only if linalg comes to need it.
+
+**Sets, relations and Boolean functions.** Relations and their properties,
+equivalence classes, partial orders with Hasse diagrams, lattices; Boolean
+functions, truth tables and normal forms. Proof systems stay in RiX's `logic`
+plugin.
+
+**Codes and designs** (later). Linear codes over algebraic's finite fields
+(Hamming, Reed–Solomon), error correction shown step by step; Latin squares
+and block designs.
+
+**Pictures** in graphics: graph layouts (circular, layered, force-directed,
+planar where the graph is planar), highlighted paths, cuts and colourings,
+game trees, Hasse diagrams and subgroup lattices (shared with section 5).
+
+### 7.2 Relation to RiX, dependencies and phases
+
+RiX has small `combinatorics` and `graph` plugins. As with the other packages
+they stay independent, and this library is added to `ratmath/rix-bridge`.
+
+Depends on core, algebraic (`PermGroup`, algebraic numbers, rational
+functions, finite fields) and linalg (spectra, determinants, matrix powers).
+The statistics package depends on this one, not the other way round.
+
+| Phase | Contents | Estimate |
+|---|---|---|
+| 1 | Counting, enumeration with ranking, the seeded generator | 1,000 |
+| 2 | Graphs: structure, traversal, paths, trees, families | 1,300 |
+| 3 | Generating functions and recurrences | 900 |
+| 4 | Matchings, flows, colouring, planarity, isomorphism, spectra | 1,600 |
+| 5 | Exact linear programming; matrix and bimatrix games | 1,100 |
+| 6 | Combinatorial, extensive-form and cooperative games; voting | 1,000 |
+| 7 | Sets, relations, partial orders, Boolean functions; Pólya counting | 700 |
+| 8 | Codes and designs | 700 |
+| 9 | Graph drawing | 900 in graphics |
+
+## 8. Coverage of an undergraduate curriculum
 
 "Covered" here means: the calculations a course asks a student to carry out
 can be done in the JavaScript libraries with an exact or certified answer, and
@@ -469,7 +576,7 @@ percentages are a judgement from each course's usual list of topics, not a
 measurement. The RiX column records that a plugin exists; those were assessed
 from their READMEs only.
 
-| Course | Libraries today | RiX plugins today | After the four packages | Still missing |
+| Course | Libraries today | RiX plugins today | After the five packages | Still missing |
 |---|---|---|---|---|
 | Calculus I and II | 90% | yes | 90% | Symbolic antiderivatives and series convergence tests as named steps; limits needing cancellation |
 | Calculus III (several variables, vector calculus) | 80% | part | 80% | Green, Stokes and divergence theorems as checked identities; change of variables shown as a step |
@@ -483,13 +590,15 @@ from their READMEs only.
 | Numerical analysis | 50% | part | 50% | Interpolation and splines, quadrature rules as objects, iterative solvers, floating-point error analysis as a subject |
 | Probability | 0% | yes | 85% | Measure-theoretic foundations; stochastic processes beyond Markov chains |
 | Statistics | 0% | yes | 80% | Generalised linear models beyond logistic, time series, multivariate methods, experimental design |
-| Discrete mathematics and combinatorics | 10% | part | 30% | Generating functions, recurrences, enumeration, graph theory |
+| Discrete mathematics and combinatorics | 10% | part | 85% | Asymptotic and analytic combinatorics; proof techniques as such |
+| Graph theory | 0% | part | 80% | Hard problems beyond small graphs; extremal and random graph theory as theory |
+| Game theory | 0% | none found | 75% | Games of incomplete information, repeated and evolutionary games, mechanism design |
 | Geometry | 50% | yes | 55% | Transformations as groups, non-Euclidean models, projective geometry; the editor |
-| Logic and set theory | 0% | part | 0% | Stays in RiX |
+| Logic and set theory | 0% | part | 20% | Relations and Boolean functions are in the discrete package; proof systems and first-order logic stay in RiX |
 | Topology | 0% | none | 5% | See below |
 | Differential geometry | 10% | none | 10% | Curvature and torsion, first and second fundamental forms, geodesics |
 | Partial differential equations | 10% | none | 10% | Separation of variables with Fourier series is there; heat, wave and Laplace solvers are not |
-| Optimisation | 20% | yes | 20% | Linear programming with exact duals, constrained optimisation, Lagrange multipliers as a named method |
+| Optimisation | 20% | yes | 55% | Nonlinear constrained optimisation, Lagrange multipliers as a named method, convex optimisation |
 
 Read as a whole: the calculus sequence, linear algebra and a good part of
 differential equations are covered now. Those are the courses every
@@ -500,39 +609,38 @@ algebra and number theory only. The first three packages would bring complex
 analysis, number theory and both algebra courses to roughly the level the
 calculus sequence is at today. That closes three of the four core upper-level
 subjects. The statistics package adds the two courses that, after calculus,
-the largest number of students outside mathematics take.
+the largest number of students outside mathematics take, and the discrete
+package adds the course that computer science students take in their place.
 
-## 8. What would remain
+## 9. What would remain
 
 In rough order of how well each suits exact and certified computation:
 
-1. **Discrete mathematics.** Combinatorics, generating functions, recurrences
-   and graph theory. Exact by nature, modest in size (about 2,500 lines), and
-   Burnside and Pólya counting would already be in the structures package.
-2. **Differential equations, second half.** Laplace transforms, linear systems
+1. **Differential equations, second half.** Laplace transforms, linear systems
    with phase portraits (linalg's matrix exponential plus graphics), stability,
    and the three classical partial differential equations by separation of
    variables. Extends analytic and graphics, no new package.
-3. **Numerical analysis.** Mostly a matter of exposing as teaching objects
+2. **Numerical analysis.** Mostly a matter of exposing as teaching objects
    what the libraries do internally (interpolation, quadrature, Newton with a
    proof, error bounds). The certified answer next to the classical method's
    answer is a good lesson in itself.
-4. **Differential geometry of curves and surfaces.** Curvature, torsion,
+3. **Differential geometry of curves and surfaces.** Curvature, torsion,
    fundamental forms, geodesics as ODEs. Sits naturally on analytic's fields
    and graphics' 3D. About 1,500 lines.
-5. **Optimisation.** Exact linear programming with certificates of optimality,
-   Lagrange multipliers. RiX has an `optimize` plugin.
-6. **Real analysis and topology.** These are proof courses. What computing can
+4. **Optimisation beyond linear programming.** Lagrange multipliers and
+   constrained nonlinear problems. RiX has an `optimize` plugin.
+5. **Real analysis and topology.** These are proof courses. What computing can
    offer real analysis is already the project's own subject (reals as families
    of rational intervals, sequences with certified limits, uniform against
    pointwise convergence shown with enclosures). Point-set topology offers
    little to compute; finite simplicial homology over Z is computable through
    Smith normal form and would be a small addition (about 600 lines) rather
    than coverage of the course.
-7. **Logic and set theory.** Leave to RiX's `logic` plugin.
-8. **The geometry editor**, which is an app.
+6. **Logic and set theory** beyond relations and Boolean functions. Leave to
+   RiX's `logic` plugin.
+7. **The geometry editor**, which is an app.
 
-## 9. Order, and decisions made
+## 10. Order, and decisions made
 
 Suggested order, with the reason for each step:
 
@@ -541,14 +649,17 @@ Suggested order, with the reason for each step:
 2. Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
    Self-contained, and they settle the exact complex type that linalg's
    complex entries need.
-3. Statistics phases 1 to 3. Independent of the other packages, the most
-   widely used subject, and enough for the first experiments with generated
-   data.
-4. Number theory phases 1 to 3. Mostly independent of everything else.
-5. Abstract algebra phases 1 and 3 (groups and rings).
-6. Statistics phases 4 and 5 (the standard tests and regression).
-7. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
-8. The remaining phases as interest directs.
+3. Discrete phase 1 (counting, enumeration, the seeded generator), because
+   statistics builds on it.
+4. Statistics phases 1 to 3. The most widely used subject, and enough for the
+   first experiments with generated data.
+5. Discrete phase 2 (graphs) and number theory phases 1 to 3. Both mostly
+   independent of everything else.
+6. Abstract algebra phases 1 and 3 (groups and rings).
+7. Statistics phases 4 and 5 (the standard tests and regression) and discrete
+   phase 5 (linear programming and matrix games).
+8. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
+9. The remaining phases as interest directs.
 
 Decisions so far. The packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
@@ -562,3 +673,7 @@ lower package needs it, in which case the higher one re-exports it (4.3, 5.3).
 Probability and statistics become one library, `@ratmath/stats`, with
 generation of random data and noise for testing the tests (section 6; James,
 2026-11-25).
+
+Discrete mathematics (combinatorics, graph theory, game theory) becomes a
+library, `@ratmath/discrete`, which the statistics package uses for discrete
+probability (section 7; James, 2026-11-25).
