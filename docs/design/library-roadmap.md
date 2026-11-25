@@ -33,6 +33,7 @@ certified value):
 | `@ratmath/algebraic` | 5,000 | Real and complex algebraic numbers; factoring over Q, number fields and finite fields; splitting fields; Galois groups to degree 7 with the correspondence; permutation groups; resultants, partial fractions; continued fractions and Pell; modular arithmetic; LLL |
 | `@ratmath/linalg` | 4,400 | Exact solving and every standard factorisation and canonical form; eigenvalues as algebraic numbers; matrix functions; inexact entries with certified results; workers; teaching forms |
 | `@ratmath/graphics` | 6,500 | Certified graphs and their features; parametric, polar, implicit; exact geometry and regions (conics exactly); calculus pictures; surfaces and space curves; animation; SVG, PNG, PDF, TikZ |
+| `@ratmath/structures` | 1,900 | First part only: polynomials in several variables over any exact field, division, gcd, factoring over Q, resultants and discriminants, rational functions, symmetric polynomials |
 | `ratmath/rust` | | Rust kernels (WASM and C ABI) for the hot loops |
 
 **RiX plugins** (in `ratmath/rix`, written mostly in RiX itself, loaded with
@@ -313,8 +314,14 @@ and the rational canonical and Jordan forms.
   Euclidean division where it exists and the standard examples of unique
   factorisation failing.
 - Polynomials in several variables over Q, finite fields and number fields.
-  This one type also unlocks linalg's symbolic parameters and exact algebraic
-  curves of degree three and up in graphics.
+  **Built** (2026-11-25) as the first part of
+  [`@ratmath/structures`](https://github.com/ratmath/structures), with
+  division, gcd, factoring over Q, resultants, rational functions and
+  symmetric polynomials; it is listed on the
+  [Shelf page](https://ratmath.com/shelf/#structures). Its field of rational
+  functions already works with linalg's field module for symbolic parameters;
+  exact algebraic curves of degree three and up in graphics can now build on
+  it.
 - Ideals, quotient rings, the Chinese remainder theorem for rings, prime and
   maximal tests in the computable cases.
 - Gröbner bases with a chosen monomial order and replayable reductions
@@ -340,7 +347,7 @@ of higher degree later need Schreier–Sims, only that kernel moves down.
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Named groups, tables, classes, quotients, Sylow, homomorphisms, actions and counting | 1,800 |
-| 2 | Several-variable polynomials | 900 |
+| 2 | Several-variable polynomials (built 2026-11-25) | 900 |
 | 3 | Rings, ideals, quotients, the quadratic integer rings | 1,000 |
 | 4 | Gröbner bases, elimination, polynomial systems | 1,200 |
 | 5 | Presentations and coset enumeration; abelian groups; modules | 1,000 |
@@ -1189,9 +1196,9 @@ calculations in it is planned for. What is left:
 Suggested order, with the reason for each step. Several steps name more than
 one package because they do not depend on each other.
 
-1. Several-variable polynomials (section 5, phase 2), because linalg's
-   symbolic parameters, graphics' higher curves, the symbolic package and
-   geometric proofs all wait on them.
+1. **Done 2026-11-25.** Several-variable polynomials (section 5, phase 2),
+   because linalg's symbolic parameters, graphics' higher curves, the
+   symbolic package and geometric proofs all wait on them.
 2. Symbolic phase 1 (expressions, rewriting, equality), because the solving
    and step-by-step features of several later sections use it.
 3. Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
