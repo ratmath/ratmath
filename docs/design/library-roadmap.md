@@ -1,19 +1,20 @@
-# Library roadmap: what is left, and three further packages (design)
+# Library roadmap: what is left, and four further packages (design)
 
-Status: proposal, written 2026-11-25. Nothing in sections 3 to 5 is built.
+Status: proposal, written 2026-11-25. Nothing in sections 3 to 6 is built.
 It follows the gold-plating pass of 2026-11-25 (linalg#4, analytic#9,
 algebraic#5, graphics#7, all merged) and answers four questions:
 
 1. What from the gold-plating document was not done?
 2. What would a complex package, a number theory package and an abstract
-   algebra package contain?
+   algebra package contain? (A statistics package was added to the plan on
+   review, section 6.)
 3. How much of an undergraduate mathematics curriculum do the libraries cover
-   today, and how much would those three packages add?
+   today, and how much would those packages add?
 4. What would still remain?
 
 Line counts for future work are estimates made from the size of comparable
 code already in the libraries. They are for ordering the work, not promises.
-Curriculum percentages in section 6 are a judgement, explained there.
+Curriculum percentages in section 7 are a judgement, explained there.
 
 ## 1. The map today
 
@@ -57,7 +58,7 @@ item D11 and named branches under D3).
 The family of subject libraries is called the **RatMath Shelf** (James,
 2026-11-25). A separate change (ratmath/ratmath#3) pins every Shelf library
 as a submodule of this repository under `shelf/`, so that this repository
-oversees them. The three packages below would join the Shelf there as they
+oversees them. The four packages below would join the Shelf there as they
 appear.
 
 ## 2. Left over from the gold-plating document
@@ -346,7 +347,119 @@ of higher degree later need Schreier–Sims, only that kernel moves down.
 Phase 2 is worth doing early whichever package order is chosen, because
 linalg and graphics both wait on it.
 
-## 6. Coverage of an undergraduate curriculum
+## 6. A probability and statistics package: `@ratmath/stats`
+
+Added on review (James, 2026-11-25): probability and statistics become one
+Shelf library, with the ability to generate random data from a model that is
+known, disturb it with noise, and see whether tests and regressions recover
+what was put in.
+
+### 6.1 Three kinds of answer
+
+The other libraries give answers that are exact or certified. This one has a
+third kind, and it must never be confused with the other two:
+
+- **Exact.** Rational data give rational statistics: means, variances,
+  least-squares coefficients, probabilities on finite spaces, and the p-values
+  of exact tests (binomial, Fisher, permutation).
+- **Certified.** Values of continuous distributions (density, cumulative
+  probability, quantile) are enclosures, so a p-value is an interval and the
+  comparison with a significance level is either decided or reported as too
+  close to call at this precision.
+- **Simulated.** The result of a random experiment. It is labelled as such,
+  carries its seed so it can be repeated, and reports its own sampling error
+  (an exact binomial interval for a rate, for instance).
+
+### 6.2 Scope
+
+**Probability.**
+- Finite sample spaces, events, conditional probability, independence, Bayes,
+  random variables, joint and marginal tables, all exact.
+- Discrete distributions (binomial, geometric, negative binomial,
+  hypergeometric, Poisson, uniform) with exact probabilities.
+- Continuous distributions (normal, t, chi-square, F, exponential, gamma,
+  beta, uniform, lognormal, Weibull, Cauchy) with certified density,
+  cumulative probability and quantile. This needs the incomplete gamma and
+  beta functions, which belong in analytic next to the gamma family (about
+  500 lines there).
+- Expectation, variance, moments and generating functions; sums of
+  independent variables (exact convolution for discrete ones); transformations;
+  order statistics.
+- The law of large numbers and the central limit theorem as experiments, with
+  the certified limit drawn beside the simulated histogram.
+- Markov chains through linalg: stationary distributions, absorption
+  probabilities and expected hitting times, exact.
+
+**Statistics.**
+- Descriptive statistics, exact, including data given as intervals
+  (measurements with stated uncertainty), as the RiX plugin has.
+- Estimation: method of moments, maximum likelihood for the standard families,
+  confidence intervals.
+- Tests: z and t (one sample, paired, two samples), proportions, chi-square
+  (fit and independence), F and one-way analysis of variance, correlation;
+  exact binomial and Fisher tests; sign, Wilcoxon, Mann–Whitney,
+  Kolmogorov–Smirnov; permutation tests; the bootstrap.
+- Regression: simple, multiple and polynomial least squares (exact
+  coefficients for rational data, through linalg), inference on coefficients,
+  residuals and diagnostics, prediction bands. Logistic regression later.
+- Bayesian updating for the conjugate families.
+
+**Generating data, and testing the tests.** This is the part James asked for
+by name.
+
+- A seeded generator that gives the same stream everywhere (JavaScript and the
+  Rust kernels), so every simulated result can be reproduced from its seed.
+- Samples from any distribution above. Two speeds, in the house manner: floats
+  for exploring, and exact rational samples obtained by pushing an exact
+  uniform draw through a certified quantile.
+- A *model* is a known truth plus a description of how observations depart
+  from it: for example `y = 2 + 3x` with normal noise of a given spread.
+  Departures can be combined:
+  - additive noise from any distribution;
+  - noise whose spread depends on x;
+  - contamination: with a stated probability an observation is drawn from a
+    second distribution instead (heavy tails, outliers);
+  - noise in the x values as well as in y;
+  - rounding, censoring and missing values.
+- An *experiment* draws many data sets from a model, runs a procedure on each
+  and compares the outcome with the truth that generated them:
+  - how often a 95% interval really contains the true value;
+  - how often a test rejects when the null hypothesis is true, and its power
+    as the true effect grows;
+  - bias and spread of an estimator;
+  - how often a regression or a model-selection rule recovers the true form,
+    and how that degrades as noise or contamination is turned up;
+  - what happens when a test's assumptions are deliberately broken.
+- Every experiment's result is a *simulated* answer in the sense of 6.1.
+
+**Pictures** in graphics: histograms, box plots, scatter plots with fitted
+lines and bands, quantile plots, density curves with certified shaded areas,
+power curves, and the animated build-up of a sampling distribution.
+
+### 6.3 Relation to RiX, dependencies and phases
+
+RiX has `probability` and `stats` plugins. As decided for the other packages
+(3.2), they stay independent and this library is added to `ratmath/rix-bridge`.
+
+Depends on core, analytic (special functions, integrals) and linalg
+(regression, Markov chains). Nothing here depends on the other three packages.
+
+| Phase | Contents | Estimate |
+|---|---|---|
+| 1 | Finite probability, discrete distributions, descriptive statistics, exact tests | 1,100 |
+| 2 | Continuous distributions, certified | 1,200, plus 500 in analytic |
+| 3 | Seeded generation, models with noise and contamination, experiments | 1,300 |
+| 4 | Estimation, confidence intervals, the standard tests | 1,000 |
+| 5 | Regression and analysis of variance | 1,100 |
+| 6 | Rank tests, permutation tests, the bootstrap | 700 |
+| 7 | Markov chains; conjugate Bayesian updating | 700 |
+| 8 | Graphics hooks | 800 in graphics |
+
+Phases 1 to 3 already make the exploration James describes possible for the
+exact tests; phases 4 and 5 bring in the tests and regressions most courses
+use.
+
+## 7. Coverage of an undergraduate curriculum
 
 "Covered" here means: the calculations a course asks a student to carry out
 can be done in the JavaScript libraries with an exact or certified answer, and
@@ -356,7 +469,7 @@ percentages are a judgement from each course's usual list of topics, not a
 measurement. The RiX column records that a plugin exists; those were assessed
 from their READMEs only.
 
-| Course | Libraries today | RiX plugins today | After the three packages | Still missing |
+| Course | Libraries today | RiX plugins today | After the four packages | Still missing |
 |---|---|---|---|---|
 | Calculus I and II | 90% | yes | 90% | Symbolic antiderivatives and series convergence tests as named steps; limits needing cancellation |
 | Calculus III (several variables, vector calculus) | 80% | part | 80% | Green, Stokes and divergence theorems as checked identities; change of variables shown as a step |
@@ -368,8 +481,8 @@ from their READMEs only.
 | Abstract algebra II (rings, fields, Galois) | 60% | part | 90% | Galois groups of high degree, commutative algebra beyond Gröbner bases, modules over general rings |
 | Real analysis | 30% | part | 30% | See below |
 | Numerical analysis | 50% | part | 50% | Interpolation and splines, quadrature rules as objects, iterative solvers, floating-point error analysis as a subject |
-| Probability | 0% | yes | 0% | A library version of what the RiX plugin does; continuous distributions with certified values; Markov chains |
-| Statistics | 0% | yes | 0% | Same |
+| Probability | 0% | yes | 85% | Measure-theoretic foundations; stochastic processes beyond Markov chains |
+| Statistics | 0% | yes | 80% | Generalised linear models beyond logistic, time series, multivariate methods, experimental design |
 | Discrete mathematics and combinatorics | 10% | part | 30% | Generating functions, recurrences, enumeration, graph theory |
 | Geometry | 50% | yes | 55% | Transformations as groups, non-Euclidean models, projective geometry; the editor |
 | Logic and set theory | 0% | part | 0% | Stays in RiX |
@@ -383,48 +496,43 @@ differential equations are covered now. Those are the courses every
 mathematics, science and engineering student takes. Of the upper-level core of
 a mathematics major (real analysis, abstract algebra, complex analysis, with
 number theory as the most common elective), the libraries cover parts of
-algebra and number theory only. The three packages would bring complex
+algebra and number theory only. The first three packages would bring complex
 analysis, number theory and both algebra courses to roughly the level the
 calculus sequence is at today. That closes three of the four core upper-level
-subjects.
+subjects. The statistics package adds the two courses that, after calculus,
+the largest number of students outside mathematics take.
 
-## 7. What would remain
+## 8. What would remain
 
 In rough order of how well each suits exact and certified computation:
 
-1. **Probability and statistics.** The largest gap in the libraries, and the
-   most widely taken. RiX has both as plugins, so the question is only whether
-   a JavaScript library is wanted for the calculator and for graphics
-   (distributions drawn with certified areas, exact finite probability).
-   Analytic already has the special functions the continuous distributions
-   need. About 3,000 lines.
-2. **Discrete mathematics.** Combinatorics, generating functions, recurrences
+1. **Discrete mathematics.** Combinatorics, generating functions, recurrences
    and graph theory. Exact by nature, modest in size (about 2,500 lines), and
    Burnside and Pólya counting would already be in the structures package.
-3. **Differential equations, second half.** Laplace transforms, linear systems
+2. **Differential equations, second half.** Laplace transforms, linear systems
    with phase portraits (linalg's matrix exponential plus graphics), stability,
    and the three classical partial differential equations by separation of
    variables. Extends analytic and graphics, no new package.
-4. **Numerical analysis.** Mostly a matter of exposing as teaching objects
+3. **Numerical analysis.** Mostly a matter of exposing as teaching objects
    what the libraries do internally (interpolation, quadrature, Newton with a
    proof, error bounds). The certified answer next to the classical method's
    answer is a good lesson in itself.
-5. **Differential geometry of curves and surfaces.** Curvature, torsion,
+4. **Differential geometry of curves and surfaces.** Curvature, torsion,
    fundamental forms, geodesics as ODEs. Sits naturally on analytic's fields
    and graphics' 3D. About 1,500 lines.
-6. **Optimisation.** Exact linear programming with certificates of optimality,
+5. **Optimisation.** Exact linear programming with certificates of optimality,
    Lagrange multipliers. RiX has an `optimize` plugin.
-7. **Real analysis and topology.** These are proof courses. What computing can
+6. **Real analysis and topology.** These are proof courses. What computing can
    offer real analysis is already the project's own subject (reals as families
    of rational intervals, sequences with certified limits, uniform against
    pointwise convergence shown with enclosures). Point-set topology offers
    little to compute; finite simplicial homology over Z is computable through
    Smith normal form and would be a small addition (about 600 lines) rather
    than coverage of the course.
-8. **Logic and set theory.** Leave to RiX's `logic` plugin.
-9. **The geometry editor**, which is an app.
+7. **Logic and set theory.** Leave to RiX's `logic` plugin.
+8. **The geometry editor**, which is an app.
 
-## 8. Order, and decisions for James
+## 9. Order, and decisions made
 
 Suggested order, with the reason for each step:
 
@@ -433,12 +541,16 @@ Suggested order, with the reason for each step:
 2. Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
    Self-contained, and they settle the exact complex type that linalg's
    complex entries need.
-3. Number theory phases 1 to 3. Mostly independent of everything else.
-4. Abstract algebra phases 1 and 3 (groups and rings).
-5. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
-6. The remaining phases as interest directs.
+3. Statistics phases 1 to 3. Independent of the other packages, the most
+   widely used subject, and enough for the first experiments with generated
+   data.
+4. Number theory phases 1 to 3. Mostly independent of everything else.
+5. Abstract algebra phases 1 and 3 (groups and rings).
+6. Statistics phases 4 and 5 (the standard tests and regression).
+7. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
+8. The remaining phases as interest directs.
 
-Decided: the packages are named `@ratmath/complex`, `@ratmath/numtheory` and
+Decisions so far. The packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
 The hypercomplex numbers stay in the complex package, as the subpath
 `@ratmath/complex/cayley` (James, 2026-11-25).
@@ -447,7 +559,6 @@ is to be widened so each new package is reachable from RiX (3.2).
 A function lives in the most specialised package it belongs to, unless a
 lower package needs it, in which case the higher one re-exports it (4.3, 5.3).
 
-One decision is still open:
-
-- **Whether probability and statistics become a JavaScript library** or stay
-  RiX-only.
+Probability and statistics become one library, `@ratmath/stats`, with
+generation of random data and noise for testing the tests (section 6; James,
+2026-11-25).
