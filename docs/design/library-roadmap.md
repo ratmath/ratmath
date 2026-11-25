@@ -156,14 +156,17 @@ poles marked, and Riemann sphere views.
 ### 3.2 Relation to RiX
 
 RiX's `complex`, `cayley`, `quaternion` and `octonion` plugins are written in
-RiX and tied to its evidence records. Two ways to relate them:
+RiX and tied to its evidence records. They stay independent of this package
+for now (James, 2026-11-25): the RiX plugins exist to exercise the language
+itself, so rewriting them as calls into JavaScript would defeat their purpose.
+The same holds for the other packages in this document and their RiX
+counterparts.
 
-- **A (recommended).** The JavaScript package is the reference implementation,
-  as linalg, analytic and algebraic are, and the RiX plugins keep their
-  surface but call it for the heavy parts (certified elementary functions,
-  contour integration). Same pattern as `packages/analytic` under RatTree.
-- **B.** Keep them independent. Less coupling, but the certified functions get
-  written twice.
+What should grow instead is the bridge between RiX and JavaScript
+(`docs/JS_INTEGRATION.md`), so that a RiX user can reach a Shelf library
+directly when the certified version of something is wanted, for example
+contour integration or the elementary functions of a quaternion, without the
+plugin depending on it.
 
 ### 3.3 Dependencies and phases
 
@@ -422,10 +425,11 @@ Decided: the packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
 The hypercomplex numbers stay in the complex package, as the subpath
 `@ratmath/complex/cayley` (James, 2026-11-25).
+The RiX plugins stay independent of the Shelf for now; the RiX to JavaScript
+bridge is to be widened so the Shelf is reachable from RiX (3.2).
 
 Decisions that would change the plan:
 
-- **RiX plugins call the libraries (3.2 A) or stay independent (B).**
 - **Where the elementary number theory functions live (4.3)** and **where
   `PermGroup` lives (5.3).**
 - **Whether probability and statistics become a JavaScript library** or stay
