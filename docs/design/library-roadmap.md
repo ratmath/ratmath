@@ -1,20 +1,21 @@
 # Library roadmap: what is left, and five further packages (design)
 
-Status: proposal, written 2026-11-25. Nothing in sections 3 to 7 is built.
+Status: proposal, written 2026-11-25. Nothing in sections 3 to 8 is built.
 It follows the gold-plating pass of 2026-11-25 (linalg#4, analytic#9,
 algebraic#5, graphics#7, all merged) and answers four questions:
 
 1. What from the gold-plating document was not done?
 2. What would a complex package, a number theory package and an abstract
    algebra package contain? (A statistics package and a discrete mathematics
-   package were added to the plan on review, sections 6 and 7.)
+   package were added to the plan on review, sections 6 and 7, and
+   extensions of the current libraries, section 8.)
 3. How much of an undergraduate mathematics curriculum do the libraries cover
    today, and how much would those packages add?
 4. What would still remain?
 
 Line counts for future work are estimates made from the size of comparable
 code already in the libraries. They are for ordering the work, not promises.
-Curriculum percentages in section 8 are a judgement, explained there.
+Curriculum percentages in section 9 are a judgement, explained there.
 
 ## 1. The map today
 
@@ -89,7 +90,7 @@ Everything in that document that was not built, with where it should go.
 | **Graphics** | | |
 | Geometry editor | 1,800 | An app, not the library (James, 2026-11-25) |
 | Exact arcs for cubic and higher boundaries; `implicit()` exact for conics | 900 | Graphics; the cubic case becomes easier with section 5's elimination |
-| Features of parametric curves (self-intersections, cusps, arc length) | 500 | Graphics |
+| Features of parametric curves (self-intersections, cusps, arc length) | 500 | Graphics, with the differential geometry of section 8.2 |
 | Hidden-line removal for self-intersecting surfaces | 400 | Graphics |
 | **Across packages** | | |
 | npm dependencies in place of git submodules in linalg and graphics | small | Needs algebraic and analytic published to npm first |
@@ -529,7 +530,7 @@ Kuratowski subgraph), in keeping with the libraries' habit of proof.
 **Exact linear programming.** A rational simplex method returning the optimum
 together with the dual solution that proves it, and integer programs by branch
 and bound for small cases. The games need it; it is also most of what the
-optimisation row in section 8 lacked. By the rule of 4.3 it starts here, and
+optimisation row in section 9 lacked. By the rule of 4.3 it starts here, and
 moves down to linalg only if linalg comes to need it.
 
 **Sets, relations and Boolean functions.** Relations and their properties,
@@ -566,7 +567,119 @@ The statistics package depends on this one, not the other way round.
 | 8 | Codes and designs | 700 |
 | 9 | Graph drawing | 900 in graphics |
 
-## 8. Coverage of an undergraduate curriculum
+## 8. Extensions of the current libraries
+
+Added on review (James, 2026-11-25): the rest of differential equations and
+the differential geometry of curves and surfaces are to be built into the
+current libraries, and the methods of numerical analysis exposed for teaching.
+None of the three needs a new package.
+
+### 8.1 Differential equations (analytic, linalg, graphics)
+
+Analytic has validated solutions of initial and boundary value problems.
+Missing is most of what a course does around them.
+
+- **Solution methods with their steps.** First-order equations of the standard
+  types (separable, linear, exact, Bernoulli, homogeneous) and linear equations
+  with constant coefficients (characteristic roots as exact algebraic numbers,
+  undetermined coefficients, variation of parameters). Each formula found is
+  checked against the validated numerical solution, so a wrong closed form
+  cannot be returned.
+- **Laplace transforms** and their inverses for the course's class of
+  functions, using algebraic's partial fractions, including step and impulse
+  inputs through analytic's piecewise functions.
+- **Linear systems** x′ = Ax solved exactly with linalg's matrix exponential;
+  equilibria classified (node, saddle, spiral, centre) from exact eigenvalues.
+- **Nonlinear systems in the plane:** equilibria found and certified,
+  linearisation, stability, nullclines, and phase portraits in graphics.
+- **Series solutions** at ordinary and regular singular points (Frobenius),
+  with a proven remainder.
+- **Eigenvalue problems** of Sturm–Liouville type, enclosed by shooting with
+  the existing boundary value solver.
+- **The three classical partial differential equations** (heat, wave, Laplace)
+  on an interval, a rectangle and a disc by separation of variables: the
+  Fourier coefficients are already certified, and the truncation error of the
+  series gets a proven bound. d'Alembert's solution of the wave equation.
+  Animated in graphics.
+
+| Part | Where | Estimate |
+|---|---|---|
+| Solution methods with steps, Laplace transforms | analytic | 1,900 |
+| Linear and nonlinear systems, stability | analytic and linalg | 700 |
+| Series solutions, Sturm–Liouville | analytic | 900 |
+| Heat, wave, Laplace by separation of variables | analytic | 900 |
+| Phase portraits, direction of flow, animated solutions | graphics | 800 |
+
+### 8.2 Differential geometry (analytic, graphics)
+
+A subpath of analytic (`@ratmath/analytic/geometry`), built on its fields,
+partial derivatives and certified integrals, with the pictures in graphics.
+
+- **Curves** in the plane and in space: arc length, unit tangent, normal and
+  binormal, curvature and torsion, the Frenet frame, osculating circles,
+  evolutes and involutes, reparametrisation by arc length. Values are
+  certified, and closed forms are given where the expressions allow. This also
+  supplies the curve features that graphics' "not yet" list asks for.
+- **Surfaces:** the first and second fundamental forms, the unit normal, area,
+  Gaussian, mean and principal curvatures, the classification of points
+  (elliptic, hyperbolic, parabolic, umbilic), lines of curvature and
+  asymptotic directions.
+- **Intrinsic geometry:** Christoffel symbols, geodesics as validated ODEs,
+  parallel transport and holonomy, geodesic curvature.
+- **Gauss–Bonnet as a checked statement:** the certified integral of the
+  curvature over a closed surface is an interval that must contain 2π times
+  the Euler characteristic, and does.
+- **Pictures:** a frame moving along a curve (animation), surfaces coloured by
+  curvature, geodesics and transported vectors drawn on a surface.
+
+| Part | Where | Estimate |
+|---|---|---|
+| Curves | analytic | 500 |
+| Surfaces, fundamental forms, curvatures | analytic | 600 |
+| Geodesics, transport, Gauss–Bonnet | analytic | 500 |
+| Pictures | graphics | 700 |
+
+### 8.3 Numerical analysis for teaching (analytic, linalg, core, graphics)
+
+The libraries avoid the classical methods on purpose: they return proven
+answers. That is what makes them a good place to study those methods. Each
+method becomes an object that shows its steps, and because the certified
+answer is available, its *true* error is shown beside the textbook error
+estimate, at every step.
+
+- **Floating point as a subject.** Every double is an exact rational, which
+  Core can hold. So rounding error can be computed exactly: the exact value of
+  each float, the error of each operation, cancellation and its repair, error
+  growing through a calculation.
+- **Root finding:** bisection, fixed-point iteration, Newton, secant, with
+  iteration tables, observed order of convergence, and pictures (cobweb
+  diagrams, Newton's tangents; basins of attraction once the complex package
+  exists).
+- **Interpolation and approximation:** Lagrange and Newton forms with exact
+  divided differences, Hermite interpolation, splines, Chebyshev nodes, the
+  Runge phenomenon, least-squares polynomials; the error formula against the
+  true error.
+- **Differentiation and quadrature:** difference formulas, Richardson
+  extrapolation, trapezoid, Simpson, Romberg, Gauss rules with their nodes as
+  exact algebraic numbers, adaptive rules.
+- **Methods for differential equations:** Euler, Heun, Runge–Kutta, multistep
+  methods, with step tables, global error against the validated solution, step
+  size experiments and stability regions.
+- **Numerical linear algebra** in linalg: Jacobi, Gauss–Seidel, successive
+  over-relaxation, conjugate gradients, the power method and QR iteration,
+  the effect of pivoting, condition numbers; each run in floats and in exact
+  rationals side by side, so the part of the error due to rounding is
+  separated from the part due to the method.
+
+| Part | Where | Estimate |
+|---|---|---|
+| Exact model of floating-point arithmetic | core or analytic | 400 |
+| Root finding, interpolation, quadrature, differentiation | analytic (`@ratmath/analytic/methods`) | 1,400 |
+| Methods for differential equations | analytic | 600 |
+| Iterative and eigenvalue methods | linalg | 800 |
+| Pictures | graphics | 500 |
+
+## 9. Coverage of an undergraduate curriculum
 
 "Covered" here means: the calculations a course asks a student to carry out
 can be done in the JavaScript libraries with an exact or certified answer, and
@@ -576,18 +689,18 @@ percentages are a judgement from each course's usual list of topics, not a
 measurement. The RiX column records that a plugin exists; those were assessed
 from their READMEs only.
 
-| Course | Libraries today | RiX plugins today | After the five packages | Still missing |
+| Course | Libraries today | RiX plugins today | After everything planned here | Still missing |
 |---|---|---|---|---|
 | Calculus I and II | 90% | yes | 90% | Symbolic antiderivatives and series convergence tests as named steps; limits needing cancellation |
 | Calculus III (several variables, vector calculus) | 80% | part | 80% | Green, Stokes and divergence theorems as checked identities; change of variables shown as a step |
 | Linear algebra | 95% | yes | 95% | Symbolic parameters (section 2); abstract vector spaces and inner products beyond R^n |
-| Differential equations (ordinary) | 70% | part | 75% | Symbolic solution methods, Laplace transforms, systems and phase portraits as features, series solutions at singular points, stability |
+| Differential equations (ordinary) | 70% | part | 90% | Delay and stochastic equations, bifurcation theory, chaos beyond pictures |
 | Complex analysis | 10% | 15% | 85% | Riemann mapping in general, analytic continuation beyond named paths, harmonic functions and Dirichlet problems |
 | Number theory | 40% | little | 90% | Ranks of elliptic curves, the deeper analytic theory |
 | Abstract algebra I (groups) | 30% | none | 85% | Infinite groups beyond presentations, representation theory beyond character tables |
 | Abstract algebra II (rings, fields, Galois) | 60% | part | 90% | Galois groups of high degree, commutative algebra beyond Gröbner bases, modules over general rings |
 | Real analysis | 30% | part | 30% | See below |
-| Numerical analysis | 50% | part | 50% | Interpolation and splines, quadrature rules as objects, iterative solvers, floating-point error analysis as a subject |
+| Numerical analysis | 50% | part | 85% | Numerical methods for partial differential equations, large sparse problems, fast transforms |
 | Probability | 0% | yes | 85% | Measure-theoretic foundations; stochastic processes beyond Markov chains |
 | Statistics | 0% | yes | 80% | Generalised linear models beyond logistic, time series, multivariate methods, experimental design |
 | Discrete mathematics and combinatorics | 10% | part | 85% | Asymptotic and analytic combinatorics; proof techniques as such |
@@ -596,8 +709,8 @@ from their READMEs only.
 | Geometry | 50% | yes | 55% | Transformations as groups, non-Euclidean models, projective geometry; the editor |
 | Logic and set theory | 0% | part | 20% | Relations and Boolean functions are in the discrete package; proof systems and first-order logic stay in RiX |
 | Topology | 0% | none | 5% | See below |
-| Differential geometry | 10% | none | 10% | Curvature and torsion, first and second fundamental forms, geodesics |
-| Partial differential equations | 10% | none | 10% | Separation of variables with Fourier series is there; heat, wave and Laplace solvers are not |
+| Differential geometry | 10% | none | 80% | Manifolds, tensors and differential forms in general; curvature in higher dimensions |
+| Partial differential equations | 10% | none | 50% | Characteristics, Green's functions, transforms on unbounded domains, nonlinear equations, validated numerical solvers |
 | Optimisation | 20% | yes | 55% | Nonlinear constrained optimisation, Lagrange multipliers as a named method, convex optimisation |
 
 Read as a whole: the calculus sequence, linear algebra and a good part of
@@ -612,35 +725,24 @@ subjects. The statistics package adds the two courses that, after calculus,
 the largest number of students outside mathematics take, and the discrete
 package adds the course that computer science students take in their place.
 
-## 9. What would remain
+## 10. What would remain
 
 In rough order of how well each suits exact and certified computation:
 
-1. **Differential equations, second half.** Laplace transforms, linear systems
-   with phase portraits (linalg's matrix exponential plus graphics), stability,
-   and the three classical partial differential equations by separation of
-   variables. Extends analytic and graphics, no new package.
-2. **Numerical analysis.** Mostly a matter of exposing as teaching objects
-   what the libraries do internally (interpolation, quadrature, Newton with a
-   proof, error bounds). The certified answer next to the classical method's
-   answer is a good lesson in itself.
-3. **Differential geometry of curves and surfaces.** Curvature, torsion,
-   fundamental forms, geodesics as ODEs. Sits naturally on analytic's fields
-   and graphics' 3D. About 1,500 lines.
-4. **Optimisation beyond linear programming.** Lagrange multipliers and
+1. **Optimisation beyond linear programming.** Lagrange multipliers and
    constrained nonlinear problems. RiX has an `optimize` plugin.
-5. **Real analysis and topology.** These are proof courses. What computing can
+2. **Real analysis and topology.** These are proof courses. What computing can
    offer real analysis is already the project's own subject (reals as families
    of rational intervals, sequences with certified limits, uniform against
    pointwise convergence shown with enclosures). Point-set topology offers
    little to compute; finite simplicial homology over Z is computable through
    Smith normal form and would be a small addition (about 600 lines) rather
    than coverage of the course.
-6. **Logic and set theory** beyond relations and Boolean functions. Leave to
+3. **Logic and set theory** beyond relations and Boolean functions. Leave to
    RiX's `logic` plugin.
-7. **The geometry editor**, which is an app.
+4. **The geometry editor**, which is an app.
 
-## 10. Order, and decisions made
+## 11. Order, and decisions made
 
 Suggested order, with the reason for each step:
 
@@ -661,6 +763,10 @@ Suggested order, with the reason for each step:
 8. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
 9. The remaining phases as interest directs.
 
+The extensions of section 8 touch only the current libraries and can be taken
+up at any point between these steps. Differential geometry of curves and the
+exact model of floating point are the smallest self-contained starts.
+
 Decisions so far. The packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
 The hypercomplex numbers stay in the complex package, as the subpath
@@ -677,3 +783,7 @@ generation of random data and noise for testing the tests (section 6; James,
 Discrete mathematics (combinatorics, graph theory, game theory) becomes a
 library, `@ratmath/discrete`, which the statistics package uses for discrete
 probability (section 7; James, 2026-11-25).
+
+The rest of differential equations and differential geometry are built into
+the current libraries, and numerical analysis is exposed there for teaching
+(section 8; James, 2026-11-25).
