@@ -162,9 +162,9 @@ itself, so rewriting them as calls into JavaScript would defeat their purpose.
 The same holds for the other packages in this document and their RiX
 counterparts.
 
-What should grow instead is the bridge between RiX and JavaScript
-(`docs/JS_INTEGRATION.md`), so that a RiX user can reach a Shelf library
-directly when the certified version of something is wanted, for example
+What should grow instead is the bridge between RiX and the Shelf
+(`ratmath/rix-bridge`, which already exposes analytic and linalg to RiX as
+plugins), so that a RiX user can reach each new package directly when the certified version of something is wanted, for example
 contour integration or the elementary functions of a quaternion, without the
 plugin depending on it.
 
@@ -425,8 +425,8 @@ Decided: the packages are named `@ratmath/complex`, `@ratmath/numtheory` and
 `@ratmath/structures` (James, 2026-11-25).
 The hypercomplex numbers stay in the complex package, as the subpath
 `@ratmath/complex/cayley` (James, 2026-11-25).
-The RiX plugins stay independent of the Shelf for now; the RiX to JavaScript
-bridge is to be widened so the Shelf is reachable from RiX (3.2).
+The RiX plugins stay independent of the Shelf for now; `ratmath/rix-bridge`
+is to be widened so each new package is reachable from RiX (3.2).
 
 Decisions that would change the plan:
 
