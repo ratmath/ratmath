@@ -8,13 +8,13 @@ const profileArgs = process.argv.slice(3);
 
 const profiles = {
     short: [
-        ["Legacy RatMath packages and apps", ".", ["test", "--dots", "./apps", "./packages"]],
+        ["RatMath Core, Shelf and apps", ".", ["test", "--dots", "./apps", "./packages", "./shelf"]],
         ["RiX focused tests", "rix", ["run", "test:short"]],
         ["RiX Playground focused tests", "rix-web", ["run", "test:short"]],
         ["RiX-NB focused tests", "rix-nb", ["run", "test:short"]],
     ],
     ten: [
-        ["Legacy RatMath packages and apps", ".", ["test", "--dots", "./apps", "./packages"]],
+        ["RatMath Core, Shelf and apps", ".", ["test", "--dots", "./apps", "./packages", "./shelf"]],
         ["RiX medium tests", "rix", ["run", "test:ten"]],
         ["RiX Playground focused tests", "rix-web", ["run", "test:short"]],
         ["RiX Playground tutorials check themselves", "rix-web", ["run", "test:tutorials"]],
@@ -26,7 +26,7 @@ const profiles = {
         ["RiX documentation examples", "rix", ["run", "docs:examples"]],
     ],
     suite: [
-        ["Legacy RatMath packages and apps", ".", ["test", "--dots", "./apps", "./packages"]],
+        ["RatMath Core, Shelf and apps", ".", ["test", "--dots", "./apps", "./packages", "./shelf"]],
         ["RiX complete suite", "rix", ["run", "test:suite"]],
         ["RiX Playground complete suite", "rix-web", ["run", "test:suite"]],
         ["RiX-NB complete suite", "rix-nb", ["run", "test:suite"]],
