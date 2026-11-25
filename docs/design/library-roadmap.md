@@ -163,7 +163,7 @@ The same holds for the other packages in this document and their RiX
 counterparts.
 
 What should grow instead is the bridge between RiX and the Shelf
-(`ratmath/rix-bridge`, which already exposes analytic and linalg to RiX as
+(`ratmath/rix-bridge`, which already exposes analytic, linalg, algebraic and graphics to RiX as
 plugins), so that a RiX user can reach each new package directly when the certified version of something is wanted, for example
 contour integration or the elementary functions of a quaternion, without the
 plugin depending on it.
