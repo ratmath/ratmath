@@ -235,13 +235,29 @@ plane once the complex package has phase 6.
 
 ### 4.3 Where the existing functions live
 
-A package cycle (algebraic needs modular arithmetic; class groups need number
-fields) has to be avoided. Recommended: the small kernel stays in algebraic,
-where finite fields use it, and `@ratmath/numtheory` depends on algebraic
-and re-exports those functions, so users import number theory from one place.
-The alternative, moving the kernel down into the new package and having
-algebraic depend on it, forces the number-field parts back into algebraic and
-splits the subject across two packages.
+The rule (James, 2026-11-25): a function lives as high up the dependency
+chain as is reasonable, that is, in the most specialised package that it
+belongs to. It stays lower only when a lower package needs it for its own
+work, and then the higher package re-exports it, so that users find the whole
+subject in one place and no dependency loop appears.
+
+Applied here, with `@ratmath/numtheory` depending on algebraic:
+
+- **Stays in algebraic, re-exported by numtheory:** the modular kernel that
+  algebraic's finite fields import today (`multiplicativeOrder`,
+  `primitiveRoot`, `discreteLogMod`, `sqrtMod`, `isProbablePrime`) and what
+  those rest on (`modPow`, `modInverse`, `factorInteger`).
+- **Moves up to numtheory:** continued fractions, convergents, Pell and
+  fundamental units (`src/cf.js`), which nothing else in algebraic imports,
+  and the remaining functions of `src/nt.js` that algebraic does not use
+  itself (`crt`, `jacobi`, `totient` are the candidates; the exact split is
+  settled when phase 1 is written). Algebraic cannot re-export these without
+  a loop, so their import path changes. Neither package is on npm yet, so
+  that costs little now.
+- **Stays in algebraic:** LLL and `recognize`, which serve algebraic numbers
+  first; numtheory re-exports LLL.
+- Number fields stay in algebraic; integral bases, class groups and units are
+  new and are written in numtheory.
 
 Depends on core and algebraic; analytic for the certified real values; complex
 only for phase 6.
@@ -312,9 +328,10 @@ link to the rational canonical form made explicit.
 ### 5.3 Dependencies and phases
 
 Depends on core, algebraic (fields, factoring, `PermGroup`) and linalg (normal
-forms). `PermGroup` either stays in algebraic and is extended here, or moves
-here with algebraic depending on this package for Galois groups. Staying is
-simpler; moving is cleaner. Recommended: stay, until Schreier–Sims is written.
+forms). By the same rule as in 4.3, `PermGroup` stays in algebraic because
+Galois groups are computed with it, and this package re-exports and extends
+it. New group code, including Schreier–Sims, is written here; if Galois groups
+of higher degree later need Schreier–Sims, only that kernel moves down.
 
 | Phase | Contents | Estimate |
 |---|---|---|
@@ -427,10 +444,10 @@ The hypercomplex numbers stay in the complex package, as the subpath
 `@ratmath/complex/cayley` (James, 2026-11-25).
 The RiX plugins stay independent of the Shelf for now; `ratmath/rix-bridge`
 is to be widened so each new package is reachable from RiX (3.2).
+A function lives in the most specialised package it belongs to, unless a
+lower package needs it, in which case the higher one re-exports it (4.3, 5.3).
 
-Decisions that would change the plan:
+One decision is still open:
 
-- **Where the elementary number theory functions live (4.3)** and **where
-  `PermGroup` lives (5.3).**
 - **Whether probability and statistics become a JavaScript library** or stay
   RiX-only.
