@@ -3,7 +3,7 @@ import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 const build=JSON.parse(await readFile(new URL('./tmp/build.json',import.meta.url)));
 const results=[];
-for(const [name,path]of [['production',resolve(build.sourceRoot,'packages/core/index.js')],['experimental-base',resolve(build.paths.base.core,'index.js')]]){
+for(const [name,path]of [['production',resolve(build.sourceRoot, 'core/index.js')],['experimental-base',resolve(build.paths.base.core,'index.js')]]){
  const core=await import(pathToFileURL(path).href);
  for(const input of ['-0.5','-.5','-0..1/2']){
   try{results.push({core:name,input,result:new core.Rational(input).toString()});}catch(e){results.push({core:name,input,error:e.name,message:e.message});}

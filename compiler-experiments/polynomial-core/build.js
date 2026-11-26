@@ -18,7 +18,7 @@ async function inventory(folder, base = folder) {
 export async function build() {
   // Reuse a fingerprinted fast-core build, then make our own independent tree.
   const base = JSON.parse(await readFile(resolve(here, '../integrated-core/tmp/build.json'), 'utf8'));
-  for (const [group, dir] of [['core','packages/core/src'], ['rix','rix/src'], ['plugins','rix/plugins'], ['coreTests','packages/core/tests']]) {
+  for (const [group, dir] of [['core','core/src'], ['rix','rix/src'], ['plugins','rix/plugins'], ['coreTests','core/tests']]) {
     const now = await inventory(resolve(base.sourceRoot, dir));
     const expected = Object.fromEntries(Object.entries(base.original[group]).filter(([p]) => !p.split('/').includes('.DS_Store')));
     assert.deepEqual(now, expected, `Stale integrated-core build (${group}); rebuild it first`);

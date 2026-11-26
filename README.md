@@ -57,20 +57,32 @@ that failed.
 
 The RatMath Shelf is the family of subject libraries built on Core. Each one is
 its own public repository and npm package under `@ratmath/`, pinned here as a
-submodule in `shelf/`:
+submodule in `shelf/`. Each has a docs site at `ratmath.com/<name>/`, and the
+[Shelf page](https://ratmath.com/shelf/) lists what each one can do so far.
 
 | Library | npm | What it does |
 |---------|-----|--------------|
 | [`shelf/algebraic`](https://github.com/ratmath/algebraic) | `@ratmath/algebraic` | Exact algebraic numbers, polynomial factoring, Galois groups, number and finite fields |
 | [`shelf/analytic`](https://github.com/ratmath/analytic) | `@ratmath/analytic` | Certified calculus: values, ranges, integrals, zeros, limits, Taylor models, ODE steps |
-| [`shelf/linalg`](https://github.com/ratmath/linalg) | `@ratmath/linalg` | Exact rational linear algebra with float previews that sharpen to exact |
+| [`shelf/chaos`](https://github.com/ratmath/chaos) | `@ratmath/chaos` | Dynamical systems: orbits, periodic points, bifurcations, Lyapunov exponents, fractals |
+| [`shelf/complex`](https://github.com/ratmath/complex) | `@ratmath/complex` | Exact complex arithmetic, honest branches, certified complex analysis, quaternions, octonions |
+| [`shelf/discrete`](https://github.com/ratmath/discrete) | `@ratmath/discrete` | Counting and enumeration, graphs, generating functions, games, exact linear programming |
+| [`shelf/finance`](https://github.com/ratmath/finance) | `@ratmath/finance` | Exact money, time value, loans, bonds, scenarios, building blocks for financial simulation |
+| [`shelf/geo`](https://github.com/ratmath/geo) | `@ratmath/geo` | Euclidean constructions with checked theorems; spherical, hyperbolic, projective and finite geometries |
 | [`shelf/graphics`](https://github.com/ratmath/graphics) | `@ratmath/graphics` | Certified plots, regions and exact geometry, exported to SVG, TikZ, PDF and PNG |
+| [`shelf/linalg`](https://github.com/ratmath/linalg) | `@ratmath/linalg` | Exact rational linear algebra with float previews that sharpen to exact |
+| [`shelf/logic`](https://github.com/ratmath/logic) | `@ratmath/logic` | Propositional and predicate logic, proof checking, model search, modal logic, computability |
+| [`shelf/numtheory`](https://github.com/ratmath/numtheory) | `@ratmath/numtheory` | Primes with certificates, congruences, Diophantine equations, p-adics, elliptic curves (set up, nothing built yet) |
+| [`shelf/stats`](https://github.com/ratmath/stats) | `@ratmath/stats` | Exact finite probability, certified distributions, seeded data with noise, tests, regression |
+| [`shelf/structures`](https://github.com/ratmath/structures) | `@ratmath/structures` | Abstract algebra: exact polynomials in several variables and rational functions |
+| [`shelf/symbolic`](https://github.com/ratmath/symbolic) | `@ratmath/symbolic` | Expressions, rewriting, solving and closed forms, each step checked by the certified libraries |
 
-The layers are: Core (`packages/core`) holds the number types, the Shelf holds
+The layers are: Core (`core/`) holds the number types, the Shelf holds
 the subjects, and RiX is the language that calls them. Apps sit on top.
 
-Some Shelf libraries vendor their siblings as submodules (graphics vendors
-analytic and algebraic; linalg vendors algebraic) so they build on their own.
+Many Shelf libraries vendor their siblings as submodules (for example graphics
+vendors analytic and algebraic, stats vendors analytic and discrete, symbolic
+vendors analytic, algebraic and structures) so they build on their own.
 In this umbrella those copies are not used: Bun only reads the root
 `workspaces`, so every library links to the sibling in `shelf/`. The umbrella
 pins are the set that has to work together; bump them here.

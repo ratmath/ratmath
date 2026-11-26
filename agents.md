@@ -50,15 +50,25 @@ Evaluator/runtime work lives mainly in `rix/src/eval/evaluator.js`,
 
 ---
 
-## Core (`packages/`) and the RatMath Shelf (`shelf/`)
+## Core (`core/`) and the RatMath Shelf (`shelf/`)
 
 | Package | Purpose |
 |---------|---------|
-| `packages/core/` | Core math types: `Integer`, `Rational`, `RationalInterval`, the `R` tag |
-| `shelf/analytic/` | Taylor models with certified remainders (exp, sin, log, atan, …) on Core; for RatTree/RatCalc |
+| `core/` | Core math types: `Integer`, `Rational`, `RationalInterval`, the `R` tag |
 | `shelf/algebraic/` | Exact algebraic numbers, polynomial factoring, Galois groups, number and finite fields |
-| `shelf/linalg/` | Exact rational linear algebra with float previews that sharpen to exact (uses algebraic) |
-| `shelf/graphics/` | Certified plots, regions and exact geometry; exports SVG, TikZ, PDF, PNG (uses analytic, algebraic) |
+| `shelf/analytic/` | Certified calculus: values, ranges, integrals, zeros, limits, Taylor models, ODE steps |
+| `shelf/chaos/` | Dynamical systems: orbits, periodic points, bifurcations, Lyapunov exponents, fractals |
+| `shelf/complex/` | Exact complex arithmetic, honest branches, certified complex analysis, quaternions, octonions |
+| `shelf/discrete/` | Counting and enumeration, graphs, generating functions, games, exact linear programming |
+| `shelf/finance/` | Exact money, time value, loans, bonds, scenarios, building blocks for financial simulation |
+| `shelf/geo/` | Euclidean constructions with checked theorems; spherical, hyperbolic, projective and finite geometries |
+| `shelf/graphics/` | Certified plots, regions and exact geometry, exported to SVG, TikZ, PDF and PNG |
+| `shelf/linalg/` | Exact rational linear algebra with float previews that sharpen to exact |
+| `shelf/logic/` | Propositional and predicate logic, proof checking, model search, modal logic, computability |
+| `shelf/numtheory/` | Primes with certificates, congruences, Diophantine equations, p-adics, elliptic curves (set up, nothing built yet) |
+| `shelf/stats/` | Exact finite probability, certified distributions, seeded data with noise, tests, regression |
+| `shelf/structures/` | Abstract algebra: exact polynomials in several variables and rational functions |
+| `shelf/symbolic/` | Expressions, rewriting, solving and closed forms, each step checked by the certified libraries |
 
 The legacy calculator packages (`parser`, `reals`, `algebra`, `stdlib`,
 `arith-funs`, `oracles`) were removed from the umbrella on 2026-11-14. Nothing
@@ -86,7 +96,7 @@ its own parser and oracle plugin. Their repositories stay on GitHub, archived.
 | New AST node type | `rix/src/parser/parser.js` + update `rix/src/eval/lower.js` |
 | Evaluator / runtime | `rix/src/eval/evaluator.js` or `rix/src/runtime/` |
 | IR format | `rix/src/eval/ir.js` |
-| New math types | `packages/core/` |
+| New math types | `core/` |
 
 ---
 

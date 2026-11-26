@@ -2,7 +2,7 @@
 	path = rix-web
 	url = git@github.com:ratmath/rix-playground.git
 [submodule "packages/core"]
-	path = packages/core
+	path = core
 	url = git@github.com:ratmath/core.git
 [submodule "apps/forge"]
 	path = apps/forge
@@ -40,3 +40,33 @@
 [submodule "shelf/graphics"]
 	path = shelf/graphics
 	url = git@github.com:ratmath/graphics.git
+[submodule "shelf/structures"]
+	path = shelf/structures
+	url = git@github.com:ratmath/structures.git
+[submodule "shelf/symbolic"]
+	path = shelf/symbolic
+	url = git@github.com:ratmath/symbolic.git
+[submodule "shelf/complex"]
+	path = shelf/complex
+	url = git@github.com:ratmath/complex.git
+[submodule "shelf/discrete"]
+	path = shelf/discrete
+	url = git@github.com:ratmath/discrete.git
+[submodule "shelf/stats"]
+	path = shelf/stats
+	url = git@github.com:ratmath/stats.git
+[submodule "shelf/numtheory"]
+	path = shelf/numtheory
+	url = git@github.com:ratmath/numtheory.git
+[submodule "shelf/logic"]
+	path = shelf/logic
+	url = git@github.com:ratmath/logic.git
+[submodule "shelf/chaos"]
+	path = shelf/chaos
+	url = git@github.com:ratmath/chaos.git
+[submodule "shelf/geo"]
+	path = shelf/geo
+	url = git@github.com:ratmath/geo.git
+[submodule "shelf/finance"]
+	path = shelf/finance
+	url = git@github.com:ratmath/finance.git
