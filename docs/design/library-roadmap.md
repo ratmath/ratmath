@@ -268,9 +268,9 @@ only for phase 6.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Primes with certificates, arithmetic functions, congruences, reciprocity, sums of squares, re-exports | 1,400 |
-| 2 | Diophantine equations and binary quadratic forms | 900 |
-| 3 | p-adic numbers | 500 |
+| 1 | Primes with certificates, arithmetic functions, congruences, reciprocity, sums of squares, re-exports (built 2026-11-26) | 1,400 |
+| 2 | Diophantine equations and binary quadratic forms (built 2026-11-26) | 900 |
+| 3 | p-adic numbers (built 2026-11-26) | 500 |
 | 4 | Elliptic curves; ECM and curve-based certificates | 1,400 |
 | 5 | Integral bases, discriminants, prime ideal factorisation | 900 |
 | 6 | Class groups and unit groups | 1,500 |
@@ -464,8 +464,8 @@ structures packages.
 | 1 | Finite probability, discrete distributions, descriptive statistics, exact tests (built 2026-11-26) | 1,100 |
 | 2 | Continuous distributions, certified (built 2026-11-26) | 1,200, plus 500 in analytic |
 | 3 | Seeded generation, models with noise and contamination, experiments (built 2026-11-26) | 1,300 |
-| 4 | Estimation, confidence intervals, the standard tests | 1,000 |
-| 5 | Regression and analysis of variance | 1,100 |
+| 4 | Estimation, confidence intervals, the standard tests (built 2026-11-26) | 1,000 |
+| 5 | Regression and analysis of variance (built 2026-11-26) | 1,100 |
 | 6 | Rank tests, permutation tests, the bootstrap | 700 |
 | 7 | Markov chains; conjugate Bayesian updating | 700 |
 | 8 | Graphics hooks | 800 in graphics |
@@ -561,19 +561,22 @@ they stay independent, and this library is added to `ratmath/rix-bridge`.
 
 Depends on core, algebraic (`PermGroup`, algebraic numbers, rational
 functions, finite fields), linalg (spectra, determinants, matrix powers) and
-logic (Boolean functions).
+logic (Boolean functions). As built (2026-11-26), linalg was not needed:
+characteristic polynomials are computed over the integers directly, and
+codes work over Z_p with their own small field arithmetic. Boolean functions
+are re-exported from logic rather than duplicated.
 The statistics package depends on this one, not the other way round.
 
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Counting, enumeration with ranking, the seeded generator (built 2026-11-26) | 1,000 |
-| 2 | Graphs: structure, traversal, paths, trees, families | 1,300 |
-| 3 | Generating functions and recurrences | 900 |
-| 4 | Matchings, flows, colouring, planarity, isomorphism, spectra | 1,600 |
-| 5 | Exact linear programming; matrix and bimatrix games | 1,100 |
-| 6 | Combinatorial, extensive-form and cooperative games; voting | 1,000 |
-| 7 | Sets, relations, partial orders; Pólya counting | 600 |
-| 8 | Codes and designs | 700 |
+| 2 | Graphs: structure, traversal, paths, trees, families (built 2026-11-26) | 1,300 |
+| 3 | Generating functions and recurrences (built 2026-11-26) | 900 |
+| 4 | Matchings, flows, colouring, planarity, isomorphism, spectra (built 2026-11-26) | 1,600 |
+| 5 | Exact linear programming; matrix and bimatrix games (built 2026-11-26) | 1,100 |
+| 6 | Combinatorial, extensive-form and cooperative games; voting (built 2026-11-26) | 1,000 |
+| 7 | Sets, relations, partial orders; Pólya counting (built 2026-11-26) | 600 |
+| 8 | Codes and designs (built 2026-11-26) | 700 |
 | 9 | Graph drawing | 900 in graphics |
 
 ## 8. A logic package: `@ratmath/logic`
@@ -656,11 +659,11 @@ Depends on core only. The discrete package depends on it for Boolean functions.
 |---|---|---|
 | 1 | Propositional formulas, tables, normal forms, satisfiability, simplification (built 2026-11-26) | 900 |
 | 2 | Proof checkers, rule sets, proof search and hints (built 2026-11-26) | 1,200 |
-| 3 | Predicate logic: syntax, finite models, model search, quantifier rules | 1,100 |
-| 4 | Circuits, Karnaugh maps, syllogisms | 400 |
-| 5 | Modal logic | 500 |
+| 3 | Predicate logic: syntax, finite models, model search, quantifier rules (built 2026-11-26) | 1,100 |
+| 4 | Circuits, Karnaugh maps, syllogisms (built 2026-11-26) | 400 |
+| 5 | Modal logic (built 2026-11-26) | 500 |
 | 6 | Ordinals, cardinals, Peano arithmetic, Gödel numbering | 500 |
-| 7 | Automata, grammars, Turing machines | 1,000 |
+| 7 | Automata, grammars, Turing machines (built 2026-11-26) | 1,000 |
 | 8 | Pictures | 500 in graphics |
 
 ## 9. A symbolic algebra package: `@ratmath/symbolic`
@@ -969,8 +972,8 @@ need only core and analytic.
 | 2 | Loans and schedules, cash flows, rates of return (built 2026-11-26) | 800 |
 | 3 | Bonds, rates and yield curves (built 2026-11-26) | 700 |
 | 4 | Scenarios, exact projection, comparison and sensitivity (built 2026-11-26) | 700 |
-| 5 | Uncertain inputs and repeated runs | 800 |
-| 6 | Portfolios, options, life contingencies | 1,100 |
+| 5 | Uncertain inputs and repeated runs (built 2026-11-26) | 800 |
+| 6 | Portfolios, options, life contingencies (built 2026-11-26) | 1,100 |
 | 7 | Pictures | 500 in graphics |
 
 ## 13. Extensions of the current libraries
@@ -986,8 +989,9 @@ were added the same day (13.4 to 13.6). None of these needs a new package.
 Built 2026-11-26 in analytic: `firstOrder`, `exactEquation`, `linearODE`,
 `laplace`, `inverseLaplace`, `linearSystem` (2 by 2), `planarSystem`,
 `seriesSolution`, `sturmLiouville`, `heat`, `wave`, `laplaceRectangle` and
-`laplaceDisc`. Still open: step and impulse inputs for Laplace transforms,
-linear systems larger than 2 by 2, a proven remainder for series solutions,
+`laplaceDisc`. Step and impulse inputs (`heaviside`, `dirac`,
+`laplaceSolve` verified piece by piece) and `linearSystem` beyond 2 by 2
+were built 2026-11-26. Still open: a proven remainder for series solutions,
 and the pictures in graphics.
 
 
@@ -1065,8 +1069,10 @@ partial derivatives and certified integrals, with the pictures in graphics.
 Built 2026-11-26 in analytic (`@ratmath/analytic/methods`): the exact model
 of floating point, root finding, interpolation, differentiation and
 quadrature rules, and methods for differential equations, each beside its
-true error. Still open: the iterative and eigenvalue methods in linalg, and
-the pictures in graphics.
+true error. The iterative and eigenvalue methods in linalg (`methods`:
+Jacobi, Gauss–Seidel, SOR, conjugate gradients, power and inverse
+iteration, unshifted QR, pivoting) were built 2026-11-26, each with its
+exact error. Still open: the pictures in graphics.
 
 
 The libraries avoid the classical methods on purpose: they return proven
@@ -1250,9 +1256,10 @@ one package because they do not depend on each other.
    13.5. Together these finish the calculus sequence and college algebra.
 7. **Done 2026-11-26.** Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
    needs only what exists today, and each shows off exact arithmetic quickly.
-8. Discrete phase 2 (graphs) and number theory phases 1 to 3.
+8. **Done 2026-11-26.** Discrete phase 2 (graphs) and number theory phases 1 to 3. Continued
+   fractions, Pell and `crt` moved from algebraic to numtheory, as 4.3 says.
 9. Abstract algebra phases 1 and 3 (groups and rings).
-10. Statistics phases 4 and 5 (the standard tests and regression) and discrete
+10. **Done 2026-11-26.** Statistics phases 4 and 5 (the standard tests and regression) and discrete
     phase 5 (linear programming and matrix games).
 11. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
 12. The remaining phases as interest directs.
@@ -1345,14 +1352,14 @@ package sections above; step numbers refer to section 16.
 
 | Order | Package | Phases | Notes |
 |---|---|---|---|
-| 1 | discrete | 2 (graphs) | Step 8. Check every algorithm against brute force on small graphs. |
-| 2 | numtheory | 1 to 3 | Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
-| 3 | stats | 4 and 5 | Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
-| 4 | discrete | 5 (linear programming, matrix games) | Step 10. Check each optimum by its dual. |
-| 5 | current libraries | section 13 leftovers | linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
-| 6 | finance | 5 and 6 | |
-| 7 | logic | 3, 4, 5, 7 | Phase 6 can follow. |
-| 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
+| 1 | discrete | 2 (graphs) | Done 2026-11-26. Step 8. Check every algorithm against brute force on small graphs. |
+| 2 | numtheory | 1 to 3 | Done 2026-11-26. Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
+| 3 | stats | 4 and 5 | Done 2026-11-26. Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
+| 4 | discrete | 5 (linear programming, matrix games) | Done 2026-11-26. Step 10. Check each optimum by its dual. |
+| 5 | current libraries | section 13 leftovers | Done 2026-11-26. linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
+| 6 | finance | 5 and 6 | Done 2026-11-26. |
+| 7 | logic | 3, 4, 5, 7 | Done 2026-11-26. Phase 6 can follow. |
+| 8 | discrete | 3, 4, 6, 7, 8 | Done 2026-11-26. Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | |
 | 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
 | 11 | chaos | 4 and 5 | |
