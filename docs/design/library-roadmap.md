@@ -183,7 +183,7 @@ constants), and optionally on algebraic for conversions.
 | 2 | Cayley–Dickson numbers, quaternion rotations, integer quaternions (built 2026-11-26) | 700 |
 | 3 | Complex Taylor models; contour integrals; argument principle and zero isolation | 2,200 |
 | 4 | Residues, Laurent series, singularities, real integrals by residues | 800 |
-| 5 | Möbius and conformal maps; graphics hooks | 600 plus 800 in graphics |
+| 5 | Möbius and conformal maps; graphics hooks (built 2026-11-26) | 600 plus 800 in graphics |
 | 6 | Complex gamma and zeta | 700 |
 
 Phases 1 and 2 are independent and each useful alone. Phase 3 is the hard one.
@@ -1364,7 +1364,7 @@ package sections above; step numbers refer to section 16.
 | 10 | symbolic | 4 and 5 | Done 2026-11-26. Every step record says how it was checked. |
 | 11 | chaos | 4 and 5 | Done 2026-11-26. Pixels are proved inside, proved outside or undecided; checks against brute force and float orbits. |
 | 12 | geo | 4 and 5 | Done 2026-11-26. Symmetry groups are algebraic `PermGroup`s. Drawing the 11 uniform tilings is left to the pictures phase. |
-| 13 | complex | 5 | |
+| 13 | complex | 5 | Done 2026-11-26. Exact maps and circles, picture data as `gridImage` and `sampleGrid`; drawing is left to the pictures step. |
 | 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Includes joining geo's plane kernel with graphics', deferred in 11.1. |
 
 Also for Opus, at any time: keeping the Shelf page and this roadmap up to
