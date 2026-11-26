@@ -969,8 +969,8 @@ need only core and analytic.
 | 2 | Loans and schedules, cash flows, rates of return (built 2026-11-26) | 800 |
 | 3 | Bonds, rates and yield curves (built 2026-11-26) | 700 |
 | 4 | Scenarios, exact projection, comparison and sensitivity (built 2026-11-26) | 700 |
-| 5 | Uncertain inputs and repeated runs | 800 |
-| 6 | Portfolios, options, life contingencies | 1,100 |
+| 5 | Uncertain inputs and repeated runs (built 2026-11-26) | 800 |
+| 6 | Portfolios, options, life contingencies (built 2026-11-26) | 1,100 |
 | 7 | Pictures | 500 in graphics |
 
 ## 13. Extensions of the current libraries
@@ -1354,7 +1354,7 @@ package sections above; step numbers refer to section 16.
 | 3 | stats | 4 and 5 | Done 2026-11-26. Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
 | 4 | discrete | 5 (linear programming, matrix games) | Done 2026-11-26. Step 10. Check each optimum by its dual. |
 | 5 | current libraries | section 13 leftovers | Done 2026-11-26. linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
-| 6 | finance | 5 and 6 | |
+| 6 | finance | 5 and 6 | Done 2026-11-26. |
 | 7 | logic | 3, 4, 5, 7 | Phase 6 can follow. |
 | 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | |
