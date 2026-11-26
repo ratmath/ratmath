@@ -1327,3 +1327,65 @@ topic here is implemented, it moves from this document to that page: the
 entry is removed or marked done here and added there with a link to the
 package's documentation page for it. The homepage keeps Core as its
 foundation and links to the Shelf page.
+
+## 18. For Opus
+
+Added 2026-11-26 at James's request. This section lists the remaining work
+that is recommended for Opus, and the work recommended to be held back for
+Fable. The division is a judgement, not a measurement. The rule used: a
+phase is held back when a subtle mathematical mistake in it could still
+pass its own tests. Everything else, where a wrong answer shows up against
+a brute-force check, a known value or an independent verifier, is listed
+for Opus.
+
+### 18.1 The list
+
+In suggested order. Phase numbers refer to the phase tables in the
+package sections above; step numbers refer to section 16.
+
+| Order | Package | Phases | Notes |
+|---|---|---|---|
+| 1 | discrete | 2 (graphs) | Step 8. Check every algorithm against brute force on small graphs. |
+| 2 | numtheory | 1 to 3 | Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
+| 3 | stats | 4 and 5 | Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
+| 4 | discrete | 5 (linear programming, matrix games) | Step 10. Check each optimum by its dual. |
+| 5 | current libraries | section 13 leftovers | linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
+| 6 | finance | 5 and 6 | |
+| 7 | logic | 3, 4, 5, 7 | Phase 6 can follow. |
+| 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
+| 9 | stats | 6 and 7 | |
+| 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
+| 11 | chaos | 4 and 5 | |
+| 12 | geo | 4 and 5 | Take symmetry groups from algebraic's `PermGroup` until structures phase 1 exists. |
+| 13 | complex | 5 | |
+| 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Includes joining geo's plane kernel with graphics', deferred in 11.1. |
+
+Also for Opus, at any time: keeping the Shelf page and this roadmap up to
+date, documentation fixes, typings (none of the hand-written `index.d.ts`
+files has been compiled with `tsc`), and widening `ratmath/rix-bridge`.
+
+### 18.2 Held back
+
+Not on the list above, recommended for Fable:
+
+- complex phases 3, 4 and 6 (step 11).
+- chaos phase 3.
+- geo phases 3 and 6.
+- All remaining structures phases: 1 and 3 (step 9), then 4 to 7.
+- numtheory phases 4 to 7.
+- A proven remainder for series solutions (13.1).
+
+### 18.3 How to work through it
+
+- One pull request per package per step, holding the code, tests, typings,
+  the updated `plan`, and documentation as section 17 describes.
+- Dependencies are git submodules under `vendor/`, as in the existing
+  Shelf packages.
+- Keep the exact, certified and simulated labels on answers, and keep
+  refusing JavaScript numbers that are not whole.
+- The independent checks named in the table are part of the phase, not an
+  extra. If a phase turns out to need a new proof technique, stop and move
+  it to 18.2 instead of approximating.
+- After each merge, mark the phase "(built DATE)" in its table, mark the
+  step in section 16, and update the Shelf page with links to the new
+  documentation pages.
