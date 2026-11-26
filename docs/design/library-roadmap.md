@@ -464,8 +464,8 @@ structures packages.
 | 1 | Finite probability, discrete distributions, descriptive statistics, exact tests (built 2026-11-26) | 1,100 |
 | 2 | Continuous distributions, certified (built 2026-11-26) | 1,200, plus 500 in analytic |
 | 3 | Seeded generation, models with noise and contamination, experiments (built 2026-11-26) | 1,300 |
-| 4 | Estimation, confidence intervals, the standard tests | 1,000 |
-| 5 | Regression and analysis of variance | 1,100 |
+| 4 | Estimation, confidence intervals, the standard tests (built 2026-11-26) | 1,000 |
+| 5 | Regression and analysis of variance (built 2026-11-26) | 1,100 |
 | 6 | Rank tests, permutation tests, the bootstrap | 700 |
 | 7 | Markov chains; conjugate Bayesian updating | 700 |
 | 8 | Graphics hooks | 800 in graphics |
@@ -1348,7 +1348,7 @@ package sections above; step numbers refer to section 16.
 |---|---|---|---|
 | 1 | discrete | 2 (graphs) | Done 2026-11-26. Step 8. Check every algorithm against brute force on small graphs. |
 | 2 | numtheory | 1 to 3 | Done 2026-11-26. Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
-| 3 | stats | 4 and 5 | Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
+| 3 | stats | 4 and 5 | Done 2026-11-26. Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
 | 4 | discrete | 5 (linear programming, matrix games) | Step 10. Check each optimum by its dual. |
 | 5 | current libraries | section 13 leftovers | linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
 | 6 | finance | 5 and 6 | |
