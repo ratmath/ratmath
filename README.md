@@ -48,6 +48,30 @@ bun run test:plugin plot    # one RiX plugin and the tests that load it
 
 `bun run test` is an alias for `test:suite`. Direct `bun test` remains the
 comprehensive automatic-discovery check; the root `bunfig.toml` only excludes
-the ignored `tmp/` diagnostics directory. The named profiles are preferable in
+the ignored `tmp/` diagnostics directory and the copies that Shelf libraries
+vendor for standalone use (`shelf/*/vendor/`). The named profiles are preferable in
 scripts because they execute repositories sequentially and identify the one
 that failed.
+
+## RatMath Shelf
+
+The RatMath Shelf is the family of subject libraries built on Core. Each one is
+its own public repository and npm package under `@ratmath/`, pinned here as a
+submodule in `shelf/`:
+
+| Library | npm | What it does |
+|---------|-----|--------------|
+| [`shelf/algebraic`](https://github.com/ratmath/algebraic) | `@ratmath/algebraic` | Exact algebraic numbers, polynomial factoring, Galois groups, number and finite fields |
+| [`shelf/analytic`](https://github.com/ratmath/analytic) | `@ratmath/analytic` | Certified calculus: values, ranges, integrals, zeros, limits, Taylor models, ODE steps |
+| [`shelf/linalg`](https://github.com/ratmath/linalg) | `@ratmath/linalg` | Exact rational linear algebra with float previews that sharpen to exact |
+| [`shelf/graphics`](https://github.com/ratmath/graphics) | `@ratmath/graphics` | Certified plots, regions and exact geometry, exported to SVG, TikZ, PDF and PNG |
+
+The layers are: Core (`packages/core`) holds the number types, the Shelf holds
+the subjects, and RiX is the language that calls them. Apps sit on top.
+
+Some Shelf libraries vendor their siblings as submodules (graphics vendors
+analytic and algebraic; linalg vendors algebraic) so they build on their own.
+In this umbrella those copies are not used: Bun only reads the root
+`workspaces`, so every library links to the sibling in `shelf/`. The umbrella
+pins are the set that has to work together; bump them here.
+

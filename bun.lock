@@ -46,18 +46,12 @@
         "ratcalc": "workspace:*",
       },
     },
-    "packages/analytic": {
-      "name": "@ratmath/analytic",
-      "version": "0.1.0",
-      "dependencies": {
-        "@ratmath/core": "^0.8.0",
-      },
-    },
     "packages/core": {
       "name": "@ratmath/core",
-      "version": "0.8.0",
+      "version": "0.10.0",
       "devDependencies": {
         "bun-types": "1.3.14",
+        "katex": "0.19.1",
       },
     },
     "rix": {
@@ -79,6 +73,49 @@
       "devDependencies": {
         "@lezer/generator": "^1.8.0",
         "marked": "^15.0.12",
+      },
+    },
+    "shelf/algebraic": {
+      "name": "@ratmath/algebraic",
+      "version": "0.1.0",
+      "dependencies": {
+        "@ratmath/core": "^0.10.0",
+      },
+      "devDependencies": {
+        "katex": "0.19.1",
+      },
+    },
+    "shelf/analytic": {
+      "name": "@ratmath/analytic",
+      "version": "0.1.0",
+      "dependencies": {
+        "@ratmath/core": "^0.10.0",
+      },
+      "devDependencies": {
+        "katex": "0.19.1",
+      },
+    },
+    "shelf/graphics": {
+      "name": "@ratmath/graphics",
+      "version": "0.1.0",
+      "dependencies": {
+        "@ratmath/algebraic": "workspace:*",
+        "@ratmath/analytic": "workspace:*",
+        "@ratmath/core": "^0.10.0",
+      },
+      "devDependencies": {
+        "katex": "0.19.1",
+      },
+    },
+    "shelf/linalg": {
+      "name": "@ratmath/linalg",
+      "version": "0.1.0",
+      "dependencies": {
+        "@ratmath/algebraic": "^0.1.0",
+        "@ratmath/core": "^0.10.0",
+      },
+      "devDependencies": {
+        "katex": "0.19.1",
       },
     },
   },
@@ -109,9 +146,15 @@
 
     "@protobi/exceljs": ["@protobi/exceljs@4.4.0-protobi.10", "", { "dependencies": { "archiver": "^7.0.1", "dayjs": "^1.8.34", "fast-csv": "^4.3.1", "jszip": "^3.10.1", "readable-stream": "^3.6.0", "saxes": "^5.0.1", "tmp": "^0.2.0", "unzipper": "^0.10.11", "uuid": "^9.0.1" } }, "sha512-HqDMG0gUmmHqxnGo8djHZSNYg53Y+OR/vrU9sBJQTzop2yN0SZRxxU4eme6j+7kUo5ywMl6Z+oPjTV40G0cOZA=="],
 
-    "@ratmath/analytic": ["@ratmath/analytic@workspace:packages/analytic"],
+    "@ratmath/algebraic": ["@ratmath/algebraic@workspace:shelf/algebraic"],
+
+    "@ratmath/analytic": ["@ratmath/analytic@workspace:shelf/analytic"],
 
     "@ratmath/core": ["@ratmath/core@workspace:packages/core"],
+
+    "@ratmath/graphics": ["@ratmath/graphics@workspace:shelf/graphics"],
+
+    "@ratmath/linalg": ["@ratmath/linalg@workspace:shelf/linalg"],
 
     "@ratmath/rix": ["@ratmath/rix@workspace:rix"],
 
@@ -170,6 +213,8 @@
     "color-convert": ["color-convert@2.0.1", "", { "dependencies": { "color-name": "~1.1.4" } }, "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="],
 
     "color-name": ["color-name@1.1.4", "", {}, "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="],
+
+    "commander": ["commander@15.1.0", "", {}, "sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ=="],
 
     "compress-commons": ["compress-commons@6.0.2", "", { "dependencies": { "crc-32": "^1.2.0", "crc32-stream": "^6.0.0", "is-stream": "^2.0.1", "normalize-path": "^3.0.0", "readable-stream": "^4.0.0" } }, "sha512-6FqVXeETqWPoGcfzrXb37E50NP0LXT8kAMu5ooZayhWWdgEY4lBEEcbQNXtkuKQsGduxiIcI4gOTsxTmuq/bSg=="],
 
@@ -234,6 +279,8 @@
     "jackspeak": ["jackspeak@3.4.3", "", { "dependencies": { "@isaacs/cliui": "^8.0.2" }, "optionalDependencies": { "@pkgjs/parseargs": "^0.11.0" } }, "sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw=="],
 
     "jszip": ["jszip@3.10.2", "", { "dependencies": { "lie": "~3.3.0", "pako": "~1.0.2", "readable-stream": "~2.3.6", "setimmediate": "^1.0.5" } }, "sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ=="],
+
+    "katex": ["katex@0.19.1", "", { "dependencies": { "commander": "^15.0.0" }, "bin": { "katex": "cli.js" } }, "sha512-jG8uKntjSEcm2EpQOh0XturpPuuC9r3Sq5HLHdsFdWZT27E672SF19QEi+of0/YeOy15lDgRhKvr5614uRrEfA=="],
 
     "lazystream": ["lazystream@1.0.1", "", { "dependencies": { "readable-stream": "^2.0.5" } }, "sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw=="],
 
@@ -367,6 +414,8 @@
 
     "@protobi/exceljs/saxes": ["saxes@5.0.1", "", { "dependencies": { "xmlchars": "^2.2.0" } }, "sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw=="],
 
+    "@ratmath/rix/@ratmath/core": ["@ratmath/core@0.8.0", "", {}, "sha512-fNGxYTereQMpJBJPEAHAcpAPOLLmZr1SSJ4rDvfF//E5ZJ73Nmy5JLuGmNpKIPK5FJPHGsPmCOirymI/zgLB2w=="],
+
     "@types/bun/bun-types": ["bun-types@1.3.5", "", { "dependencies": { "@types/node": "*" } }, "sha512-inmAYe2PFLs0SUbFOWSVD24sg1jFlMPxOjOSSCYqUgn4Hsc3rDc7dFvfVYjFPNHtov6kgUeulV4SxbuIV/stPw=="],
 
     "archiver/readable-stream": ["readable-stream@4.7.0", "", { "dependencies": { "abort-controller": "^3.0.0", "buffer": "^6.0.3", "events": "^3.3.0", "process": "^0.11.10", "string_decoder": "^1.3.0" } }, "sha512-oIGGmcpTLwPga8Bn6/Z75SVaH1z5dUut2ibSyAMVhmUggWpmDn2dapB0n7f8nwaSiRtepAsfJyfXIO5DCVAODg=="],
@@ -384,6 +433,8 @@
     "jszip/readable-stream": ["readable-stream@2.3.8", "", { "dependencies": { "core-util-is": "~1.0.0", "inherits": "~2.0.3", "isarray": "~1.0.0", "process-nextick-args": "~2.0.0", "safe-buffer": "~5.1.1", "string_decoder": "~1.1.1", "util-deprecate": "~1.0.1" } }, "sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA=="],
 
     "lazystream/readable-stream": ["readable-stream@2.3.8", "", { "dependencies": { "core-util-is": "~1.0.0", "inherits": "~2.0.3", "isarray": "~1.0.0", "process-nextick-args": "~2.0.0", "safe-buffer": "~5.1.1", "string_decoder": "~1.1.1", "util-deprecate": "~1.0.1" } }, "sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA=="],
+
+    "ratforge/@ratmath/core": ["@ratmath/core@0.8.0", "", {}, "sha512-fNGxYTereQMpJBJPEAHAcpAPOLLmZr1SSJ4rDvfF//E5ZJ73Nmy5JLuGmNpKIPK5FJPHGsPmCOirymI/zgLB2w=="],
 
     "rimraf/glob": ["glob@7.2.3", "", { "dependencies": { "fs.realpath": "^1.0.0", "inflight": "^1.0.4", "inherits": "2", "minimatch": "^3.1.1", "once": "^1.3.0", "path-is-absolute": "^1.0.0" } }, "sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q=="],
 

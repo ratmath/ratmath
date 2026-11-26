@@ -29,5 +29,14 @@
 	path = julia-port
 	url = git@github.com:ratmath/RatMathCore.jl.git
 [submodule "packages/analytic"]
-	path = packages/analytic
+	path = shelf/analytic
 	url = git@github.com:ratmath/analytic.git
+[submodule "shelf/linalg"]
+	path = shelf/linalg
+	url = git@github.com:ratmath/linalg.git
+[submodule "shelf/algebraic"]
+	path = shelf/algebraic
+	url = git@github.com:ratmath/algebraic.git
+[submodule "shelf/graphics"]
+	path = shelf/graphics
+	url = git@github.com:ratmath/graphics.git
