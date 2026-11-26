@@ -468,7 +468,7 @@ structures packages.
 | 5 | Regression and analysis of variance (built 2026-11-26) | 1,100 |
 | 6 | Rank tests, permutation tests, the bootstrap (built 2026-11-26) | 700 |
 | 7 | Markov chains; conjugate Bayesian updating (built 2026-11-26) | 700 |
-| 8 | Graphics hooks | 800 in graphics |
+| 8 | Graphics hooks (built 2026-11-26) | 800 in graphics |
 
 Phases 1 to 3 already make the exploration James describes possible for the
 exact tests; phases 4 and 5 bring in the tests and regressions most courses
@@ -577,7 +577,7 @@ The statistics package depends on this one, not the other way round.
 | 6 | Combinatorial, extensive-form and cooperative games; voting (built 2026-11-26) | 1,000 |
 | 7 | Sets, relations, partial orders; Pólya counting (built 2026-11-26) | 600 |
 | 8 | Codes and designs (built 2026-11-26) | 700 |
-| 9 | Graph drawing | 900 in graphics |
+| 9 | Graph drawing (built 2026-11-26) | 900 in graphics |
 
 ## 8. A logic package: `@ratmath/logic`
 
@@ -664,7 +664,7 @@ Depends on core only. The discrete package depends on it for Boolean functions.
 | 5 | Modal logic (built 2026-11-26) | 500 |
 | 6 | Ordinals, cardinals, Peano arithmetic, Gödel numbering | 500 |
 | 7 | Automata, grammars, Turing machines (built 2026-11-26) | 1,000 |
-| 8 | Pictures | 500 in graphics |
+| 8 | Pictures (built 2026-11-26) | 500 in graphics |
 
 ## 9. A symbolic algebra package: `@ratmath/symbolic`
 
@@ -807,7 +807,7 @@ Depends on core, analytic (enclosures, the validated solver), algebraic
 | 3 | Maps of the plane; flows, sections, periodic orbits, bifurcations | 1,300 |
 | 4 | Iterated function systems, Cantor sets, dimensions, L-systems, cellular automata (built 2026-11-26) | 900 |
 | 5 | Julia and Mandelbrot sets, Newton basins (built 2026-11-26) | 600 |
-| 6 | Pictures | 1,000 in graphics |
+| 6 | Pictures (built 2026-11-26) | 1,000 in graphics |
 
 ## 11. A geometry package: `@ratmath/geo`
 
@@ -824,8 +824,11 @@ this package re-exports and extends it.
 
 As built (2026-11-26), phases 1 and 2 stand on core and algebraic alone, with
 their own plane kernel over all real algebraic numbers (graphics stops at
-Q(√d), which is not enough for an incentre). Joining the two kernels is left
-for the pictures phase, when geo first needs graphics.
+Q(√d), which is not enough for an incentre). The two kernels were joined in
+the pictures phase (2026-11-26): `toGraphics` turns a geo point, line,
+circle or polygon into graphics' exact object when its coordinates lie in
+some Q(√d) (and refuses otherwise), and `fromGraphics` reads graphics'
+objects back, so the two kernels agree exactly on what they share.
 
 ### 11.2 Scope
 
@@ -888,7 +891,7 @@ the hyperbolic models; analytic for enclosures.
 | 4 | Projective and finite geometries (built 2026-11-26) | 1,000 |
 | 5 | Solids, symmetry groups, friezes, wallpaper groups, tilings (built 2026-11-26) | 1,300 |
 | 6 | General proofs of theorems by elimination | 800 |
-| 7 | Pictures | 1,000 in graphics |
+| 7 | Pictures (built 2026-11-26) | 1,000 in graphics |
 
 ## 12. A finance package: `@ratmath/finance`
 
@@ -974,7 +977,7 @@ need only core and analytic.
 | 4 | Scenarios, exact projection, comparison and sensitivity (built 2026-11-26) | 700 |
 | 5 | Uncertain inputs and repeated runs (built 2026-11-26) | 800 |
 | 6 | Portfolios, options, life contingencies (built 2026-11-26) | 1,100 |
-| 7 | Pictures | 500 in graphics |
+| 7 | Pictures (built 2026-11-26) | 500 in graphics |
 
 ## 13. Extensions of the current libraries
 
@@ -991,8 +994,9 @@ Built 2026-11-26 in analytic: `firstOrder`, `exactEquation`, `linearODE`,
 `seriesSolution`, `sturmLiouville`, `heat`, `wave`, `laplaceRectangle` and
 `laplaceDisc`. Step and impulse inputs (`heaviside`, `dirac`,
 `laplaceSolve` verified piece by piece) and `linearSystem` beyond 2 by 2
-were built 2026-11-26. Still open: a proven remainder for series solutions,
-and the pictures in graphics.
+were built 2026-11-26, and the pictures in graphics (phase portraits,
+animated solutions) on 2026-11-26. Still open: a proven remainder for series
+solutions.
 
 
 Analytic has validated solutions of initial and boundary value problems.
@@ -1027,14 +1031,15 @@ Missing is most of what a course does around them.
 | Linear and nonlinear systems, stability | analytic and linalg | 700 |
 | Series solutions, Sturm–Liouville | analytic | 900 |
 | Heat, wave, Laplace by separation of variables | analytic | 900 |
-| Phase portraits, direction of flow, animated solutions | graphics | 800 |
+| Phase portraits, direction of flow, animated solutions (built 2026-11-26) | graphics | 800 |
 
 ### 13.2 Differential geometry (analytic, graphics)
 
 Built 2026-11-26 in analytic (`@ratmath/analytic/geometry`): curves,
 surfaces with their fundamental forms and curvatures, geodesics, parallel
-transport and Gauss–Bonnet as a checked statement. Still open: the pictures
-in graphics.
+transport and Gauss–Bonnet as a checked statement. The pictures in graphics
+(a frame moving along a curve, surfaces coloured by curvature, curves on
+surfaces) were built 2026-11-26.
 
 
 A subpath of analytic (`@ratmath/analytic/geometry`), built on its fields,
@@ -1062,7 +1067,7 @@ partial derivatives and certified integrals, with the pictures in graphics.
 | Curves | analytic | 500 |
 | Surfaces, fundamental forms, curvatures | analytic | 600 |
 | Geodesics, transport, Gauss–Bonnet | analytic | 500 |
-| Pictures | graphics | 700 |
+| Pictures (built 2026-11-26) | graphics | 700 |
 
 ### 13.3 Numerical analysis for teaching (analytic, linalg, core, graphics)
 
@@ -1072,7 +1077,8 @@ quadrature rules, and methods for differential equations, each beside its
 true error. The iterative and eigenvalue methods in linalg (`methods`:
 Jacobi, Gauss–Seidel, SOR, conjugate gradients, power and inverse
 iteration, unshifted QR, pivoting) were built 2026-11-26, each with its
-exact error. Still open: the pictures in graphics.
+exact error. The pictures in graphics (Newton steps, interpolation error,
+quadrature rules, stability regions, convergence plots) were built 2026-11-26.
 
 
 The libraries avoid the classical methods on purpose: they return proven
@@ -1111,7 +1117,7 @@ estimate, at every step.
 | Root finding, interpolation, quadrature, differentiation | analytic (`@ratmath/analytic/methods`) | 1,400 |
 | Methods for differential equations | analytic | 600 |
 | Iterative and eigenvalue methods | linalg | 800 |
-| Pictures | graphics | 500 |
+| Pictures (built 2026-11-26) | graphics | 500 |
 
 ### 13.4 Sequences and series (analytic)
 
@@ -1365,7 +1371,7 @@ package sections above; step numbers refer to section 16.
 | 11 | chaos | 4 and 5 | Done 2026-11-26. Pixels are proved inside, proved outside or undecided; checks against brute force and float orbits. |
 | 12 | geo | 4 and 5 | Done 2026-11-26. Symmetry groups are algebraic `PermGroup`s. Drawing the 11 uniform tilings is left to the pictures phase. |
 | 13 | complex | 5 | Done 2026-11-26. Exact maps and circles, picture data as `gridImage` and `sampleGrid`; drawing is left to the pictures step. |
-| 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Includes joining geo's plane kernel with graphics', deferred in 11.1. |
+| 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Done 2026-11-26 in graphics, which stays duck-typed and imports none of the packages. Geo's own pictures and the joined plane kernel are in geo phase 7, whose PR follows geo#4. |
 
 Also for Opus, at any time: keeping the Shelf page and this roadmap up to
 date, documentation fixes, typings (none of the hand-written `index.d.ts`
