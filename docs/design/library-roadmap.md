@@ -397,7 +397,7 @@ third kind, and it must never be confused with the other two:
   order statistics.
 - The law of large numbers and the central limit theorem as experiments, with
   the certified limit drawn beside the simulated histogram.
-- Markov chains through linalg: stationary distributions, absorption
+- Markov chains (exact linear algebra over the rationals, built in without linalg): stationary distributions, absorption
   probabilities and expected hitting times, exact.
 
 **Statistics.**
@@ -466,8 +466,8 @@ structures packages.
 | 3 | Seeded generation, models with noise and contamination, experiments (built 2026-11-26) | 1,300 |
 | 4 | Estimation, confidence intervals, the standard tests (built 2026-11-26) | 1,000 |
 | 5 | Regression and analysis of variance (built 2026-11-26) | 1,100 |
-| 6 | Rank tests, permutation tests, the bootstrap | 700 |
-| 7 | Markov chains; conjugate Bayesian updating | 700 |
+| 6 | Rank tests, permutation tests, the bootstrap (built 2026-11-26) | 700 |
+| 7 | Markov chains; conjugate Bayesian updating (built 2026-11-26) | 700 |
 | 8 | Graphics hooks | 800 in graphics |
 
 Phases 1 to 3 already make the exploration James describes possible for the
@@ -1360,7 +1360,7 @@ package sections above; step numbers refer to section 16.
 | 6 | finance | 5 and 6 | Done 2026-11-26. |
 | 7 | logic | 3, 4, 5, 7 | Done 2026-11-26. Phase 6 can follow. |
 | 8 | discrete | 3, 4, 6, 7, 8 | Done 2026-11-26. Brute-force checks on small cases. |
-| 9 | stats | 6 and 7 | |
+| 9 | stats | 6 and 7 | Done 2026-11-26. |
 | 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
 | 11 | chaos | 4 and 5 | |
 | 12 | geo | 4 and 5 | Take symmetry groups from algebraic's `PermGroup` until structures phase 1 exists. |
