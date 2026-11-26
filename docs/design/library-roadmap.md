@@ -736,8 +736,8 @@ it otherwise.
 | 1 | Expressions, assumptions, rewriting, three-way equality (built 2026-11-26) | 1,500 |
 | 2 | Solving equations and inequalities in one variable (built 2026-11-26) | 1,300 |
 | 3 | Antiderivatives with verification; limits; expansions (built 2026-11-26) | 1,600 |
-| 4 | Systems, trigonometric families, sums | 900 |
-| 5 | Step records for every operation | 700 |
+| 4 | Systems, trigonometric families, sums (built 2026-11-26) | 900 |
+| 5 | Step records for every operation (built 2026-11-26) | 700 |
 
 ## 10. A dynamical systems package: `@ratmath/chaos`
 
@@ -1361,7 +1361,7 @@ package sections above; step numbers refer to section 16.
 | 7 | logic | 3, 4, 5, 7 | Done 2026-11-26. Phase 6 can follow. |
 | 8 | discrete | 3, 4, 6, 7, 8 | Done 2026-11-26. Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | Done 2026-11-26. |
-| 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
+| 10 | symbolic | 4 and 5 | Done 2026-11-26. Every step record says how it was checked. |
 | 11 | chaos | 4 and 5 | |
 | 12 | geo | 4 and 5 | Take symmetry groups from algebraic's `PermGroup` until structures phase 1 exists. |
 | 13 | complex | 5 | |
