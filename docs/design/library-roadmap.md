@@ -33,7 +33,7 @@ certified value):
 | `@ratmath/algebraic` | 5,000 | Real and complex algebraic numbers; factoring over Q, number fields and finite fields; splitting fields; Galois groups to degree 7 with the correspondence; permutation groups; resultants, partial fractions; continued fractions and Pell; modular arithmetic; LLL |
 | `@ratmath/linalg` | 4,400 | Exact solving and every standard factorisation and canonical form; eigenvalues as algebraic numbers; matrix functions; inexact entries with certified results; workers; teaching forms |
 | `@ratmath/graphics` | 6,500 | Certified graphs and their features; parametric, polar, implicit; exact geometry and regions (conics exactly); calculus pictures; surfaces and space curves; animation; SVG, PNG, PDF, TikZ |
-| `@ratmath/structures` | 1,900 | First part only: polynomials in several variables over any exact field, division, gcd, factoring over Q, resultants and discriminants, rational functions, symmetric polynomials |
+| `@ratmath/structures` | 3,700 | Finite groups (named groups, classes, subgroups, quotients, Sylow, homomorphisms, isomorphism tests, actions and orbit counting); polynomials in several variables over any exact field, division, gcd, factoring over Q, resultants and discriminants, rational functions, symmetric polynomials |
 | `ratmath/rust` | | Rust kernels (WASM and C ABI) for the hot loops |
 
 **RiX plugins** (in `ratmath/rix`, written mostly in RiX itself, loaded with
@@ -346,7 +346,7 @@ of higher degree later need Schreier–Sims, only that kernel moves down.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Named groups, tables, classes, quotients, Sylow, homomorphisms, actions and counting | 1,800 |
+| 1 | Named groups, tables, classes, quotients, Sylow, homomorphisms, actions and counting (built 2026-11-26) | 1,800 |
 | 2 | Several-variable polynomials (built 2026-11-25) | 900 |
 | 3 | Rings, ideals, quotients, the quadratic integer rings | 1,000 |
 | 4 | Gröbner bases, elimination, polynomial systems | 1,200 |
@@ -1384,7 +1384,9 @@ Not on the list above, recommended for Fable:
 - complex phases 3, 4 and 6 (step 11).
 - chaos phase 3.
 - geo phases 3 and 6.
-- All remaining structures phases: 1 and 3 (step 9), then 4 to 7.
+- All remaining structures phases: 1 and 3 (step 9), then 4 to 7. Phase 1 built
+  2026-11-26 (ratmath/structures#2); Pólya counting stays in discrete, fed by
+  `Action#toPermGroup()`.
 - numtheory phases 4 to 7.
 - A proven remainder for series solutions (13.1).
 
