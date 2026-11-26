@@ -21,7 +21,7 @@
         "rix": "bun run ./rix/bin/rix.js"
     },
     "workspaces": [
-        "packages/*",
+        "core",
         "shelf/*",
         "apps/*",
         "rix"

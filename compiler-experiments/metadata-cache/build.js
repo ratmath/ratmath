@@ -15,12 +15,12 @@ export async function inventory(dir,base=dir) {
  }
  return output;
 }
-const original={core:await inventory(resolve(root,'packages/core/src')),rix:await inventory(resolve(root,'rix/src')),plugins:await inventory(resolve(root,'rix/plugins'))};
+const original={core:await inventory(resolve(root, 'core/src')),rix:await inventory(resolve(root,'rix/src')),plugins:await inventory(resolve(root,'rix/plugins'))};
 const paths={};
 for(const variant of ['baseline','cached']) {
  const env=resolve(here,'tmp',variant),core=resolve(env,'packages/core'),rix=resolve(env,'rix');
  await rm(env,{recursive:true,force:true}); await mkdir(core,{recursive:true});await mkdir(rix,{recursive:true});
- for(const f of ['src','tests','index.js','index.d.ts','package.json'])await cp(resolve(root,'packages/core',f),resolve(core,f),{recursive:true});
+ for(const f of ['src','tests','index.js','index.d.ts','package.json'])await cp(resolve(root, 'core',f),resolve(core,f),{recursive:true});
  for(const f of ['src','tests','plugins','examples','bin','package.json'])await cp(resolve(root,'rix',f),resolve(rix,f),{recursive:true});
  await mkdir(resolve(env,'node_modules/@ratmath'),{recursive:true});await symlink('../../packages/core',resolve(env,'node_modules/@ratmath/core'));
  for(const e of await readdir(resolve(root,'node_modules'),{withFileTypes:true}))if(!['@ratmath','.bin'].includes(e.name))await symlink(resolve(root,'node_modules',e.name),resolve(env,'node_modules',e.name));
@@ -62,7 +62,7 @@ for(const variant of ['baseline','cached']) {
  paths[variant]={env,core,rix,coreSource:await inventory(resolve(core,'src')),rixSource:await inventory(resolve(rix,'src'))};
  assert.deepEqual(paths[variant].coreSource,original.core);
 }
-for(const [group,path] of [['core','packages/core/src'],['rix','rix/src'],['plugins','rix/plugins']])assert.deepEqual(await inventory(resolve(root,path)),original[group],'Production changed during build');
+for(const [group,path] of [['core','core/src'],['rix','rix/src'],['plugins','rix/plugins']])assert.deepEqual(await inventory(resolve(root,path)),original[group],'Production changed during build');
 await mkdir(resolve(here,'results'),{recursive:true});
 const report={timestamp:new Date().toISOString(),sourceRoot:root,original,paths};
 await writeFile(resolve(here,'tmp/build.json'),JSON.stringify(report,null,2)+'\n');

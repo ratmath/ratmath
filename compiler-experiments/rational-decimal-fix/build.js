@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { patch } from './patch.js';
 const here=dirname(fileURLToPath(import.meta.url));
 const root=resolve(process.argv.find(a=>a.startsWith('--root='))?.slice(7)||resolve(here,'../..'));
-const core=resolve(root,'packages/core');
+const core=resolve(root, 'core');
 const coreRef=process.argv.find(a=>a.startsWith('--core-ref='))?.slice(11)||'b2554fb';
 const experimental=resolve(root,'compiler-experiments/integer-dispatch/tmp/comparisons/packages/core');
 const tmp=resolve(here,'tmp');

@@ -7,7 +7,7 @@ import { fileURLToPath,pathToFileURL } from 'node:url';
 const here=dirname(fileURLToPath(import.meta.url));
 const root=process.env.RATMATH_ROOT||resolve(here,'../..');
 const variant=process.argv.includes('--fast')?'experimental':'production';
-let rixRoot=resolve(root,'rix'),coreRoot=resolve(root,'packages/core');
+let rixRoot=resolve(root,'rix'),coreRoot=resolve(root, 'core');
 if(variant==='experimental') {
  const manifest=JSON.parse(await readFile(resolve(root,'compiler-experiments/integer-dispatch/tmp/build.json')));
  ({rix:rixRoot,core:coreRoot}=manifest.paths.comparisons);

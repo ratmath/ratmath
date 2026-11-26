@@ -16,14 +16,14 @@ async function inventory(folder, base = folder) {
   return Object.fromEntries(entries);
 }
 export async function build() {
-  const original = { core: await inventory(resolve(root, 'packages/core/src')), coreTests: await inventory(resolve(root, 'packages/core/tests')), rix: await inventory(resolve(root, 'rix/src')), plugins: await inventory(resolve(root, 'rix/plugins')) };
+  const original = { core: await inventory(resolve(root, 'core/src')), coreTests: await inventory(resolve(root, 'core/tests')), rix: await inventory(resolve(root, 'rix/src')), plugins: await inventory(resolve(root, 'rix/plugins')) };
   const reduced = await readFile(resolve(root, 'compiler-experiments/core-arithmetic/reduced.js'), 'utf8');
   const paths = {};
   for (const variant of variants) {
     const env = resolve(here, 'tmp', variant), core = resolve(env, 'packages/core'), rix = resolve(env, 'rix');
     await rm(env, { recursive: true, force: true });
     await mkdir(core, { recursive: true }); await mkdir(rix, { recursive: true });
-    for (const name of ['src', 'tests', 'index.js', 'index.d.ts', 'package.json']) await cp(resolve(root, 'packages/core', name), resolve(core, name), { recursive: true });
+    for (const name of ['src', 'tests', 'index.js', 'index.d.ts', 'package.json']) await cp(resolve(root, 'core', name), resolve(core, name), { recursive: true });
     for (const name of ['src', 'tests', 'bin', 'plugins', 'package.json']) await cp(resolve(root, 'rix', name), resolve(rix, name), { recursive: true });
     await mkdir(resolve(env, 'node_modules/@ratmath'), { recursive: true });
     await symlink('../../packages/core', resolve(env, 'node_modules/@ratmath/core'));

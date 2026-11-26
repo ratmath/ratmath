@@ -47,8 +47,8 @@ function sourceHash() {
       }
     }
   }
-  for (const dir of ['rix/src', 'rix/plugins', 'packages/core/src']) visit(resolve(root, dir));
-  return { sha256: hash.digest('hex'), files, paths: ['rix/src', 'rix/plugins', 'packages/core/src'], extensions: ['.js', '.rix'] };
+  for (const dir of ['rix/src', 'rix/plugins', 'core/src']) visit(resolve(root, dir));
+  return { sha256: hash.digest('hex'), files, paths: ['rix/src', 'rix/plugins', 'core/src'], extensions: ['.js', '.rix'] };
 }
 const startedAt = new Date().toISOString();
 const workloads = buildWorkloads(config.count);
@@ -92,7 +92,7 @@ const report = {
     command: [process.execPath, ...process.argv.slice(1)], root },
   provenance: { rootHead: git(root, 'rev-parse', 'HEAD'), rootStatus: git(root, 'status', '--short'),
     rixHead: git(resolve(root, 'rix'), 'rev-parse', 'HEAD'), rixStatus: git(resolve(root, 'rix'), 'status', '--short'),
-    coreHead: git(resolve(root, 'packages/core'), 'rev-parse', 'HEAD'), coreStatus: git(resolve(root, 'packages/core'), 'status', '--short'),
+    coreHead: git(resolve(root, 'core'), 'rev-parse', 'HEAD'), coreStatus: git(resolve(root, 'core'), 'status', '--short'),
     sourceHash: sourceHash(), experimentHash: Object.fromEntries(['runtime.js', 'compile.js', 'wasm.js', 'workloads.js', 'bench.js', 'verify.js'].map((name) =>
       [name, createHash('sha256').update(readFileSync(resolve(here, name))).digest('hex')])),
     currentCompiler: 'Removed by user; runtime translation is a recreated experiment, not previous compiler output.' },

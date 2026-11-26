@@ -50,7 +50,7 @@ async function instrument(env) {
 }
 export async function build() {
   const base=JSON.parse(await readFile(resolve(here,'../polynomial-core/tmp/build.json'),'utf8'));
-  for(const [group,dir] of [['core','packages/core/src'],['rix','rix/src'],['plugins','rix/plugins'],['coreTests','packages/core/tests']])
+  for(const [group,dir] of [['core','core/src'],['rix','rix/src'],['plugins','rix/plugins'],['coreTests','core/tests']])
     assert.deepEqual(await inventory(resolve(base.sourceRoot,dir)),clean(base.original[group]),`Rebuild earlier core experiments: ${group} changed`);
   assert.deepEqual(await inventory(resolve(base.core,'src')),base.coreSource,'Polynomial core copy changed');
   assert.deepEqual(await inventory(resolve(base.rix,'src')),base.rixSource,'Polynomial RiX copy changed');

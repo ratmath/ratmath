@@ -16,7 +16,7 @@ async function inventory(folder,base=folder){
 function replace(s,a,b){assert.ok(s.includes(a),`Missing patch anchor: ${a.slice(0,70)}`);return s.replace(a,b);}
 export async function build(){
  const base=JSON.parse(await readFile(resolve(here,'../interpreter-overhead/tmp/build.json'),'utf8')),source=base.paths.literals;
- for(const [g,p]of [['core','packages/core/src'],['rix','rix/src'],['coreTests','packages/core/tests'],['plugins','rix/plugins'],['cliExamples','rix/examples/plugins']])
+ for(const [g,p]of [['core','core/src'],['rix','rix/src'],['coreTests','core/tests'],['plugins','rix/plugins'],['cliExamples','rix/examples/plugins']])
   assert.deepEqual(await inventory(resolve(base.sourceRoot,p)),clean(base.original[g]),`Production changed: ${g}; rebuild preceding experiments`);
  assert.deepEqual(await inventory(resolve(source.core,'src')),source.coreSource);assert.deepEqual(await inventory(resolve(source.rix,'src')),source.rixSource);
  const paths={};

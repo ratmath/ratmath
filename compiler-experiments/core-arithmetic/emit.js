@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import { root } from '../runtime.js';
 export async function emitSnapshots() {
-  const original = await readFile(resolve(root, 'packages/core/src/rational.js'), 'utf8');
+  const original = await readFile(resolve(root, 'core/src/rational.js'), 'utf8');
   const baseline = original.replace('"./base-system.js"', '"../support.js"').replace('"./bigint.js"', '"../support.js"');
   let candidate = baseline;
   const helpers = `
@@ -39,7 +39,7 @@ export async function emitSnapshots() {
   await writeFile(new URL('baseline-rational.js', folder), baseline);
   await writeFile(new URL('candidate-rational.js', folder), candidate);
   const hash = s => createHash('sha256').update(s).digest('hex');
-  const metadata = { source: 'packages/core/src/rational.js', originalHash: hash(original), baselineHash: hash(baseline), candidateHash: hash(candidate),
+  const metadata = { source: 'core/src/rational.js', originalHash: hash(original), baselineHash: hash(baseline), candidateHash: hash(candidate),
     changes: ['Imports redirected to experiment support', 'Candidate overrides four arithmetic methods for Integer/Rational pairs', 'Private fromReduced factory allocates a zero Rational and sets proven canonical fields; lazy caches start empty'],
     warning: 'Snapshot classes are distinct from production Rational. These are prototypes for changes inside core, not drop-in objects for the current core API.' };
   await writeFile(new URL('snapshot.json', folder), JSON.stringify(metadata, null, 2) + '\n');

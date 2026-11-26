@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {manifest,here} from './load.js';
 const sha=s=>createHash('sha256').update(s).digest('hex');
 async function inventory(dir,base=dir){const out={};for(const e of await readdir(dir,{withFileTypes:true})){if(e.name==='.DS_Store')continue;const p=resolve(dir,e.name);if(e.isDirectory())Object.assign(out,await inventory(p,base));else if(e.isFile())out[relative(base,p)]=sha(await readFile(p));}return out;}
-for(const [group,path]of [['core','packages/core/src'],['rix','rix/src'],['plugins','rix/plugins']])assert.deepEqual(await inventory(resolve(manifest.sourceRoot,path)),manifest.original[group],'Production source changed');
+for(const [group,path]of [['core','core/src'],['rix','rix/src'],['plugins','rix/plugins']])assert.deepEqual(await inventory(resolve(manifest.sourceRoot,path)),manifest.original[group],'Production source changed');
 assert.deepEqual(manifest.paths.baseline.coreSource,manifest.paths.cached.coreSource,'Identical production arithmetic required');
 const a=manifest.paths.baseline.rixSource,b=manifest.paths.cached.rixSource;
 const changed=[...new Set([...Object.keys(a),...Object.keys(b)])].filter(k=>a[k]!==b[k]).sort();
