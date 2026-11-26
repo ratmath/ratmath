@@ -68,7 +68,7 @@
         "@lezer/common": "^1.5.2",
         "@lezer/highlight": "^1.2.3",
         "@lezer/lr": "^1.4.10",
-        "@ratmath/core": "^0.8.0",
+        "@ratmath/core": "^0.10.0",
       },
       "devDependencies": {
         "@lezer/generator": "^1.8.0",
@@ -545,8 +545,6 @@
     "@fast-csv/parse/@types/node": ["@types/node@14.18.63", "", {}, "sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ=="],
 
     "@protobi/exceljs/saxes": ["saxes@5.0.1", "", { "dependencies": { "xmlchars": "^2.2.0" } }, "sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw=="],
-
-    "@ratmath/rix/@ratmath/core": ["@ratmath/core@0.8.0", "", {}, "sha512-fNGxYTereQMpJBJPEAHAcpAPOLLmZr1SSJ4rDvfF//E5ZJ73Nmy5JLuGmNpKIPK5FJPHGsPmCOirymI/zgLB2w=="],
 
     "@types/bun/bun-types": ["bun-types@1.3.5", "", { "dependencies": { "@types/node": "*" } }, "sha512-inmAYe2PFLs0SUbFOWSVD24sg1jFlMPxOjOSSCYqUgn4Hsc3rDc7dFvfVYjFPNHtov6kgUeulV4SxbuIV/stPw=="],
 
