@@ -179,8 +179,8 @@ constants), and optionally on algebraic for conversions.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Exact complex rationals, rectangles and discs, polar form, elementary functions with branch reporting | 1,400 |
-| 2 | Cayley–Dickson numbers, quaternion rotations, integer quaternions | 700 |
+| 1 | Exact complex rationals, rectangles and discs, polar form, elementary functions with branch reporting (built 2026-11-26) | 1,400 |
+| 2 | Cayley–Dickson numbers, quaternion rotations, integer quaternions (built 2026-11-26) | 700 |
 | 3 | Complex Taylor models; contour integrals; argument principle and zero isolation | 2,200 |
 | 4 | Residues, Laurent series, singularities, real integrals by residues | 800 |
 | 5 | Möbius and conformal maps; graphics hooks | 600 plus 800 in graphics |
@@ -730,7 +730,7 @@ it otherwise.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Expressions, assumptions, rewriting, three-way equality | 1,500 |
+| 1 | Expressions, assumptions, rewriting, three-way equality (built 2026-11-26) | 1,500 |
 | 2 | Solving equations and inequalities in one variable | 1,300 |
 | 3 | Antiderivatives with verification; limits; expansions | 1,600 |
 | 4 | Systems, trigonometric families, sums | 900 |
@@ -1199,9 +1199,9 @@ one package because they do not depend on each other.
 1. **Done 2026-11-25.** Several-variable polynomials (section 5, phase 2),
    because linalg's symbolic parameters, graphics' higher curves, the
    symbolic package and geometric proofs all wait on them.
-2. Symbolic phase 1 (expressions, rewriting, equality), because the solving
+2. **Done 2026-11-26.** Symbolic phase 1 (expressions, rewriting, equality), because the solving
    and step-by-step features of several later sections use it.
-3. Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
+3. **Done 2026-11-26.** Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
    Self-contained, and they settle the exact complex type that linalg's
    complex entries, the hyperbolic models and the Julia sets need.
 4. Discrete phase 1 (counting, enumeration, the seeded generator), because
