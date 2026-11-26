@@ -656,11 +656,11 @@ Depends on core only. The discrete package depends on it for Boolean functions.
 |---|---|---|
 | 1 | Propositional formulas, tables, normal forms, satisfiability, simplification (built 2026-11-26) | 900 |
 | 2 | Proof checkers, rule sets, proof search and hints (built 2026-11-26) | 1,200 |
-| 3 | Predicate logic: syntax, finite models, model search, quantifier rules | 1,100 |
-| 4 | Circuits, Karnaugh maps, syllogisms | 400 |
-| 5 | Modal logic | 500 |
+| 3 | Predicate logic: syntax, finite models, model search, quantifier rules (built 2026-11-26) | 1,100 |
+| 4 | Circuits, Karnaugh maps, syllogisms (built 2026-11-26) | 400 |
+| 5 | Modal logic (built 2026-11-26) | 500 |
 | 6 | Ordinals, cardinals, Peano arithmetic, Gödel numbering | 500 |
-| 7 | Automata, grammars, Turing machines | 1,000 |
+| 7 | Automata, grammars, Turing machines (built 2026-11-26) | 1,000 |
 | 8 | Pictures | 500 in graphics |
 
 ## 9. A symbolic algebra package: `@ratmath/symbolic`
@@ -1355,7 +1355,7 @@ package sections above; step numbers refer to section 16.
 | 4 | discrete | 5 (linear programming, matrix games) | Done 2026-11-26. Step 10. Check each optimum by its dual. |
 | 5 | current libraries | section 13 leftovers | Done 2026-11-26. linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
 | 6 | finance | 5 and 6 | Done 2026-11-26. |
-| 7 | logic | 3, 4, 5, 7 | Phase 6 can follow. |
+| 7 | logic | 3, 4, 5, 7 | Done 2026-11-26. Phase 6 can follow. |
 | 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | |
 | 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
