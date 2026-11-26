@@ -805,8 +805,8 @@ Depends on core, analytic (enclosures, the validated solver), algebraic
 | 1 | Maps of the line: orbits, periodic points, stability (built 2026-11-26) | 900 |
 | 2 | Bifurcation diagrams, Lyapunov exponents, symbolic dynamics (built 2026-11-26) | 1,000 |
 | 3 | Maps of the plane; flows, sections, periodic orbits, bifurcations | 1,300 |
-| 4 | Iterated function systems, Cantor sets, dimensions, L-systems, cellular automata | 900 |
-| 5 | Julia and Mandelbrot sets, Newton basins | 600 |
+| 4 | Iterated function systems, Cantor sets, dimensions, L-systems, cellular automata (built 2026-11-26) | 900 |
+| 5 | Julia and Mandelbrot sets, Newton basins (built 2026-11-26) | 600 |
 | 6 | Pictures | 1,000 in graphics |
 
 ## 11. A geometry package: `@ratmath/geo`
@@ -1362,7 +1362,7 @@ package sections above; step numbers refer to section 16.
 | 8 | discrete | 3, 4, 6, 7, 8 | Done 2026-11-26. Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | Done 2026-11-26. |
 | 10 | symbolic | 4 and 5 | Done 2026-11-26. Every step record says how it was checked. |
-| 11 | chaos | 4 and 5 | |
+| 11 | chaos | 4 and 5 | Done 2026-11-26. Pixels are proved inside, proved outside or undecided; checks against brute force and float orbits. |
 | 12 | geo | 4 and 5 | Take symmetry groups from algebraic's `PermGroup` until structures phase 1 exists. |
 | 13 | complex | 5 | |
 | 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Includes joining geo's plane kernel with graphics', deferred in 11.1. |
