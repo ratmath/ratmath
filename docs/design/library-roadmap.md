@@ -566,7 +566,7 @@ The statistics package depends on this one, not the other way round.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Counting, enumeration with ranking, the seeded generator | 1,000 |
+| 1 | Counting, enumeration with ranking, the seeded generator (built 2026-11-26) | 1,000 |
 | 2 | Graphs: structure, traversal, paths, trees, families | 1,300 |
 | 3 | Generating functions and recurrences | 900 |
 | 4 | Matchings, flows, colouring, planarity, isomorphism, spectra | 1,600 |
@@ -654,8 +654,8 @@ Depends on core only. The discrete package depends on it for Boolean functions.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Propositional formulas, tables, normal forms, satisfiability, simplification | 900 |
-| 2 | Proof checkers, rule sets, proof search and hints | 1,200 |
+| 1 | Propositional formulas, tables, normal forms, satisfiability, simplification (built 2026-11-26) | 900 |
+| 2 | Proof checkers, rule sets, proof search and hints (built 2026-11-26) | 1,200 |
 | 3 | Predicate logic: syntax, finite models, model search, quantifier rules | 1,100 |
 | 4 | Circuits, Karnaugh maps, syllogisms | 400 |
 | 5 | Modal logic | 500 |
@@ -1204,7 +1204,7 @@ one package because they do not depend on each other.
 3. **Done 2026-11-26.** Complex phases 1 and 2 (numbers, branches, quaternions and octonions).
    Self-contained, and they settle the exact complex type that linalg's
    complex entries, the hyperbolic models and the Julia sets need.
-4. Discrete phase 1 (counting, enumeration, the seeded generator), because
+4. **Done 2026-11-26.** Discrete phase 1 (counting, enumeration, the seeded generator), because
    statistics builds on it; logic phases 1 and 2, which depend on nothing.
 5. Statistics phases 1 to 3. The most widely used subject, and enough for the
    first experiments with generated data.
