@@ -731,8 +731,8 @@ it otherwise.
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Expressions, assumptions, rewriting, three-way equality (built 2026-11-26) | 1,500 |
-| 2 | Solving equations and inequalities in one variable | 1,300 |
-| 3 | Antiderivatives with verification; limits; expansions | 1,600 |
+| 2 | Solving equations and inequalities in one variable (built 2026-11-26) | 1,300 |
+| 3 | Antiderivatives with verification; limits; expansions (built 2026-11-26) | 1,600 |
 | 4 | Systems, trigonometric families, sums | 900 |
 | 5 | Step records for every operation | 700 |
 
@@ -799,8 +799,8 @@ Depends on core, analytic (enclosures, the validated solver), algebraic
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Maps of the line: orbits, periodic points, stability | 900 |
-| 2 | Bifurcation diagrams, Lyapunov exponents, symbolic dynamics | 1,000 |
+| 1 | Maps of the line: orbits, periodic points, stability (built 2026-11-26) | 900 |
+| 2 | Bifurcation diagrams, Lyapunov exponents, symbolic dynamics (built 2026-11-26) | 1,000 |
 | 3 | Maps of the plane; flows, sections, periodic orbits, bifurcations | 1,300 |
 | 4 | Iterated function systems, Cantor sets, dimensions, L-systems, cellular automata | 900 |
 | 5 | Julia and Mandelbrot sets, Newton basins | 600 |
@@ -818,6 +818,11 @@ circles with coordinates in Q or Q(√d), intersections, reflections,
 bisectors, circumcircles, convex hulls, and exact regions bounded by lines and
 conics. By the rule of 4.3 that kernel stays in graphics, which needs it, and
 this package re-exports and extends it.
+
+As built (2026-11-26), phases 1 and 2 stand on core and algebraic alone, with
+their own plane kernel over all real algebraic numbers (graphics stops at
+Q(√d), which is not enough for an incentre). Joining the two kernels is left
+for the pictures phase, when geo first needs graphics.
 
 ### 11.2 Scope
 
@@ -874,8 +879,8 @@ the hyperbolic models; analytic for enclosures.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Euclidean plane: constructions, centres, transformations, checked theorems | 1,200 |
-| 2 | Exact computational and lattice geometry, other metrics | 1,100 |
+| 1 | Euclidean plane: constructions, centres, transformations, checked theorems (built 2026-11-26) | 1,200 |
+| 2 | Exact computational and lattice geometry, other metrics (built 2026-11-26) | 1,100 |
 | 3 | Spherical and hyperbolic models | 1,400 |
 | 4 | Projective and finite geometries | 1,000 |
 | 5 | Solids, symmetry groups, friezes, wallpaper groups, tilings | 1,300 |
@@ -960,10 +965,10 @@ need only core and analytic.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Money and rounding, day counts, time value, annuities | 700 |
-| 2 | Loans and schedules, cash flows, rates of return | 800 |
-| 3 | Bonds, rates and yield curves | 700 |
-| 4 | Scenarios, exact projection, comparison and sensitivity | 700 |
+| 1 | Money and rounding, day counts, time value, annuities (built 2026-11-26) | 700 |
+| 2 | Loans and schedules, cash flows, rates of return (built 2026-11-26) | 800 |
+| 3 | Bonds, rates and yield curves (built 2026-11-26) | 700 |
+| 4 | Scenarios, exact projection, comparison and sensitivity (built 2026-11-26) | 700 |
 | 5 | Uncertain inputs and repeated runs | 800 |
 | 6 | Portfolios, options, life contingencies | 1,100 |
 | 7 | Pictures | 500 in graphics |
@@ -977,6 +982,14 @@ Sequences and series, the theorems of vector calculus and Fourier transforms
 were added the same day (13.4 to 13.6). None of these needs a new package.
 
 ### 13.1 Differential equations (analytic, linalg, graphics)
+
+Built 2026-11-26 in analytic: `firstOrder`, `exactEquation`, `linearODE`,
+`laplace`, `inverseLaplace`, `linearSystem` (2 by 2), `planarSystem`,
+`seriesSolution`, `sturmLiouville`, `heat`, `wave`, `laplaceRectangle` and
+`laplaceDisc`. Still open: step and impulse inputs for Laplace transforms,
+linear systems larger than 2 by 2, a proven remainder for series solutions,
+and the pictures in graphics.
+
 
 Analytic has validated solutions of initial and boundary value problems.
 Missing is most of what a course does around them.
@@ -1014,6 +1027,12 @@ Missing is most of what a course does around them.
 
 ### 13.2 Differential geometry (analytic, graphics)
 
+Built 2026-11-26 in analytic (`@ratmath/analytic/geometry`): curves,
+surfaces with their fundamental forms and curvatures, geodesics, parallel
+transport and Gauss–Bonnet as a checked statement. Still open: the pictures
+in graphics.
+
+
 A subpath of analytic (`@ratmath/analytic/geometry`), built on its fields,
 partial derivatives and certified integrals, with the pictures in graphics.
 
@@ -1042,6 +1061,13 @@ partial derivatives and certified integrals, with the pictures in graphics.
 | Pictures | graphics | 700 |
 
 ### 13.3 Numerical analysis for teaching (analytic, linalg, core, graphics)
+
+Built 2026-11-26 in analytic (`@ratmath/analytic/methods`): the exact model
+of floating point, root finding, interpolation, differentiation and
+quadrature rules, and methods for differential equations, each beside its
+true error. Still open: the iterative and eigenvalue methods in linalg, and
+the pictures in graphics.
+
 
 The libraries avoid the classical methods on purpose: they return proven
 answers. That is what makes them a good place to study those methods. Each
@@ -1083,6 +1109,9 @@ estimate, at every step.
 
 ### 13.4 Sequences and series (analytic)
 
+Built 2026-11-26: `sequence`, `recursive`, `sum`, `powerSeries`,
+`taylorRemainder` and `functionSequence` in analytic.
+
 - Sequences with certified limits; monotone and bounded sequences; recursive
   sequences (shared with section 10).
 - Convergence tests as named steps (comparison, ratio, root, integral,
@@ -1099,12 +1128,21 @@ analysis.
 
 ### 13.5 The theorems of vector calculus (analytic)
 
+Built 2026-11-26: `greens`, `stokes`, `divergenceTheorem`,
+`changeOfVariables`, `potential` and `lagrange` in analytic.
+
 Green's, Stokes' and the divergence theorem as checked identities (both sides
 enclosed, and the enclosures must meet); change of variables with the Jacobian
 as a visible step; conservative fields and potentials; Lagrange multipliers,
 with every candidate point certified. About 600 lines.
 
 ### 13.6 Fourier transforms (analytic)
+
+Built 2026-11-26 in analytic (`@ratmath/analytic/transform`):
+`fourierTransform`, `inverseFourier`, `convolution`, `heatLine`, `dft`,
+`fft`, `alias` and `sample`. Formulas are given for the standard pairs only;
+other functions get certified values.
+
 
 These belong beside the Fourier series analytic already has (James,
 2026-11-25).
@@ -1208,9 +1246,9 @@ one package because they do not depend on each other.
    statistics builds on it; logic phases 1 and 2, which depend on nothing.
 5. **Done 2026-11-26.** Statistics phases 1 to 3. The most widely used subject, and enough for the
    first experiments with generated data.
-6. Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
+6. **Done 2026-11-26.** Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
    13.5. Together these finish the calculus sequence and college algebra.
-7. Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
+7. **Done 2026-11-26.** Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
    needs only what exists today, and each shows off exact arithmetic quickly.
 8. Discrete phase 2 (graphs) and number theory phases 1 to 3.
 9. Abstract algebra phases 1 and 3 (groups and rings).
