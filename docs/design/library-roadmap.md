@@ -561,19 +561,22 @@ they stay independent, and this library is added to `ratmath/rix-bridge`.
 
 Depends on core, algebraic (`PermGroup`, algebraic numbers, rational
 functions, finite fields), linalg (spectra, determinants, matrix powers) and
-logic (Boolean functions).
+logic (Boolean functions). As built (2026-11-26), linalg was not needed:
+characteristic polynomials are computed over the integers directly, and
+codes work over Z_p with their own small field arithmetic. Boolean functions
+are re-exported from logic rather than duplicated.
 The statistics package depends on this one, not the other way round.
 
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Counting, enumeration with ranking, the seeded generator (built 2026-11-26) | 1,000 |
 | 2 | Graphs: structure, traversal, paths, trees, families (built 2026-11-26) | 1,300 |
-| 3 | Generating functions and recurrences | 900 |
-| 4 | Matchings, flows, colouring, planarity, isomorphism, spectra | 1,600 |
+| 3 | Generating functions and recurrences (built 2026-11-26) | 900 |
+| 4 | Matchings, flows, colouring, planarity, isomorphism, spectra (built 2026-11-26) | 1,600 |
 | 5 | Exact linear programming; matrix and bimatrix games (built 2026-11-26) | 1,100 |
-| 6 | Combinatorial, extensive-form and cooperative games; voting | 1,000 |
-| 7 | Sets, relations, partial orders; Pólya counting | 600 |
-| 8 | Codes and designs | 700 |
+| 6 | Combinatorial, extensive-form and cooperative games; voting (built 2026-11-26) | 1,000 |
+| 7 | Sets, relations, partial orders; Pólya counting (built 2026-11-26) | 600 |
+| 8 | Codes and designs (built 2026-11-26) | 700 |
 | 9 | Graph drawing | 900 in graphics |
 
 ## 8. A logic package: `@ratmath/logic`
@@ -1356,7 +1359,7 @@ package sections above; step numbers refer to section 16.
 | 5 | current libraries | section 13 leftovers | Done 2026-11-26. linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
 | 6 | finance | 5 and 6 | Done 2026-11-26. |
 | 7 | logic | 3, 4, 5, 7 | Done 2026-11-26. Phase 6 can follow. |
-| 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
+| 8 | discrete | 3, 4, 6, 7, 8 | Done 2026-11-26. Brute-force checks on small cases. |
 | 9 | stats | 6 and 7 | |
 | 10 | symbolic | 4 and 5 | Keep the rule that every rewrite is verified. |
 | 11 | chaos | 4 and 5 | |
