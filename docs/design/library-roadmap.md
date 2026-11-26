@@ -986,8 +986,9 @@ were added the same day (13.4 to 13.6). None of these needs a new package.
 Built 2026-11-26 in analytic: `firstOrder`, `exactEquation`, `linearODE`,
 `laplace`, `inverseLaplace`, `linearSystem` (2 by 2), `planarSystem`,
 `seriesSolution`, `sturmLiouville`, `heat`, `wave`, `laplaceRectangle` and
-`laplaceDisc`. Still open: step and impulse inputs for Laplace transforms,
-linear systems larger than 2 by 2, a proven remainder for series solutions,
+`laplaceDisc`. Step and impulse inputs (`heaviside`, `dirac`,
+`laplaceSolve` verified piece by piece) and `linearSystem` beyond 2 by 2
+were built 2026-11-26. Still open: a proven remainder for series solutions,
 and the pictures in graphics.
 
 
@@ -1065,8 +1066,10 @@ partial derivatives and certified integrals, with the pictures in graphics.
 Built 2026-11-26 in analytic (`@ratmath/analytic/methods`): the exact model
 of floating point, root finding, interpolation, differentiation and
 quadrature rules, and methods for differential equations, each beside its
-true error. Still open: the iterative and eigenvalue methods in linalg, and
-the pictures in graphics.
+true error. The iterative and eigenvalue methods in linalg (`methods`:
+Jacobi, Gauss–Seidel, SOR, conjugate gradients, power and inverse
+iteration, unshifted QR, pivoting) were built 2026-11-26, each with its
+exact error. Still open: the pictures in graphics.
 
 
 The libraries avoid the classical methods on purpose: they return proven
@@ -1350,7 +1353,7 @@ package sections above; step numbers refer to section 16.
 | 2 | numtheory | 1 to 3 | Done 2026-11-26. Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
 | 3 | stats | 4 and 5 | Done 2026-11-26. Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
 | 4 | discrete | 5 (linear programming, matrix games) | Done 2026-11-26. Step 10. Check each optimum by its dual. |
-| 5 | current libraries | section 13 leftovers | linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
+| 5 | current libraries | section 13 leftovers | Done 2026-11-26. linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
 | 6 | finance | 5 and 6 | |
 | 7 | logic | 3, 4, 5, 7 | Phase 6 can follow. |
 | 8 | discrete | 3, 4, 6, 7, 8 | Brute-force checks on small cases. |
