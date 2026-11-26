@@ -268,9 +268,9 @@ only for phase 6.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Primes with certificates, arithmetic functions, congruences, reciprocity, sums of squares, re-exports | 1,400 |
-| 2 | Diophantine equations and binary quadratic forms | 900 |
-| 3 | p-adic numbers | 500 |
+| 1 | Primes with certificates, arithmetic functions, congruences, reciprocity, sums of squares, re-exports (built 2026-11-26) | 1,400 |
+| 2 | Diophantine equations and binary quadratic forms (built 2026-11-26) | 900 |
+| 3 | p-adic numbers (built 2026-11-26) | 500 |
 | 4 | Elliptic curves; ECM and curve-based certificates | 1,400 |
 | 5 | Integral bases, discriminants, prime ideal factorisation | 900 |
 | 6 | Class groups and unit groups | 1,500 |
@@ -567,7 +567,7 @@ The statistics package depends on this one, not the other way round.
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Counting, enumeration with ranking, the seeded generator (built 2026-11-26) | 1,000 |
-| 2 | Graphs: structure, traversal, paths, trees, families | 1,300 |
+| 2 | Graphs: structure, traversal, paths, trees, families (built 2026-11-26) | 1,300 |
 | 3 | Generating functions and recurrences | 900 |
 | 4 | Matchings, flows, colouring, planarity, isomorphism, spectra | 1,600 |
 | 5 | Exact linear programming; matrix and bimatrix games | 1,100 |
@@ -1250,7 +1250,8 @@ one package because they do not depend on each other.
    13.5. Together these finish the calculus sequence and college algebra.
 7. **Done 2026-11-26.** Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
    needs only what exists today, and each shows off exact arithmetic quickly.
-8. Discrete phase 2 (graphs) and number theory phases 1 to 3.
+8. **Done 2026-11-26.** Discrete phase 2 (graphs) and number theory phases 1 to 3. Continued
+   fractions, Pell and `crt` moved from algebraic to numtheory, as 4.3 says.
 9. Abstract algebra phases 1 and 3 (groups and rings).
 10. Statistics phases 4 and 5 (the standard tests and regression) and discrete
     phase 5 (linear programming and matrix games).
@@ -1345,8 +1346,8 @@ package sections above; step numbers refer to section 16.
 
 | Order | Package | Phases | Notes |
 |---|---|---|---|
-| 1 | discrete | 2 (graphs) | Step 8. Check every algorithm against brute force on small graphs. |
-| 2 | numtheory | 1 to 3 | Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
+| 1 | discrete | 2 (graphs) | Done 2026-11-26. Step 8. Check every algorithm against brute force on small graphs. |
+| 2 | numtheory | 1 to 3 | Done 2026-11-26. Step 8. Primality certificates must be checked by an independent verifier. Move continued fractions and Pell up from algebraic, as section 4.3 says. |
 | 3 | stats | 4 and 5 | Step 10. Use the seeded models to test that intervals cover and tests have their stated size. |
 | 4 | discrete | 5 (linear programming, matrix games) | Step 10. Check each optimum by its dual. |
 | 5 | current libraries | section 13 leftovers | linalg iterative and eigenvalue methods (13.3); Laplace transforms with step and impulse inputs; `linearSystem` beyond 2 by 2. |
