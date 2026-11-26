@@ -461,9 +461,9 @@ structures packages.
 
 | Phase | Contents | Estimate |
 |---|---|---|
-| 1 | Finite probability, discrete distributions, descriptive statistics, exact tests | 1,100 |
-| 2 | Continuous distributions, certified | 1,200, plus 500 in analytic |
-| 3 | Seeded generation, models with noise and contamination, experiments | 1,300 |
+| 1 | Finite probability, discrete distributions, descriptive statistics, exact tests (built 2026-11-26) | 1,100 |
+| 2 | Continuous distributions, certified (built 2026-11-26) | 1,200, plus 500 in analytic |
+| 3 | Seeded generation, models with noise and contamination, experiments (built 2026-11-26) | 1,300 |
 | 4 | Estimation, confidence intervals, the standard tests | 1,000 |
 | 5 | Regression and analysis of variance | 1,100 |
 | 6 | Rank tests, permutation tests, the bootstrap | 700 |
@@ -1206,7 +1206,7 @@ one package because they do not depend on each other.
    complex entries, the hyperbolic models and the Julia sets need.
 4. **Done 2026-11-26.** Discrete phase 1 (counting, enumeration, the seeded generator), because
    statistics builds on it; logic phases 1 and 2, which depend on nothing.
-5. Statistics phases 1 to 3. The most widely used subject, and enough for the
+5. **Done 2026-11-26.** Statistics phases 1 to 3. The most widely used subject, and enough for the
    first experiments with generated data.
 6. Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
    13.5. Together these finish the calculus sequence and college algebra.
