@@ -885,8 +885,8 @@ the hyperbolic models; analytic for enclosures.
 | 1 | Euclidean plane: constructions, centres, transformations, checked theorems (built 2026-11-26) | 1,200 |
 | 2 | Exact computational and lattice geometry, other metrics (built 2026-11-26) | 1,100 |
 | 3 | Spherical and hyperbolic models | 1,400 |
-| 4 | Projective and finite geometries | 1,000 |
-| 5 | Solids, symmetry groups, friezes, wallpaper groups, tilings | 1,300 |
+| 4 | Projective and finite geometries (built 2026-11-26) | 1,000 |
+| 5 | Solids, symmetry groups, friezes, wallpaper groups, tilings (built 2026-11-26) | 1,300 |
 | 6 | General proofs of theorems by elimination | 800 |
 | 7 | Pictures | 1,000 in graphics |
 
@@ -1363,7 +1363,7 @@ package sections above; step numbers refer to section 16.
 | 9 | stats | 6 and 7 | Done 2026-11-26. |
 | 10 | symbolic | 4 and 5 | Done 2026-11-26. Every step record says how it was checked. |
 | 11 | chaos | 4 and 5 | Done 2026-11-26. Pixels are proved inside, proved outside or undecided; checks against brute force and float orbits. |
-| 12 | geo | 4 and 5 | Take symmetry groups from algebraic's `PermGroup` until structures phase 1 exists. |
+| 12 | geo | 4 and 5 | Done 2026-11-26. Symmetry groups are algebraic `PermGroup`s. Drawing the 11 uniform tilings is left to the pictures phase. |
 | 13 | complex | 5 | |
 | 14 | graphics | all pictures phases (stats 8, discrete 9, logic 8, chaos 6, geo 7, finance 7, and the pictures of section 13) | Includes joining geo's plane kernel with graphics', deferred in 11.1. |
 
