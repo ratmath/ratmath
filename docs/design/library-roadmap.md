@@ -731,8 +731,8 @@ it otherwise.
 | Phase | Contents | Estimate |
 |---|---|---|
 | 1 | Expressions, assumptions, rewriting, three-way equality (built 2026-11-26) | 1,500 |
-| 2 | Solving equations and inequalities in one variable | 1,300 |
-| 3 | Antiderivatives with verification; limits; expansions | 1,600 |
+| 2 | Solving equations and inequalities in one variable (built 2026-11-26) | 1,300 |
+| 3 | Antiderivatives with verification; limits; expansions (built 2026-11-26) | 1,600 |
 | 4 | Systems, trigonometric families, sums | 900 |
 | 5 | Step records for every operation | 700 |
 
@@ -1083,6 +1083,9 @@ estimate, at every step.
 
 ### 13.4 Sequences and series (analytic)
 
+Built 2026-11-26: `sequence`, `recursive`, `sum`, `powerSeries`,
+`taylorRemainder` and `functionSequence` in analytic.
+
 - Sequences with certified limits; monotone and bounded sequences; recursive
   sequences (shared with section 10).
 - Convergence tests as named steps (comparison, ratio, root, integral,
@@ -1098,6 +1101,9 @@ About 800 lines. Serves calculus II and the computational side of real
 analysis.
 
 ### 13.5 The theorems of vector calculus (analytic)
+
+Built 2026-11-26: `greens`, `stokes`, `divergenceTheorem`,
+`changeOfVariables`, `potential` and `lagrange` in analytic.
 
 Green's, Stokes' and the divergence theorem as checked identities (both sides
 enclosed, and the enclosures must meet); change of variables with the Jacobian
@@ -1208,7 +1214,7 @@ one package because they do not depend on each other.
    statistics builds on it; logic phases 1 and 2, which depend on nothing.
 5. **Done 2026-11-26.** Statistics phases 1 to 3. The most widely used subject, and enough for the
    first experiments with generated data.
-6. Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
+6. **Done 2026-11-26.** Symbolic phases 2 and 3 (solving, antiderivatives), with sections 13.4 and
    13.5. Together these finish the calculus sequence and college algebra.
 7. Chaos phases 1 and 2, geo phases 1 and 2 and finance phases 1 to 4. Each
    needs only what exists today, and each shows off exact arithmetic quickly.
