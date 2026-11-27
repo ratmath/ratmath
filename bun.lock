@@ -99,11 +99,11 @@
     },
     "shelf/chaos": {
       "name": "@ratmath/chaos",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "@ratmath/algebraic": "^0.1.0",
         "@ratmath/analytic": "^0.1.0",
-        "@ratmath/complex": "^0.2.0",
+        "@ratmath/complex": "^0.3.0",
       },
       "devDependencies": {
         "@ratmath/core": "^0.11.0",
@@ -115,7 +115,7 @@
     },
     "shelf/complex": {
       "name": "@ratmath/complex",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "@ratmath/analytic": "^0.1.0",
       },
@@ -161,11 +161,12 @@
     },
     "shelf/geo": {
       "name": "@ratmath/geo",
-      "version": "0.2.0",
+      "version": "0.4.0",
       "dependencies": {
         "@ratmath/algebraic": "^0.1.0",
         "@ratmath/analytic": "^0.1.0",
         "@ratmath/graphics": "^0.1.0",
+        "@ratmath/structures": "^0.5.0",
       },
       "devDependencies": {
         "@ratmath/core": "^0.11.0",
@@ -217,7 +218,7 @@
     },
     "shelf/numtheory": {
       "name": "@ratmath/numtheory",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "dependencies": {
         "@ratmath/algebraic": "^0.1.0",
       },
@@ -256,12 +257,13 @@
     },
     "shelf/structures": {
       "name": "@ratmath/structures",
-      "version": "0.1.0",
+      "version": "0.5.0",
       "dependencies": {
         "@ratmath/algebraic": "^0.1.0",
       },
       "devDependencies": {
         "@ratmath/core": "^0.11.0",
+        "@ratmath/linalg": "^0.1.0",
         "katex": "0.19.1",
       },
       "peerDependencies": {
@@ -274,7 +276,7 @@
       "dependencies": {
         "@ratmath/algebraic": "^0.1.0",
         "@ratmath/analytic": "^0.1.0",
-        "@ratmath/structures": "^0.1.0",
+        "@ratmath/structures": "^0.5.0",
       },
       "devDependencies": {
         "@ratmath/core": "^0.11.0",
