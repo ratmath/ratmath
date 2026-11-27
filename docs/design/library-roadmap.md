@@ -181,10 +181,10 @@ constants), and optionally on algebraic for conversions.
 |---|---|---|
 | 1 | Exact complex rationals, rectangles and discs, polar form, elementary functions with branch reporting (built 2026-11-26) | 1,400 |
 | 2 | Cayley–Dickson numbers, quaternion rotations, integer quaternions (built 2026-11-26) | 700 |
-| 3 | Complex Taylor models; contour integrals; argument principle and zero isolation | 2,200 |
-| 4 | Residues, Laurent series, singularities, real integrals by residues | 800 |
+| 3 | Complex Taylor models; contour integrals; argument principle and zero isolation (built 2026-11-26) | 2,200 |
+| 4 | Residues, Laurent series, singularities, real integrals by residues (built 2026-11-26) | 800 |
 | 5 | Möbius and conformal maps; graphics hooks (built 2026-11-26) | 600 plus 800 in graphics |
-| 6 | Complex gamma and zeta | 700 |
+| 6 | Complex gamma and zeta (built 2026-11-26) | 700 |
 
 Phases 1 and 2 are independent and each useful alone. Phase 3 is the hard one.
 
@@ -271,10 +271,10 @@ only for phase 6.
 | 1 | Primes with certificates, arithmetic functions, congruences, reciprocity, sums of squares, re-exports (built 2026-11-26) | 1,400 |
 | 2 | Diophantine equations and binary quadratic forms (built 2026-11-26) | 900 |
 | 3 | p-adic numbers (built 2026-11-26) | 500 |
-| 4 | Elliptic curves; ECM and curve-based certificates | 1,400 |
-| 5 | Integral bases, discriminants, prime ideal factorisation | 900 |
-| 6 | Class groups and unit groups | 1,500 |
-| 7 | π(x), characters, ζ and L values | 800 |
+| 4 | Elliptic curves; ECM and curve-based certificates (built 2026-11-26) | 1,400 |
+| 5 | Integral bases, discriminants, prime ideal factorisation (built 2026-11-26) | 900 |
+| 6 | Class groups and unit groups (built 2026-11-26) | 1,500 |
+| 7 | π(x), characters, ζ and L values (built 2026-11-26) | 800 |
 
 ## 5. An abstract algebra package: `@ratmath/structures`
 
@@ -348,11 +348,11 @@ of higher degree later need Schreier–Sims, only that kernel moves down.
 |---|---|---|
 | 1 | Named groups, tables, classes, quotients, Sylow, homomorphisms, actions and counting (built 2026-11-26) | 1,800 |
 | 2 | Several-variable polynomials (built 2026-11-25) | 900 |
-| 3 | Rings, ideals, quotients, the quadratic integer rings | 1,000 |
-| 4 | Gröbner bases, elimination, polynomial systems | 1,200 |
+| 3 | Rings, ideals, quotients, the quadratic integer rings (built 2026-11-27, ratmath/structures#4) | 1,000 |
+| 4 | Gröbner bases, elimination, polynomial systems (built 2026-11-27, ratmath/structures#4) | 1,200 |
 | 5 | Presentations and coset enumeration; abelian groups; modules | 1,000 |
-| 6 | Schreier–Sims; field towers, radicals, constructibility; Conway polynomials | 1,300 |
-| 7 | Character tables | 900 |
+| 6 | Schreier–Sims; field towers, radicals, constructibility; Conway polynomials (built 2026-11-27, ratmath/structures#4) | 1,300 |
+| 7 | Character tables (built 2026-11-27, ratmath/structures#4) | 900 |
 
 Phase 2 is worth doing early whichever package order is chosen, because
 linalg and graphics both wait on it.
@@ -804,7 +804,7 @@ Depends on core, analytic (enclosures, the validated solver), algebraic
 |---|---|---|
 | 1 | Maps of the line: orbits, periodic points, stability (built 2026-11-26) | 900 |
 | 2 | Bifurcation diagrams, Lyapunov exponents, symbolic dynamics (built 2026-11-26) | 1,000 |
-| 3 | Maps of the plane; flows, sections, periodic orbits, bifurcations | 1,300 |
+| 3 | Maps of the plane; flows, sections, periodic orbits, bifurcations (built 2026-11-26) | 1,300 |
 | 4 | Iterated function systems, Cantor sets, dimensions, L-systems, cellular automata (built 2026-11-26) | 900 |
 | 5 | Julia and Mandelbrot sets, Newton basins (built 2026-11-26) | 600 |
 | 6 | Pictures (built 2026-11-26) | 1,000 in graphics |
@@ -887,10 +887,10 @@ the hyperbolic models; analytic for enclosures.
 |---|---|---|
 | 1 | Euclidean plane: constructions, centres, transformations, checked theorems (built 2026-11-26) | 1,200 |
 | 2 | Exact computational and lattice geometry, other metrics (built 2026-11-26) | 1,100 |
-| 3 | Spherical and hyperbolic models | 1,400 |
+| 3 | Spherical and hyperbolic models (built 2026-11-26) | 1,400 |
 | 4 | Projective and finite geometries (built 2026-11-26) | 1,000 |
 | 5 | Solids, symmetry groups, friezes, wallpaper groups, tilings (built 2026-11-26) | 1,300 |
-| 6 | General proofs of theorems by elimination | 800 |
+| 6 | General proofs of theorems by elimination (built 2026-11-27, ratmath/geo#7) | 800 |
 | 7 | Pictures (built 2026-11-26) | 1,000 in graphics |
 
 ## 12. A finance package: `@ratmath/finance`
@@ -995,8 +995,9 @@ Built 2026-11-26 in analytic: `firstOrder`, `exactEquation`, `linearODE`,
 `laplaceDisc`. Step and impulse inputs (`heaviside`, `dirac`,
 `laplaceSolve` verified piece by piece) and `linearSystem` beyond 2 by 2
 were built 2026-11-26, and the pictures in graphics (phase portraits,
-animated solutions) on 2026-11-26. Still open: a proven remainder for series
-solutions.
+animated solutions) on 2026-11-26. The proven remainder for series solutions
+(`remainder(ρ)` and `enclose(x)` on each solution, `provenRadius`) was built
+2026-11-27, which completes this section.
 
 
 Analytic has validated solutions of initial and boundary value problems.
@@ -1267,7 +1268,7 @@ one package because they do not depend on each other.
 9. Abstract algebra phases 1 and 3 (groups and rings).
 10. **Done 2026-11-26.** Statistics phases 4 and 5 (the standard tests and regression) and discrete
     phase 5 (linear programming and matrix games).
-11. Complex phases 3 and 4 (the analysis proper). The hardest single piece.
+11. **Done 2026-11-26.** Complex phases 3 and 4 (the analysis proper). The hardest single piece.
 12. The remaining phases as interest directs.
 
 The other extensions of section 13 touch only the current libraries and can be
@@ -1381,14 +1382,19 @@ files has been compiled with `tsc`), and widening `ratmath/rix-bridge`.
 
 Not on the list above, recommended for Fable:
 
-- complex phases 3, 4 and 6 (step 11).
-- chaos phase 3.
-- geo phases 3 and 6.
+- complex phases 3, 4 and 6 (step 11). Built 2026-11-26.
+- chaos phase 3. Built 2026-11-26.
+- geo phases 3 and 6. Phase 3 built 2026-11-26; phase 6 built 2026-11-27
+  (ratmath/geo#7).
 - All remaining structures phases: 1 and 3 (step 9), then 4 to 7. Phase 1 built
   2026-11-26 (ratmath/structures#2); Pólya counting stays in discrete, fed by
-  `Action#toPermGroup()`.
-- numtheory phases 4 to 7.
-- A proven remainder for series solutions (13.1).
+  `Action#toPermGroup()`. Phases 3, 4, 6 and 7 built 2026-11-27, all in
+  ratmath/structures#4 (phase 5 is ratmath/structures#3, from the other list).
+- numtheory phases 4 to 7. Built 2026-11-26.
+- A proven remainder for series solutions (13.1). Built 2026-11-27
+  (ratmath/analytic#15).
+
+Everything on this list is now built.
 
 ### 18.3 How to work through it
 
