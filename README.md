@@ -72,9 +72,9 @@ submodule in `shelf/`. Each has a docs site at `ratmath.com/<name>/`, and the
 | [`shelf/graphics`](https://github.com/ratmath/graphics) | `@ratmath/graphics` | Certified plots, regions and exact geometry, exported to SVG, TikZ, PDF and PNG |
 | [`shelf/linalg`](https://github.com/ratmath/linalg) | `@ratmath/linalg` | Exact rational linear algebra with float previews that sharpen to exact |
 | [`shelf/logic`](https://github.com/ratmath/logic) | `@ratmath/logic` | Propositional and predicate logic, proof checking, model search, modal logic, computability |
-| [`shelf/numtheory`](https://github.com/ratmath/numtheory) | `@ratmath/numtheory` | Primes with certificates, congruences, Diophantine equations, p-adics, elliptic curves (set up, nothing built yet) |
+| [`shelf/numtheory`](https://github.com/ratmath/numtheory) | `@ratmath/numtheory` | Primes with certificates, factoring, congruences, Diophantine equations, p-adics, elliptic curves, class groups, zeta and L values |
 | [`shelf/stats`](https://github.com/ratmath/stats) | `@ratmath/stats` | Exact finite probability, certified distributions, seeded data with noise, tests, regression |
-| [`shelf/structures`](https://github.com/ratmath/structures) | `@ratmath/structures` | Abstract algebra: exact polynomials in several variables and rational functions |
+| [`shelf/structures`](https://github.com/ratmath/structures) | `@ratmath/structures` | Abstract algebra: finite groups and character tables, polynomials in several variables, Gröbner bases, Galois groups, chain complexes |
 | [`shelf/symbolic`](https://github.com/ratmath/symbolic) | `@ratmath/symbolic` | Expressions, rewriting, solving and closed forms, each step checked by the certified libraries |
 
 The layers are: Core (`core/`) holds the number types, the Shelf holds
